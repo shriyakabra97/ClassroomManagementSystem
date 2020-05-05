@@ -27,6 +27,10 @@ public class Sac {
     @JoinColumn(name="foreignId" ,nullable=false)
     private Login foreignId;
 
+
+    public Sac() {
+    }
+
     public Sac(@NotNull String userName, @NotNull String sacName, @NotNull String sacEmail) {
         this.userName = userName;
         this.sacName = sacName;

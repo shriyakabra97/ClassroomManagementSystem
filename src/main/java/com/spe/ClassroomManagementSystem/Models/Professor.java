@@ -30,6 +30,9 @@ public class Professor {
     //primary key of login becomes foreign key here
 
 
+    public Professor() {
+    }
+
     public Professor(@NotNull String userName, @NotNull String professorName, @NotNull String professorEmail) {
         this.userName = userName;
         this.professorName = professorName;

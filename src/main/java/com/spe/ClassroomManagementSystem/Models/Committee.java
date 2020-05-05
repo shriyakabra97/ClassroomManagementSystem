@@ -26,6 +26,10 @@ public class Committee {
     @JoinColumn(name="foreignId" ,nullable=false)
     private Login foreignId;
 
+
+    public Committee() {
+    }
+
     public Committee(@NotNull String userName, @NotNull String committeeName, @NotNull String committeeEmail, Login foreignId) {
         this.userName = userName;
         this.committeeName = committeeName;

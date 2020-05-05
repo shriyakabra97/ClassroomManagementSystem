@@ -36,6 +36,8 @@ public class Login {
     @OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL,mappedBy="foreignId")
     private Sac sac;
 
+    public Login() {
+    }
 
     public Login(@NotNull String userType, @NotNull String userName, @NotNull String password) {
         this.userType = userType;
