@@ -59,7 +59,7 @@ public class Login {
                 '}';
     }
 
-    public long getLoginId() {
+    public Long getLoginId() {
         return loginId;
     }
 
