@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class Committee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long committeeId;
+    private Long committeeId;
 
     @Column(unique = true)
     @NotNull
@@ -25,6 +25,10 @@ public class Committee {
     @OneToOne(fetch=FetchType.LAZY,optional=false)
     @JoinColumn(name="foreignId" ,nullable=false)
     private Login foreignId;
+
+    public Committee(){
+
+    }
 
     public Committee(@NotNull String userName, @NotNull String committeeName, @NotNull String committeeEmail, Login foreignId) {
         this.userName = userName;

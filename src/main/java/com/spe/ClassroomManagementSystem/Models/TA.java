@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class TA {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long taId;
+    private Long taId;
 
     @Column(unique = true)
     @NotNull
@@ -27,6 +27,9 @@ public class TA {
     @JoinColumn(name="foreignId" ,nullable=false)
     private Login foreignId;
 
+    public TA(){
+
+    }
     public TA(@NotNull String userName, @NotNull String taName, @NotNull String taEmail) {
         this.userName = userName;
         this.taName = taName;

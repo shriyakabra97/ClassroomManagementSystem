@@ -10,7 +10,7 @@ public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long professorId;
+    private Long professorId;
 
     @Column(unique = true)
     @NotNull
@@ -28,8 +28,9 @@ public class Professor {
     @JoinColumn(name="foreignId" ,nullable=false)
     private Login foreignId;
     //primary key of login becomes foreign key here
+    public Professor(){
 
-
+    }
     public Professor(@NotNull String userName, @NotNull String professorName, @NotNull String professorEmail) {
         this.userName = userName;
         this.professorName = professorName;

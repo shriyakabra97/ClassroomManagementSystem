@@ -9,7 +9,7 @@ public class Sac {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long sacId;
+    private Long sacId;
 
     @Column(unique = true)
     @NotNull
@@ -26,6 +26,9 @@ public class Sac {
     @OneToOne(fetch=FetchType.LAZY,optional=false)
     @JoinColumn(name="foreignId" ,nullable=false)
     private Login foreignId;
+    public Sac(){
+
+    }
 
     public Sac(@NotNull String userName, @NotNull String sacName, @NotNull String sacEmail) {
         this.userName = userName;
