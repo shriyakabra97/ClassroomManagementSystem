@@ -1,11 +1,5 @@
 #-- drop database if exits
-#DROP DATABASE IF EXISTS class_db;
+DROP DATABASE IF EXISTS class_db;
 
 #-- create database name
-#CREATE DATABASE class_db;
-
-#-- create user with password
-#CREATE USER 'class_user'@'localhost' IDENTIFIED BY 'class_password';
-
-#-- provide all the permission
-#GRANT ALL PRIVILEGES ON class_db. * TO 'class_user'@'localhost'
+CREATE DATABASE class_db;
