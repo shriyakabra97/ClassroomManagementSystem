@@ -1,6 +1,7 @@
 package com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Service.LoginService;
+import com.spe.ClassroomManagementSystem.Service.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
