@@ -25,4 +25,68 @@ public class Committee {
     @OneToOne(fetch=FetchType.LAZY,optional=false)
     @JoinColumn(name="foreignId" ,nullable=false)
     private Login foreignId;
+
+    public Committee(@NotNull String userName, @NotNull String committeeName, @NotNull String committeeEmail, Login foreignId) {
+        this.userName = userName;
+        this.committeeName = committeeName;
+        this.committeeEmail = committeeEmail;
+        this.foreignId = foreignId;
+    }
+
+    public Committee(@NotNull String userName, @NotNull String committeeName, @NotNull String committeeEmail) {
+        this.userName = userName;
+        this.committeeName = committeeName;
+        this.committeeEmail = committeeEmail;
+    }
+
+    @Override
+    public String toString() {
+        return "Committee{" +
+                "committeeId=" + committeeId +
+                ", userName='" + userName + '\'' +
+                ", committeeName='" + committeeName + '\'' +
+                ", committeeEmail='" + committeeEmail + '\'' +
+                ", foreignId=" + foreignId +
+                '}';
+    }
+
+    public long getCommitteeId() {
+        return committeeId;
+    }
+
+    public void setCommitteeId(long committeeId) {
+        this.committeeId = committeeId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getCommitteeName() {
+        return committeeName;
+    }
+
+    public void setCommitteeName(String committeeName) {
+        this.committeeName = committeeName;
+    }
+
+    public String getCommitteeEmail() {
+        return committeeEmail;
+    }
+
+    public void setCommitteeEmail(String committeeEmail) {
+        this.committeeEmail = committeeEmail;
+    }
+
+    public Login getForeignId() {
+        return foreignId;
+    }
+
+    public void setForeignId(Login foreignId) {
+        this.foreignId = foreignId;
+    }
 }
