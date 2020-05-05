@@ -31,8 +31,7 @@ public class Sac {
     }
 
 
-    public Sac() {
-    }
+
 
     public Sac(@NotNull String userName, @NotNull String sacName, @NotNull String sacEmail) {
         this.userName = userName;

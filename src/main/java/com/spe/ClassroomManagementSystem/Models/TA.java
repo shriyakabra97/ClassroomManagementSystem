@@ -43,8 +43,6 @@ public class TA {
         this.foreignId = foreignId;
     }
 
-    public TA() {
-    }
 
     @Override
     public String toString() {

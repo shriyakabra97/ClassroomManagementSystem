@@ -49,16 +49,24 @@ and open the template in the editor.
             <div class="card">
 
                 <article class="card-body">
-                    <form class ="form-signin" id="admission-form" action = "/register/professor" method="post" onsubmit="return validateemail();">
+                    <form class ="form-signin" id="admission-form" action = "/register/professor" method="post"  onsubmit="return Validate()" />
+                    </td>
                         <div class="form-row">
 
                             <div class="col form-group">
                                 <label>User Type </label>
-                                <input type="text" id="type" name="type" class="form-control" placeholder="" required="true">
+                                <select class="form-control" id="usertype" name="usertype" required>
+                                    <option name="select_username" value="">Select User Type</option>
+                                    <option name="admin" value="admin">Admin </option>
+                                    <option name="professor" value="professor">Professor </option>
+                                    <option name="ta" value="ta">TA </option>
+                                    <option name="committee" value="committee">Committee </option>
+                                    <option name="sac" value="sac">SAC </option>
+                                </select>
                             </div>
                             <div class="col form-group">
                                 <label>User Name </label>
-                                <input type="text" id="u_name" name="u_name" class="form-control" placeholder="" required="true">
+                                <input type="text" id="username" name="username" class="form-control" placeholder="" required="true">
                             </div>
                             <div class="col form-group">
                                 <label>Name </label>
@@ -70,7 +78,7 @@ and open the template in the editor.
 
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" id="mail" name="mail" class="form-control" placeholder=""  required>
+                            <input type="email" id="email" name="email" class="form-control" placeholder=""  required>
                             <small class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div> <!-- form-group end.// -->
 
@@ -81,7 +89,7 @@ and open the template in the editor.
                         </div> <!-- form-group end.// -->
                         <div class="form-group">
                             <label>Confirm password</label>
-                            <input class="form-control" onclick="validate()" id="pass" name="pass" type="password" minlength="4" required>
+                            <input class="form-control" id="pass" name="pass" type="password" minlength="4" required>
                         </div>
                     <p id ="pass-match" style="color:crimson ; font-family: Arial" ></p>
 
@@ -95,7 +103,17 @@ and open the template in the editor.
 
                         });
                     </script>
-
+                    <script type="text/javascript">
+                            function Validate() {
+                                var password = document.getElementById("password").value;
+                                var confirmPassword = document.getElementById("pass").value;
+                                if (password != confirmPassword) {
+                                    alert("Passwords do not match.");
+                                    return false;
+                                }
+                                return true;
+                            }
+                    </script>
 
 
                         <div class="form-group">

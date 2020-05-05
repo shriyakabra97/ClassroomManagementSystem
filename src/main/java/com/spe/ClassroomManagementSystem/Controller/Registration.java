@@ -6,6 +6,7 @@ import com.spe.ClassroomManagementSystem.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,7 +26,7 @@ public class Registration {
     Login login=new Login();
 
     @PostMapping("/register/committee")
-    public ModelAndView registerCommittee(@PathVariable String name,@PathVariable String username,@PathVariable String email,@PathVariable String password){
+    public ModelAndView registerCommittee(@RequestParam("name") String name, @RequestParam("username") String username,@RequestParam("email") String email, @RequestParam("password") String password){
         Committee committee=new Committee();
         committee.setCommitteeName(name);
         committee.setUserName(username);
@@ -41,7 +42,7 @@ public class Registration {
         return  mv;
     }
     @PostMapping("/register/professor")
-    public ModelAndView registerProfessor(@PathVariable String name,@PathVariable String username,@PathVariable String email,@PathVariable String password){
+    public ModelAndView registerProfessor(@RequestParam("name") String name,@RequestParam("username")String username,@RequestParam("email") String email,@RequestParam("password") String password){
         Professor professor=new Professor();
         professor.setProfessorName(name);
         professor.setUserName(username);
@@ -53,11 +54,11 @@ public class Registration {
         login.setUserType("professor");
         loginService.save(login);
         ModelAndView mv=new ModelAndView();
-        mv.setViewName("admin.jsp");
+        mv.setViewName("AdminDashboard.jsp");
         return  mv;
     }
     @PostMapping("/register/sac")
-    public ModelAndView registerSac(@PathVariable String name,@PathVariable String username,@PathVariable String email,@PathVariable String password){
+    public ModelAndView registerSac(@RequestParam("name")  String name,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("password") String password){
         Sac sac=new Sac();
         sac.setSacName(name);
         sac.setUserName(username);
@@ -72,7 +73,7 @@ public class Registration {
         return  mv;
     }
     @PostMapping("/register/ta")
-    public ModelAndView registerTa(@PathVariable String name,@PathVariable String username,@PathVariable String email,@PathVariable String password){
+    public ModelAndView registerTa(@RequestParam("name")  String name,@RequestParam("username")String username,@RequestParam("email") String email,@RequestParam("password") String password){
         TA ta=new TA();
         ta.setTaName(name);
         ta.setUserName(username);
