@@ -19,4 +19,18 @@ public class LoginServiceImpl implements LoginService {
     public  Login findByUsernameAndPassword(String username,String password){
         return loginRepository.findByUserNameAndPassword(username,password);
     }
+
+    @Override
+    public boolean checkCredentials(String username, String password, String userType) {
+        Login user = loginRepository.findByUserNameAndAndUserType(username, userType);
+        if (user == null) {
+            return false;
+        } else {
+            if (user.getPassword() == password) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }
