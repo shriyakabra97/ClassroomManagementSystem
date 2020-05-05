@@ -31,5 +31,5 @@ build/
 .vscode/
 
 ### Resources ###
-application.properties
+src/main/resources/application.properties
 databaseSetup
