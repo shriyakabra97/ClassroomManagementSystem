@@ -16,7 +16,7 @@
         <div class="avatar"></div>
         <h4>Classroom Manager</h4><br>
         <div class="form-box">
-            <form action="/login" method="POST">
+            <form action="/login" method="">
                 <select id="usertype" name="usertype" required>
                     <option name="select_username" value="">Select User Type</option>
                     <option name="admin" value="admin">Admin </option>
@@ -25,8 +25,8 @@
                     <option name="committee" value="committee">Committee </option>
                     <option name="sac" value="sac">SAC </option>
                 </select>
-                <input name="user" type="text" placeholder="username" required>
-                <input type="password" placeholder="password" required>
+                <input id="username" name="username" type="text" placeholder="username" required>
+                <input id="password" name="password" type="password" placeholder="password" required>
                 <button class="btn btn-info btn-block login" type="submit">Login</button>
             </form>
         </div>
