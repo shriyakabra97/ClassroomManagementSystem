@@ -22,11 +22,11 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean checkCredentials(String username, String password, String userType) {
-        Login user = loginRepository.findByUserNameAndAndUserType(username, userType);
+        Login user = loginRepository.findByUserNameAndUserType(username, userType);
         if (user == null) {
             return false;
         } else {
-            if (user.getPassword() == password) {
+            if (user.getPassword().equals(password)) {
                 return true;
             } else {
                 return false;

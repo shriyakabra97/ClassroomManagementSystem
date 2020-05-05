@@ -15,31 +15,23 @@ public class LoginController {
     @RequestMapping("/login")
     public RedirectView logIntoSystem(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("usertype") String usertype) {
         boolean loginSuccess = loginService.checkCredentials(username, password, usertype);
-//        ModelAndView mv = new ModelAndView();
-//        if(loginSuccess == false) {
-//            mv.setViewName("index.html");
-//        } else {
-//            switch (usertype) {
-//                case "admin": mv.setViewName("AdminDashboard.jsp");
-//                    break;
-//                case "professor": mv.setViewName("ProfessorDashboard.jsp");
-//                    break;
-//                case "ta": mv.setViewName("TADashboard.jsp");
-//                    break;
-//                case "committee": mv.setViewName("CommitteeDashboard.jsp");
-//                    break;
-//                case "sac": mv.setViewName("SACDashboard.jsp");
-//                    break;
-//            }
-//        }
-//        return mv;
         RedirectView rv = new RedirectView();
-        if (loginSuccess) {
-            rv.setUrl("/AdminDashboard.jsp");
+        if(loginSuccess == false) {
+            rv.setUrl("index.html");
         } else {
-            rv.setUrl("/index.html");
+            switch (usertype) {
+                case "admin": rv.setUrl("AdminDashboard.jsp");
+                    break;
+                case "professor": rv.setUrl("ProfessorDashboard.jsp");
+                    break;
+                case "ta": rv.setUrl("TADashboard.jsp");
+                    break;
+                case "committee": rv.setUrl("CommitteeDashboard.jsp");
+                    break;
+                case "sac": rv.setUrl("SACDashboard.jsp");
+                    break;
+            }
         }
-
         return rv;
     }
 }
