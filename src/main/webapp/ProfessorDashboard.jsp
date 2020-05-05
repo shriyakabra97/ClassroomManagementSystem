@@ -11,16 +11,30 @@
     <link rel="stylesheet" href="/css/index.css">
     <style>
         body {
-            background: #eee url(http://subtlepatterns.com/patterns/sativa.png);
+            background: whitesmoke;
         }
+        #purpose, #building, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #date, h5{
+            margin-bottom: 10px;
+        }
+        nav a{
+            color: white;
+        }
+
     </style>
 </head>
 <body>
+<nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
+    <!-- Navbar content -->
+    <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" style="margin-right: 10px"><span class="glyphicon glyphicon-log-in" ></span> Logout</a></li>
+    </ul>
+</nav>
 
 <div class="container">
-    <div class="login-container" style="display: block">
+    <div class="login-container" style="width: 500px; margin: 30px auto">
         <div id="output"></div>
-        <h4>Hey Prof ${profName}!</h4><br>
+        <h4>Hey Prof ${username}!</h4><br>
         <div class="form-box">
             <form action="" method="">
                 <select id="purpose" name="purpose" required>
@@ -37,20 +51,41 @@
                     <option name="ramanujan" value="ramanujan">Ramanujan</option>
                 </select>
 
-                <div class="row">
+                <input id="capacity" name="capacity" type="number" placeholder="Capacity" required >
+
+                <h5 id="date-label" align="left">Select Date</h5>
+                <input id="date" name="date" type="date" required placeholder="Date">
+
+                <h5 id="times-label" align="left">Select Start and End Time</h5>
+                <div class="row" id="times">
                     <div class="col-sm-6">
-                        <input name="startTime" type="time" placeholder="Start Time" required style="width: 150px">
+                        <input name="startTime" type="time" placeholder="Start Time" required >
                     </div>
                     <div class="col-sm-6">
-                        <input name="endTime" type="time" required placeholder="End Time" style="width: 150px">
+                        <input name="endTime" type="time" required placeholder="End Time">
                     </div>
-
-
+                </div>
+                <h5 id="plugsAndPorts-label" align="left" style="margin-top: 5px">Concerned about plugs, ports and projectors?</h5>
+                <div class="row" id="plugsAndPorts">
+                    <div class="col-sm-4">
+                        <input name="plugs" type="number" placeholder="Plugs" >
+                    </div>
+                    <div class="col-sm-4">
+                        <input name="ports" type="number" placeholder="Ports" >
+                    </div>
+                    <div class="col-sm-4">
+                        <input name="projectors" type="number" placeholder="Projectors" >
+                    </div>
+                </div>
+                <div id="cleaningCheck" class="form-group">
+                    <div class="form-check" align="left">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" style="width: 15px; height: 15px; ">
+                        <label class="form-check-label" for="gridCheck" style="font-size: small">
+                            Cleaning needed
+                        </label>
+                    </div>
                 </div>
 
-                <input name="endTime" type="time" required placeholder="End Time">
-                <input name="user" type="" placeholder="username" required>
-                <input type="password" placeholder="password" required>
                 <button class="btn btn-info btn-block login" type="submit">Find Classes</button>
             </form>
         </div>
