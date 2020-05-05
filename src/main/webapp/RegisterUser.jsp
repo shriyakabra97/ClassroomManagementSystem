@@ -48,7 +48,7 @@ and open the template in the editor.
         <div class="col-md-6">
             <div class="card">
 
-                <article class="card-body">
+                <article class="card-body">'
                     <form class ="form-signin" id="admission-form" action = "/register/professor" method="post"  onsubmit="return Validate()" />
                     </td>
                         <div class="form-row">
