@@ -31,6 +31,5 @@ build/
 .vscode/
 
 ### Resources ###
-src/main/resources/application.properties
 /databaseSetup
 /stale_outputs_checked
