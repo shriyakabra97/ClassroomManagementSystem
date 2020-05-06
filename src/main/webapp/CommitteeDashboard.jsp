@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Professor - Request Class</title>
+    <title>Committee - Request Class</title>
+
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -32,16 +33,14 @@
 <div class="container">
     <div class="login-container" style="width: 500px; margin: 30px auto">
         <div id="output"></div>
-        <h4>Hey Prof ${professor.professorName}!</h4><br>
+        <h4>Hey ${committee.committeeName}!</h4><br>
         <div class="form-box">
             <form action="" method="">
                 <select id="purpose" name="purpose" required>
                     <option name="select_username" value="">Select Purpose</option>
-                    <option name="extraClass" value="extraClass">Extra Class </option>
-                    <option name="exams" value="exams">Exams </option>
-                    <option name="event" value="event">Event </option>
-                    <option name="interactionWithSac" value="interactionWithSac">Interaction with SAC</option>
-                    <option name="interactionWithCommittee" value="interactionWithCommittee">Interaction with committee </option>
+                    <option name="meetingWithinCommittee" value="meetingWithinCommittee">Meeting Within Committee </option>
+                    <option value="meetingWithOtherCommittee" name="meetingWithOtherCommittee"> Meeting With Other Committee</option>
+
                 </select>
 
                 <select id="building" name="building" required>

@@ -3,10 +3,11 @@ package com.spe.ClassroomManagementSystem.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name="login")
-public class Login {
+public class Login implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -45,21 +46,21 @@ public class Login {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Login{" +
-                "loginId=" + loginId +
-                ", userType='" + userType + '\'' +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", professor=" + professor +
-                ", ta=" + ta +
-                ", committee=" + committee +
-                ", sac=" + sac +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Login{" +
+//                "loginId=" + loginId +
+//                ", userType='" + userType + '\'' +
+//                ", userName='" + userName + '\'' +
+//                ", password='" + password + '\'' +
+//                ", professor=" + professor +
+//                ", ta=" + ta +
+//                ", committee=" + committee +
+//                ", sac=" + sac +
+//                '}';
+//    }
 
-    public Long getLoginId() {
+    public long getLoginId() {
         return loginId;
     }
 
