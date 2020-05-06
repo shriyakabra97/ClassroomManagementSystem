@@ -1,5 +1,0 @@
-#-- drop database if exits
-DROP DATABASE IF EXISTS class_db;
-
-#-- create database name
-CREATE DATABASE class_db;
