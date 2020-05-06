@@ -26,8 +26,8 @@ public class Registration {
 
 
     @PostMapping("/register")
-    public RedirectView registerUser(@RequestParam("usertype") String usertype,
-                                        @RequestParam("name") String name,
+    public RedirectView registerUser(    @RequestParam("usertype") String usertype,
+                                         @RequestParam("name") String name,
                                           @RequestParam("username") String username,
                                           @RequestParam("email") String email,
                                           @RequestParam("password") String password) {
