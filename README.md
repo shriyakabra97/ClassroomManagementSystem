@@ -11,15 +11,15 @@ Only Admin, Prof, SAC,TAs, Committees can login
 1. View Classrooms available according to filters like building(Ramanujan, Aryabhatta), minimum capacity required, time slot  and purpose of asking for room request. 
 2. They will have an option to notify the cleaning staff if the classroom is granted and if they want that room to be cleaned.
 3. Purpose can be:
-3.1. Event ( Then show all rooms as rescheduling is an option)
-3.2. Exams( Show classrooms according to the fact that students capacity should be double the no. of students registered in course. )
-3.3. Extra class(Normal classroom availability)
-3.4. Meeting with SAC/Committees/TAs
+  3.1. Event ( Then show all rooms as rescheduling is an option)
+  3.2. Exams( Show classrooms according to the fact that students capacity should be double the no. of students registered in course. )
+  3.3. Extra class(Normal classroom availability)
+  3.4. Meeting with SAC/Committees/TAs
 ## SAC, Committees, TAs
 1. Request for rooms according to capacity required, purpose, time slot
 2. Ask for cleaning the room before slot time.(Optional)
 3. Purpose can be:
-3.1. Meeting within Committee
-3.2. Interaction with Students
-3.3. Interaction with prof. (In this case, the prof has to request for room.)
+  3.1. Meeting within Committee
+  3.2. Interaction with Students
+  3.3. Interaction with prof. (In this case, the prof has to request for room.)
 
