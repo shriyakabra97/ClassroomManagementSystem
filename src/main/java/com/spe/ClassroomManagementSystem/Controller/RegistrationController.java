@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
-public class Registration {
+public class RegistrationController {
 
     @Autowired
     private CommitteeService committeeService;
@@ -26,7 +26,7 @@ public class Registration {
 
 
     @PostMapping("/register/committee")
-    public ModelAndView registerCommittee(@RequestParam String name, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
+    public RedirectView registerCommittee(@RequestParam String name, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
         login.setUserName(username);
         login.setPassword(password);
         login.setUserType("committee");
@@ -40,13 +40,13 @@ public class Registration {
         committeeService.saveCommittee(committee);
 
 
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("AdminDashboard.jsp");
-        return mv;
+        RedirectView rv = new RedirectView();
+        rv.setUrl("AdminDashboard.jsp");
+        return rv;
     }
 
     @PostMapping("/register/professor")
-    public ModelAndView registerProfessor(@RequestParam String name, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
+    public RedirectView registerProfessor(@RequestParam String name, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
         login.setUserName(username);
         login.setPassword(password);
         login.setUserType("professor");
@@ -59,13 +59,13 @@ public class Registration {
         professor.setForeignId(login);
         professorService.saveProfessor(professor);
 
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("AdminDashboard.jsp");
-        return mv;
+        RedirectView rv = new RedirectView();
+        rv.setUrl("AdminDashboard.jsp");
+        return rv;
     }
 
     @PostMapping("/register/sac")
-    public ModelAndView registerSac(@RequestParam String name, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
+    public RedirectView registerSac(@RequestParam String name, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
         login.setUserName(username);
         login.setPassword(password);
         login.setUserType("sac");
@@ -77,13 +77,13 @@ public class Registration {
         sac.setForeignId(login);
         sacService.saveSac(sac);
 
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("AdminDashboard.jsp");
-        return mv;
+        RedirectView rv = new RedirectView();
+        rv.setUrl("AdminDashboard.jsp");
+        return rv;
     }
 
     @PostMapping("/register/ta")
-    public ModelAndView registerTa(@RequestParam String name, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
+    public RedirectView registerTa(@RequestParam String name, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
         login.setUserName(username);
         login.setPassword(password);
         login.setUserType("ta");
@@ -95,9 +95,9 @@ public class Registration {
         ta.setForeignId(login);
         taService.saveTa(ta);
 
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("AdminDashboard.jsp");
-        return mv;
+        RedirectView rv = new RedirectView();
+        rv.setUrl("AdminDashboard.jsp");
+        return rv;
     }
 
 }
