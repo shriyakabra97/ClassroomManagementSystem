@@ -19,7 +19,7 @@ Only Admin, Prof, SAC,TAs, Committees can login
 1. Request for rooms according to capacity required, purpose, time slot
 2. Ask for cleaning the room before slot time.(Optional)
 3. Purpose can be:
-  3.1. Meeting within Committee
-  3.2. Interaction with Students
-  3.3. Interaction with prof. (In this case, the prof has to request for room.)
+    1. Meeting within Committee
+    2. Interaction with Students
+    3. Interaction with prof. (In this case, the prof has to request for room.)
 
