@@ -3,13 +3,14 @@ package com.spe.ClassroomManagementSystem.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name="ta")
-public class TA {
+public class TA implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long taId;
+    private long taId;
 
     @Column(unique = true)
     @NotNull
@@ -44,16 +45,16 @@ public class TA {
     }
 
 
-    @Override
-    public String toString() {
-        return "TA{" +
-                "taId=" + taId +
-                ", userName='" + userName + '\'' +
-                ", taName='" + taName + '\'' +
-                ", taEmail='" + taEmail + '\'' +
-                ", foreignId=" + foreignId +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "TA{" +
+//                "taId=" + taId +
+//                ", userName='" + userName + '\'' +
+//                ", taName='" + taName + '\'' +
+//                ", taEmail='" + taEmail + '\'' +
+//                ", foreignId=" + foreignId +
+//                '}';
+//    }
 
     public long getTaId() {
         return taId;

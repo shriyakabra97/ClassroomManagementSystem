@@ -7,17 +7,23 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class LoginController {
     @Autowired
     private LoginService loginService;
 
     @RequestMapping("/login")
-    public RedirectView logIntoSystem(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("usertype") String usertype) {
-        boolean loginSuccess = loginService.checkCredentials(username, password, usertype);
+    public RedirectView logIntoSystem(@RequestParam("username") String username,
+                                      @RequestParam("password") String password,
+                                      @RequestParam("usertype") String usertype,
+                                      HttpSession session
+                                      ) {
+        boolean loginSuccess = loginService.checkCredentials(username, password, usertype, session);
         RedirectView rv = new RedirectView();
         if(loginSuccess == false) {
-            rv.setUrl("index.html");
+            rv.setUrl("InvalidLogin.jsp");
         } else {
             switch (usertype) {
                 case "admin": rv.setUrl("AdminDashboard.jsp");

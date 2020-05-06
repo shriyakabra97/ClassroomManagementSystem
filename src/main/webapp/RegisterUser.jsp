@@ -48,16 +48,15 @@ and open the template in the editor.
         <div class="col-md-6">
             <div class="card">
 
-                <article class="card-body">'
-                    <form class ="form-signin" id="admission-form" action = "/register/professor" method="post"  onsubmit="return Validate()" />
+                <article class="card-body">
+                    <form class ="form-signin" id="admission-form" action = "/register" method="post"  onsubmit="return Validate()" />
                     </td>
                         <div class="form-row">
 
                             <div class="col form-group">
                                 <label>User Type </label>
                                 <select class="form-control" id="usertype" name="usertype" required>
-                                    <option name="select_username" value="">Select User Type</option>
-                                    <option name="admin" value="admin">Admin </option>
+                                    <option name="select_usertype" value="">Select User Type</option>
                                     <option name="professor" value="professor">Professor </option>
                                     <option name="ta" value="ta">TA </option>
                                     <option name="committee" value="committee">Committee </option>
