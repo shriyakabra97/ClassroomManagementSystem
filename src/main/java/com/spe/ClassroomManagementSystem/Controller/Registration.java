@@ -4,7 +4,6 @@ package com.spe.ClassroomManagementSystem.Controller;
 import com.spe.ClassroomManagementSystem.Models.*;
 import com.spe.ClassroomManagementSystem.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +41,7 @@ public class Registration {
 
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin.jsp");
+        mv.setViewName("AdminDashboard.jsp");
         return mv;
     }
 
@@ -61,7 +60,7 @@ public class Registration {
         professorService.saveProfessor(professor);
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin.jsp");
+        mv.setViewName("AdminDashboard.jsp");
         return mv;
     }
 
@@ -79,7 +78,7 @@ public class Registration {
         sacService.saveSac(sac);
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin.jsp");
+        mv.setViewName("AdminDashboard.jsp");
         return mv;
     }
 
@@ -97,7 +96,7 @@ public class Registration {
         taService.saveTa(ta);
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin.jsp");
+        mv.setViewName("AdminDashboard.jsp");
         return mv;
     }
 
