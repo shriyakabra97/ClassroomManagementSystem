@@ -2,14 +2,15 @@ package com.spe.ClassroomManagementSystem.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name="sac")
-public class Sac {
+public class Sac implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long sacId;
+    private long sacId;
 
     @Column(unique = true)
     @NotNull
@@ -46,16 +47,16 @@ public class Sac {
         this.foreignId = foreignId;
     }
 
-    @Override
-    public String toString() {
-        return "Sac{" +
-                "sacId=" + sacId +
-                ", userName='" + userName + '\'' +
-                ", sacName='" + sacName + '\'' +
-                ", sacEmail='" + sacEmail + '\'' +
-                ", foreignId=" + foreignId +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Sac{" +
+//                "sacId=" + sacId +
+//                ", userName='" + userName + '\'' +
+//                ", sacName='" + sacName + '\'' +
+//                ", sacEmail='" + sacEmail + '\'' +
+//                ", foreignId=" + foreignId +
+//                '}';
+//    }
 
     public long getSacId() {
         return sacId;

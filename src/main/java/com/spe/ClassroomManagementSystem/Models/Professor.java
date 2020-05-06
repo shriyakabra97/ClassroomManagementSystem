@@ -3,10 +3,11 @@ package com.spe.ClassroomManagementSystem.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name="professor")
-public class Professor {
+public class Professor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,16 +47,16 @@ public class Professor {
         this.foreignId = foreignId;
     }
 
-    @Override
-    public String toString() {
-        return "Professor{" +
-                "professorId=" + professorId +
-                ", userName='" + userName + '\'' +
-                ", professorName='" + professorName + '\'' +
-                ", professorEmail='" + professorEmail + '\'' +
-                ", foreignId=" + foreignId +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Professor{" +
+//                "professorId=" + professorId +
+//                ", userName='" + userName + '\'' +
+//                ", professorName='" + professorName + '\'' +
+//                ", professorEmail='" + professorEmail + '\'' +
+//                ", foreignId=" + foreignId +
+//                '}';
+//    }
 
     public long getProfessorId() {
         return professorId;
