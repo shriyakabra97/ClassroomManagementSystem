@@ -69,6 +69,9 @@ $(function () {
             datepicker:{
                 // min:
                 minDateToday: true
+            },
+            plugs:{
+                min:0
             }
 
         },
