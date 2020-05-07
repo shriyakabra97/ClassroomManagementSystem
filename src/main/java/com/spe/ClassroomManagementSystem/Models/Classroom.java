@@ -12,7 +12,7 @@ public class Classroom implements Serializable {
     @Column(name = "classroom_id")
     private long classroomId;
 
-    @Column
+    @Column(unique = true)
     @NotNull
     private String classCode;
 
