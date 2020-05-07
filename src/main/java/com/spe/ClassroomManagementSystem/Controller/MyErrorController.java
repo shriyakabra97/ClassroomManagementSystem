@@ -1,11 +1,9 @@
 package com.spe.ClassroomManagementSystem.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.xml.transform.ErrorListener;
 
 @RestController
 public class MyErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
