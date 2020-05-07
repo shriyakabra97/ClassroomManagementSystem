@@ -51,11 +51,11 @@ public class Classroom implements Serializable {
         this.classCode = classCode;
     }
 
-    public int getCapacity() {
+    public long getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(long capacity) {
         this.capacity = capacity;
     }
 
@@ -67,11 +67,11 @@ public class Classroom implements Serializable {
         this.projector = projector;
     }
 
-    public int getPlugs() {
+    public long getPlugs() {
         return plugs;
     }
 
-    public void setPlugs(int plugs) {
+    public void setPlugs(long plugs) {
         this.plugs = plugs;
     }
 }
