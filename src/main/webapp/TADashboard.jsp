@@ -71,15 +71,15 @@
             <input id="datepicker" name="datepicker" type="date" class="DateFrom" required placeholder="Date">
         </div>
 
-        <h5 id="plugsAndPorts-label" align="left" style="margin-top: 5px">Concerned about plugs, ports and projectors?</h5>
+        <h5 id="plugsAndPorts-label" align="left" style="margin-top: 5px">Concerned about plugs and projectors?</h5>
         <div class="form-group">
             <div class="row" id="plugsAndPorts">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <input name="plugs" type="number" placeholder="Plugs" >
                 </div>
-                <div class="col-sm-6">
-                    <input name="ports" type="number" placeholder="Ports" >
-                </div>
+<%--                <div class="col-sm-6">--%>
+<%--                    <input name="ports" type="number" placeholder="Ports" >--%>
+<%--                </div>--%>
                 <%--                    <div class="col-sm-4">--%>
                 <%--                        <input name="projectors" type="number" placeholder="Projectors" >--%>
                 <%--                    </div>--%>
