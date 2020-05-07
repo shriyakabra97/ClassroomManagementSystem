@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.persistence.Table;
 
 @RestController
-public class Registration {
+public class RegistrationController {
 
     @Autowired
     private CommitteeService committeeService;
