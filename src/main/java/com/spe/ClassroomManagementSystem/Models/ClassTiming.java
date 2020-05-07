@@ -10,7 +10,7 @@ import java.sql.Time;
 public class ClassTiming implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long classTimingId;
+    private Long classTimingId;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 9)
@@ -29,11 +29,21 @@ public class ClassTiming implements Serializable {
     @JoinColumn(name = "classroom_id", nullable = false)
     private Classroom classroom;
 
-    public long getClassTimingId() {
+    public ClassTimings() {
+    }
+
+    public ClassTimings(Day dayOfTheWeek,Time startTime,Time endTime,Classroom classroom) {
+        this.classroom=classroom;
+        this.dayOfTheWeek=dayOfTheWeek;
+        this.startTime=startTime;
+        this.endTime=endTime;
+    }
+
+    public Long getClassTimingId() {
         return classTimingId;
     }
 
-    public void setClassTimingId(long classTimingId) {
+    public void setClassTimingId(Long classTimingId) {
         this.classTimingId = classTimingId;
     }
 

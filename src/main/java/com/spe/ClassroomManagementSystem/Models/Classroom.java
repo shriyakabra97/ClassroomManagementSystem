@@ -10,7 +10,7 @@ public class Classroom implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "classroom_id")
-    private long classroomId;
+    private Long classroomId;
 
     @Column(unique = true)
     @NotNull
@@ -25,11 +25,21 @@ public class Classroom implements Serializable {
     @Column
     private long plugs = 0;
 
-    public long getClassroomId() {
+    public Classroom() {
+    }
+
+    public Classroom(String classCode,int capacity,boolean projector,int plugs) {
+        this.capacity=capacity;
+        this.classCode=classCode;
+        this.plugs=plugs;
+        this.projector=projector;
+    }
+
+    public Long getClassroomId() {
         return classroomId;
     }
 
-    public void setClassroomId(long classroomId) {
+    public void setClassroomId(Long classroomId) {
         this.classroomId = classroomId;
     }
 
@@ -41,11 +51,11 @@ public class Classroom implements Serializable {
         this.classCode = classCode;
     }
 
-    public long getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(long capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
@@ -57,11 +67,11 @@ public class Classroom implements Serializable {
         this.projector = projector;
     }
 
-    public long getPlugs() {
+    public int getPlugs() {
         return plugs;
     }
 
-    public void setPlugs(long plugs) {
+    public void setPlugs(int plugs) {
         this.plugs = plugs;
     }
 }

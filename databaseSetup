@@ -1,0 +1,11 @@
+#-- drop database if exits
+#DROP DATABASE IF EXISTS cms_db;
+
+#-- create database name
+#CREATE DATABASE cms_db;
+
+#-- create user with password
+#CREATE USER 'cms_user'@'localhost' IDENTIFIED BY 'cms_password';
+
+#-- provide all the permission
+#GRANT ALL PRIVILEGES ON cms_db. * TO 'cms_user'@'localhost'
