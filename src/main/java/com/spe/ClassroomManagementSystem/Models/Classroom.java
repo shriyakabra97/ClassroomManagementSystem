@@ -1,12 +1,11 @@
 package com.spe.ClassroomManagementSystem.Models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "classroom")
 public class Classroom implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,13 +16,13 @@ public class Classroom implements Serializable {
     @NotNull
     private String classCode;
 
-    @Column
+    @Column(columnDefinition = "50")
     private long capacity = 50;
 
-    @Column
+    @Column(columnDefinition = "0")
     private boolean projector = false;
 
-    @Column
+    @Column(columnDefinition = "0")
     private long plugs = 0;
 
     public long getClassroomId() {
