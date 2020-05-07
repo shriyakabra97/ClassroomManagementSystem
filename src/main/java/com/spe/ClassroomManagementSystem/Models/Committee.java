@@ -2,10 +2,11 @@ package com.spe.ClassroomManagementSystem.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name="committee")
-public class Committee {
+public class Committee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long committeeId;
@@ -43,16 +44,16 @@ public class Committee {
         this.committeeEmail = committeeEmail;
     }
 
-    @Override
-    public String toString() {
-        return "Committee{" +
-                "committeeId=" + committeeId +
-                ", userName='" + userName + '\'' +
-                ", committeeName='" + committeeName + '\'' +
-                ", committeeEmail='" + committeeEmail + '\'' +
-                ", foreignId=" + foreignId +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Committee{" +
+//                "committeeId=" + committeeId +
+//                ", userName='" + userName + '\'' +
+//                ", committeeName='" + committeeName + '\'' +
+//                ", committeeEmail='" + committeeEmail + '\'' +
+//                ", foreignId=" + foreignId +
+//                '}';
+//    }
 
     public long getCommitteeId() {
         return committeeId;
