@@ -32,4 +32,5 @@ build/
 
 ### Resources ###
 /databaseSetup
+/src/main/resources/application.properties
 /stale_outputs_checked
