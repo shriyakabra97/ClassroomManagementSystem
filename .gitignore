@@ -1,7 +1,6 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
 !**/src/test/**
 
 ### STS ###
@@ -33,3 +32,4 @@ build/
 ### Resources ###
 /databaseSetup
 /stale_outputs_checked
+**/resources/application.properties
