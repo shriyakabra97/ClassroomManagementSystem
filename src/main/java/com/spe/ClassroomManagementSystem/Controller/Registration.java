@@ -1,72 +1,87 @@
 package com.spe.ClassroomManagementSystem.Controller;
 
-import com.spe.ClassroomManagementSystem.Model.*;
-import com.spe.ClassroomManagementSystem.Repository.*;
+
+import com.spe.ClassroomManagementSystem.Models.*;
+import com.spe.ClassroomManagementSystem.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.persistence.Table;
 
 @RestController
 public class Registration {
 
     @Autowired
-    private ProfessorRepository professorRepository;
+    private CommitteeService committeeService;
     @Autowired
-    private CommitteeRepository committeeRepository;
+    private ProfessorService professorService;
     @Autowired
-    private SacRepository sacRepository;
+    private SacService sacService;
     @Autowired
-    private TeachingAssistantRepository teachingAssistantRepository;
+    private TaService taService;
     @Autowired
-    private LoginRepository loginRepository;
+    private LoginService loginService;
 
-    @PostMapping("/register/professor")
-    public ModelAndView registerProfessor(@RequestBody Professor professor){
-        professorRepository.save(professor);
-        Login login=new Login();
-        login.setUserType("professor");
-        login.setUsername(professor.getUsername());
-        login.setPassword(professor.getPassword());
-        loginRepository.save(login);
-        ModelAndView mv=new ModelAndView();
-        return mv;
+
+    @PostMapping("/register")
+    public RedirectView registerUser(@RequestParam("usertype") String usertype,
+                                        @RequestParam("name") String name,
+                                          @RequestParam("username") String username,
+                                          @RequestParam("email") String email,
+                                          @RequestParam("password") String password) {
+
+        Login login = new Login();
+        login.setUserType(usertype);
+        login.setPassword(password);
+        login.setUserName(username);
+        loginService.save(login);
+        System.out.println("Added in login table..");
+        switch (usertype){
+            case "professor":
+                Professor professor = new Professor();
+                professor.setProfessorName(name);
+                professor.setUserName(username);
+                professor.setProfessorEmail(email);
+                professor.setForeignId(login);
+                professorService.saveProfessor(professor);
+                System.out.println("Added in professor table");
+                break;
+            case "ta":
+                TA ta = new TA();
+                ta.setTaName(name);
+                ta.setTaEmail(email);
+                ta.setUserName(username);
+                ta.setForeignId(login);
+                taService.saveTa(ta);
+                System.out.println("Added in TA table..");
+                break;
+            case "committee":
+                Committee committee = new Committee();
+                committee.setUserName(username);
+                committee.setCommitteeName(name);
+                committee.setCommitteeEmail(email);
+                committee.setForeignId(login);
+                committeeService.saveCommittee(committee);
+                System.out.println("Added in Committee table..");
+                break;
+            case "sac":
+                Sac sac = new Sac();
+                sac.setSacName(name);
+                sac.setUserName(username);
+                sac.setSacEmail(email);
+                sac.setForeignId(login);
+                sacService.saveSac(sac);
+                System.out.println("Added in SAC table");
+                break;
+
+        }
+        RedirectView rv = new RedirectView();
+        String  rurl = "/RegisterUser.jsp";
+        rv.setUrl(rurl);
+        return rv;
     }
-    @PostMapping("/register/commitee")
-    public ModelAndView registerCommittee(@RequestBody Committee committee){
-        committeeRepository.save(committee);
-        Login login=new Login();
-        login.setUserType("committee");
-        login.setUsername(committee.getUsername());
-        login.setPassword(committee.getPassword());
-        loginRepository.save(login);
-        ModelAndView mv=new ModelAndView();
-        mv.setViewName("admin.jsp");
-        return mv;
-    }
-    @PostMapping("/register/sac")
-    public ModelAndView registerSac(@RequestBody Sac sac){
-        sacRepository.save(sac);
-        Login login=new Login();
-        login.setUserType("sac");
-        login.setUsername(sac.getUsername());
-        login.setPassword(sac.getPassword());
-        loginRepository.save(login);
-        ModelAndView mv=new ModelAndView();
-        mv.setViewName("admin.jsp");
-        return mv;
-    }
-    @PostMapping("/register/ta")
-    public ModelAndView registerSac(@RequestBody TeachingAssistant teachingAssistant){
-        teachingAssistantRepository.save(teachingAssistant);
-        Login login=new Login();
-        login.setUserType("ta");
-        login.setUsername(teachingAssistant.getUsername());
-        login.setPassword(teachingAssistant.getPassword());
-        loginRepository.save(login);
-        ModelAndView mv=new ModelAndView();
-        mv.setViewName("admin.jsp");
-        return mv;
-    }
+
+
 }

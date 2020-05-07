@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Resources ###
+/databaseSetup
+/stale_outputs_checked
