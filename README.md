@@ -23,3 +23,5 @@ Only Admin, Prof, SAC,TAs, Committees can login
     2. Interaction with Students
     3. Interaction with prof. (In this case, the prof has to request for room.)
 
+## Database Schema
+![Database_Schema](src/main/webapp/images/cmsdb.png)
