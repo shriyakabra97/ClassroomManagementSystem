@@ -7,7 +7,7 @@ import java.sql.Time;
 
 @Entity
 @Table(name = "class_timing")
-public class ClassTimings implements Serializable {
+public class ClassTiming implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long classTimingId;

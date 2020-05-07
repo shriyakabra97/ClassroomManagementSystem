@@ -16,13 +16,13 @@ public class Classroom implements Serializable {
     @NotNull
     private String classCode;
 
-    @Column(columnDefinition = "50")
+    @Column
     private long capacity = 50;
 
-    @Column(columnDefinition = "0")
+    @Column
     private boolean projector = false;
 
-    @Column(columnDefinition = "0")
+    @Column
     private long plugs = 0;
 
     public long getClassroomId() {
