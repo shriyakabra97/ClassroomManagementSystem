@@ -2,6 +2,7 @@ package com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Service.LoginService;
 import com.spe.ClassroomManagementSystem.Service.LoginServiceImpl;
+import jdk.nashorn.internal.ir.ReturnNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,4 +41,18 @@ public class LoginController {
         }
         return rv;
     }
+
+
+
+//    @RequestMapping("/checkLogin/professor")
+//    public RedirectView checkLogin(HttpSession session){
+//        RedirectView rv = new RedirectView();
+//        if (session != null){
+//           rv.setUrl("ProfessorDashboard.jsp");
+//        }
+//        else {
+//            rv.setUrl("index.html");
+//        }
+//        return rv;
+//    }
 }
