@@ -45,9 +45,9 @@
         <div id="output"></div>
         <h5>Add Classroom</h5>
         <div class="form-box">
-            <form  id="addclass-form" action="" method="">
+            <form  id="addclass-form" action="/classroom" method="">
                 <div class="form-group">
-                    <input id="crName" name="crName" type="text" placeholder="Class Name">
+                    <input id="classCode" name="classCode" type="text" placeholder="Class Name">
                 </div>
 
 <%--                <div class="form-group">--%>
@@ -66,7 +66,7 @@
                 <div class="form-group">
                     <div class="row" id="plugsAndPorts">
                         <div class="col-sm-12">
-                            <input name="plugs" type="number" placeholder="Plugs" >
+                            <input id="plugs" name="plugs" type="number" placeholder="Plugs" >
                         </div>
 
                     </div>
@@ -74,8 +74,8 @@
                 <br>
                 <div id="projCheck" class="form-group">
                     <div class="form-check" align="left">
-                        <input class="form-check-input" type="checkbox" id="projectorCheck" style="width: 15px; height: 15px; ">
-                        <label class="form-check-label" for="projectorCheck" style="font-size: small">
+                        <input class="form-check-input" type="checkbox" id="projector" name="projector" style="width: 15px; height: 15px; ">
+                        <label class="form-check-label" for="projector" style="font-size: small">
                             Projector available
                         </label>
                     </div>

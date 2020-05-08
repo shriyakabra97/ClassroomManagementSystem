@@ -1,11 +1,8 @@
 package com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Service.LoginService;
-import com.spe.ClassroomManagementSystem.Service.LoginServiceImpl;
-import jdk.nashorn.internal.ir.ReturnNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
