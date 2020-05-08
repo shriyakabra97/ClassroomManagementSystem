@@ -1,3 +1,5 @@
+<%@ page import="com.spe.ClassroomManagementSystem.Models.Professor" %>
+<%@ page import="org.springframework.web.servlet.view.RedirectView" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +19,8 @@
     <style>
         body {
             background: whitesmoke;
+            /*background: url("/images/school.png");*/
+
         }
         #purpose, #building, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #date, h5{
             margin-bottom: 10px;
