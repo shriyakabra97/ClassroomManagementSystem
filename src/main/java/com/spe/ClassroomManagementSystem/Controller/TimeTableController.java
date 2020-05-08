@@ -28,11 +28,6 @@ public class TimeTableController {
                                       @RequestParam("endTime") String endTime,
                                       HttpSession session) {
         Classroom classroom=classroomService.findByClassCode(classCode);
-        if (classroom == null) {
-            System.out.println("class not found");
-        } else {
-            System.out.println(classroom.getClassroomId());
-        }
         ClassTiming classTiming = new ClassTiming();
         classTiming.setClassroom(classroom);
         classTiming.setStartTime(Time.valueOf(startTime + ":00"));
