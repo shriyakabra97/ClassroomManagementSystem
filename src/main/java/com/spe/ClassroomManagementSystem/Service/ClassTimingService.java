@@ -1,7 +1,7 @@
 package com.spe.ClassroomManagementSystem.Service;
 
-import com.spe.ClassroomManagementSystem.Models.ClassTimings;
+import com.spe.ClassroomManagementSystem.Models.ClassTiming;
 
 public interface ClassTimingService {
-    ClassTimings saveTimetable(ClassTimings classTimings);
+    ClassTiming saveTimetable(ClassTiming classTimings);
 }

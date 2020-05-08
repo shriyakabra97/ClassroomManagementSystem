@@ -47,11 +47,11 @@
         <div id="output"></div>
 
         <div class="form-box">
-            <form  id="addtimetable-form" action="" method="">
+            <form  id="addtimetable-form" action="/timetable" method="">
                 <h5 id="class-label" align="left">Select Classroom</h5>
 
                 <div class="form-group">
-                    <select id="building" name="building" required="">
+                    <select id="classCode" name="classCode" required="">
                         <option name="select_classname" value="">Select Class</option>
                         <option name="A102" value="A102">A102</option>
                         <option name="A204" value="A204">A204</option>
@@ -59,15 +59,15 @@
                 </div>
                 <h5 id="day-label" align="left">Select Day</h5>
                 <div class="form-group">
-                    <select id="days" name="days" required>
+                    <select id="day" name="day" required>
                         <option name="select_day" value="">Select Day</option>
-                        <option name="monday" value="monday">Monday</option>
-                        <option name="tuesday" value="tuesday">Tuesday</option>
-                        <option name="wednesday" value="wednesday">Wednesday</option>
-                        <option name="thursday" value="thursday">Thursday</option>
-                        <option name="friday" value="friday">Friday</option>
-                        <option name="saturday" value="saturday">Saturday</option>
-                        <option name="sunday" value="sunday">Sunday</option>
+                        <option name="monday" value="MONDAY">Monday</option>
+                        <option name="tuesday" value="TUESDAY">Tuesday</option>
+                        <option name="wednesday" value="WEDNESDAY">Wednesday</option>
+                        <option name="thursday" value="THURSDAY">Thursday</option>
+                        <option name="friday" value="FRIDAY">Friday</option>
+                        <option name="saturday" value="SATURDAY">Saturday</option>
+                        <option name="sunday" value="SUNDAY">Sunday</option>
                     </select>
                 </div>
                 <br>

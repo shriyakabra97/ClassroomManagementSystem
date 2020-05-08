@@ -1,6 +1,6 @@
 package com.spe.ClassroomManagementSystem.Service;
 
-import com.spe.ClassroomManagementSystem.Models.ClassTimings;
+import com.spe.ClassroomManagementSystem.Models.ClassTiming;
 import com.spe.ClassroomManagementSystem.Repository.ClassTimingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ public class ClassTimingServiceImpl implements ClassTimingService {
     private ClassTimingRepository classTimingRepository;
 
     @Override
-    public ClassTimings saveTimetable(ClassTimings classTimings){
+    public ClassTiming saveTimetable(ClassTiming classTimings){
         return classTimingRepository.save(classTimings);
     }
 

@@ -29,10 +29,10 @@ public class ClassTiming implements Serializable {
     @JoinColumn(name = "classroom_id", nullable = false)
     private Classroom classroom;
 
-    public ClassTimings() {
+    public ClassTiming() {
     }
 
-    public ClassTimings(Day dayOfTheWeek,Time startTime,Time endTime,Classroom classroom) {
+    public ClassTiming(Day dayOfTheWeek,Time startTime,Time endTime,Classroom classroom) {
         this.classroom=classroom;
         this.dayOfTheWeek=dayOfTheWeek;
         this.startTime=startTime;

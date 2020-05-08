@@ -1,16 +1,17 @@
 package com.spe.ClassroomManagementSystem.Controller;
 
-import com.spe.ClassroomManagementSystem.Models.ClassTimings;
+import com.spe.ClassroomManagementSystem.Models.ClassTiming;
 import com.spe.ClassroomManagementSystem.Models.Classroom;
 import com.spe.ClassroomManagementSystem.Models.Day;
 import com.spe.ClassroomManagementSystem.Service.ClassroomService;
 import com.spe.ClassroomManagementSystem.Service.ClassTimingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Time;
 
 @RestController
@@ -21,13 +22,25 @@ public class TimeTableController {
     private ClassTimingService classTimingService;
 
     @RequestMapping("/timetable")
-    public ResponseEntity<ClassTimings> saveTimetable(@RequestParam("classCode") String classCode, @RequestParam("day") Day day, @RequestParam("startTime")Time startTime, @RequestParam("endTime") Time endTime){
+    public RedirectView saveTimetable(@RequestParam("classCode") String classCode,
+                                      @RequestParam("day") String day,
+                                      @RequestParam("startTime") String startTime,
+                                      @RequestParam("endTime") String endTime,
+                                      HttpSession session) {
         Classroom classroom=classroomService.findByClassCode(classCode);
-        ClassTimings classTimings=new ClassTimings();
-        classTimings.setClassroom(classroom);
-        classTimings.setStartTime(startTime);
-        classTimings.setEndTime(endTime);
-        classTimings.setDayOfTheWeek(day);
-        return ResponseEntity.ok(classTimingService.saveTimetable(classTimings));
+        if (classroom == null) {
+            System.out.println("class not found");
+        } else {
+            System.out.println(classroom.getClassroomId());
+        }
+        ClassTiming classTiming = new ClassTiming();
+        classTiming.setClassroom(classroom);
+        classTiming.setStartTime(Time.valueOf(startTime + ":00"));
+        classTiming.setEndTime(Time.valueOf(endTime + ":00"));
+        classTiming.setDayOfTheWeek(Day.valueOf(day));
+        classTimingService.saveTimetable(classTiming);
+        RedirectView rv = new RedirectView();
+        rv.setUrl("/AddTimetable.jsp");
+        return rv;
     }
 }
