@@ -1,5 +1,6 @@
 <%@ page import="com.spe.ClassroomManagementSystem.Models.Professor" %>
 <%@ page import="org.springframework.web.servlet.view.RedirectView" %>
+<%--<jsp:forward page="/checkProf"></jsp:forward>--%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
             /*background: url("/images/school.png");*/
 
         }
-        #purpose, #building, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #date, h5{
+        #purpose, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #datepicker, h5{
             margin-bottom: 10px;
         }
         nav a{

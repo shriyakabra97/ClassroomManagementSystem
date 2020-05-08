@@ -5,6 +5,8 @@ import com.spe.ClassroomManagementSystem.Repository.ClassroomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClassroomServiceImpl implements ClassroomService{
     @Autowired
@@ -18,5 +20,11 @@ public class ClassroomServiceImpl implements ClassroomService{
     @Override
     public Classroom saveClassroom(Classroom classroom) {
         return classroomRepository.save(classroom);
+    }
+
+
+    @Override
+    public List<Classroom> findAllClassrooms(){
+        return classroomRepository.findAll();
     }
 }
