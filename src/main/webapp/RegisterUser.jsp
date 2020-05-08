@@ -16,8 +16,7 @@
     <script src="/js/RegisterUser.js"></script>
     <style>
         body{
-            font-family: Ubuntu;
-            background: none;
+            background: whitesmoke;
         }
         nav a{ color: white;
         }
@@ -33,11 +32,12 @@
 <body>
 <nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
     <!-- Navbar content -->
-    <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
+    <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
-        <li><a href="RegisterUser.jsp" class="active"> Add User </a></li>
-        <li><a href="">View Requests</a></li>
-        <li><a href="">Add timetable</a> </li>
+        <li><a href="RegisterUser.jsp"> Add User </a></li>
+        <li><a href="ViewRequests.jsp">View Requests</a></li>
+        <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
+        <li><a href="AddTimetable.jsp">Add Timetable</a> </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="/destroy" style="margin-right: 10px"><span class="glyphicon glyphicon-log-in" ></span> Logout</a></li>
@@ -47,6 +47,7 @@
 <br>
 <div class="container">
 <div class="login-container" style="width: 500px; margin: 30px auto">
+    <h5>Register New User</h5>
 <div class="form-box">
     <form action="/register" id="register-user-form" name="register-user-form" method="post">
         <label>User Type </label>
