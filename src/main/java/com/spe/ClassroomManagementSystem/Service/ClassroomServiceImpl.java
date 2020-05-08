@@ -14,4 +14,9 @@ public class ClassroomServiceImpl implements ClassroomService{
     public Classroom findByClassCode(String classCode){
         return classroomRepository.findByClassCode(classCode);
     }
+
+    @Override
+    public Classroom saveClassroom(Classroom classroom) {
+        return classroomRepository.save(classroom);
+    }
 }
