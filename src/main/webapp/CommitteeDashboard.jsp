@@ -37,6 +37,7 @@
     <div class="login-container" style="width: 500px; margin: 30px auto">
         <div id="output"></div>
         <h4>Hey ${committee.committeeName}!</h4><br>
+
         <div class="form-box">
             <form  id="dashboard-form" action="" method="">
                 <div class="form-group">
@@ -47,14 +48,15 @@
 
                 </select>
 
-                </div>
-                <div class="form-group">
-                    <select id="building" name="building" required>
-                        <option name="select_building" value="">Select Building</option>
-                        <option name="aryabhatta" value="aryabhatta">Aryabhatta</option>
-                        <option name="ramanujan" value="ramanujan">Ramanujan</option>
-                    </select>
-                </div>
+<%--                </div>--%>
+<%--                <div class="form-group">--%>
+<%--                    <select id="building" name="building" required>--%>
+<%--                        <option name="select_building" value="">Select Building</option>--%>
+<%--                        <option name="aryabhatta" value="aryabhatta">Aryabhatta</option>--%>
+<%--                        <option name="ramanujan" value="ramanujan">Ramanujan</option>--%>
+<%--                    </select>--%>
+<%--                </div>--%>
+                    <h5 id="capacity-label" align="left">Capacity</h5>
 
                 <div class="form-group">
                     <input id="capacity" name="capacity" type="number" placeholder="Capacity" value="50"  >

@@ -15,7 +15,7 @@
         body {
             background: whitesmoke;
         }
-        #purpose, #building, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #date, h5{
+        #purpose, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #datepicker, h5{
             margin-bottom: 10px;
         }
         nav a{
@@ -48,7 +48,7 @@
                 </select>
 
         </div>
-
+                <h5 id="capacity-label" align="left">Capacity</h5>
         <div class="form-group">
             <input id="capacity" name="capacity" type="number" placeholder="Capacity" value="50"  >
         </div>
