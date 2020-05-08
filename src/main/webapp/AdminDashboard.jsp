@@ -31,7 +31,7 @@
         <li><a href="RegisterUser.jsp"> Add User </a></li>
         <li><a href="ViewRequests.jsp">View Requests</a></li>
         <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
-        <li><a href="AddTimetable.jsp">Add Timetable</a> </li>
+        <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="/destroy" style="margin-right: 10px"><span class="glyphicon glyphicon-log-in" ></span> Logout</a></li>

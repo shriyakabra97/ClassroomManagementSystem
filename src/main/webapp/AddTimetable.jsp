@@ -1,6 +1,7 @@
 <%@ page import="com.spe.ClassroomManagementSystem.Models.TA" %>
 <%@ page import="org.springframework.http.ResponseEntity" %>
 <%@ page import="org.springframework.web.bind.annotation.RequestMapping" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--<%@ page import="org.springframework.web.bind.annotation.RequestBody" %>--%>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +35,7 @@
         <li><a href="RegisterUser.jsp"> Add User </a></li>
         <li><a href="ViewRequests.jsp">View Requests</a></li>
         <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
-        <li><a href="AddTimetable.jsp">Add Timetable</a> </li>
+        <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="/destroy" style="margin-right: 10px"><span class="glyphicon glyphicon-log-in" ></span> Logout</a></li>
@@ -53,8 +54,10 @@
                 <div class="form-group">
                     <select id="classCode" name="classCode" required="">
                         <option name="select_classname" value="">Select Class</option>
-                        <option name="A102" value="A102">A102</option>
-                        <option name="A204" value="A204">A204</option>
+                        <c:forEach var="e" items="${classroomList}">
+                            <option name="${e.classCode}" value="${e.classCode}" >${e.classCode}</option>
+                        </c:forEach>
+
                     </select>
                 </div>
                 <h5 id="day-label" align="left">Select Day</h5>
