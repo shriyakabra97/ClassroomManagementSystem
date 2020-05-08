@@ -6,22 +6,27 @@ import java.io.Serializable;
 import java.sql.Time;
 
 @Entity
-@Table(name = "class_timing")
+@Table(
+        name = "class_timing",
+        uniqueConstraints = @UniqueConstraint(
+                columnNames = {"day_of_the_week", "start_time", "end_time", "classroom_id"}
+                )
+)
 public class ClassTiming implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long classTimingId;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 9)
+    @Column(length = 9, name = "day_of_the_week")
     @NotNull
     private Day dayOfTheWeek;
 
-    @Column
+    @Column(name = "start_time")
     @NotNull
     private Time startTime;
 
-    @Column
+    @Column(name = "end_time")
     @NotNull
     private Time endTime;
 
