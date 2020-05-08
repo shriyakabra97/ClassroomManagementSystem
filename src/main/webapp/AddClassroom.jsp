@@ -50,13 +50,13 @@
                     <input id="crName" name="crName" type="text" placeholder="Class Name">
                 </div>
 
-                <div class="form-group">
-                    <select id="building" name="building" required>
-                        <option name="select_building" value="">Select Building</option>
-                        <option name="aryabhatta" value="aryabhatta">Aryabhatta</option>
-                        <option name="ramanujan" value="ramanujan">Ramanujan</option>
-                    </select>
-                </div>
+<%--                <div class="form-group">--%>
+<%--                    <select id="building" name="building" required>--%>
+<%--                        <option name="select_building" value="">Select Building</option>--%>
+<%--                        <option name="aryabhatta" value="aryabhatta">Aryabhatta</option>--%>
+<%--                        <option name="ramanujan" value="ramanujan">Ramanujan</option>--%>
+<%--                    </select>--%>
+<%--                </div>--%>
                 <h5 id="capacity-label" align="left" style="margin-top: 5px">Capacity</h5>
                 <div class="form-group">
                     <input id="capacity" name="capacity" type="number" placeholder="Capacity" value="50"  >
