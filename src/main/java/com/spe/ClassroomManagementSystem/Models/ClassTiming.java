@@ -34,6 +34,11 @@ public class ClassTiming implements Serializable {
     @JoinColumn(name = "classroom_id", nullable = false)
     private Classroom classroom;
 
+
+//    @Column(name = "available")
+//    @NotNull
+//    boolean available = true;
+
     public ClassTiming() {
     }
 
@@ -42,6 +47,7 @@ public class ClassTiming implements Serializable {
         this.dayOfTheWeek=dayOfTheWeek;
         this.startTime=startTime;
         this.endTime=endTime;
+//        this.available=available;
     }
 
     public Long getClassTimingId() {
@@ -83,4 +89,12 @@ public class ClassTiming implements Serializable {
     public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
     }
+
+//    public boolean isAvailable() {
+//        return available;
+//    }
+//
+//    public void setAvailable(boolean available) {
+//        this.available = available;
+//    }
 }

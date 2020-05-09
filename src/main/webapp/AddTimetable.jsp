@@ -12,7 +12,6 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/index.css">
-<%--    <script src="/js/AddTimetable.js"></script>--%>
     <script src="/js/AddTimetable.js"></script>
 
     <style>
@@ -48,16 +47,15 @@
         <div id="output"></div>
 
         <div class="form-box">
-            <form  id="addtimetable-form" action="/timetable" method="">
+            <form  id="addtimetable-form" action="/saveInClassTimings" method="">
                 <h5 id="class-label" align="left">Select Classroom</h5>
 
                 <div class="form-group">
-                    <select id="classCode" name="classCode" required="">
+                    <select id="classCode" name="classCode" >
                         <option name="select_classname" value="">Select Class</option>
                         <c:forEach var="e" items="${classroomList}">
                             <option name="${e.classCode}" value="${e.classCode}" >${e.classCode}</option>
                         </c:forEach>
-
                     </select>
                 </div>
                 <h5 id="day-label" align="left">Select Day</h5>
@@ -90,6 +88,7 @@
 
                 <br>
                 <button class="btn btn-info btn-block login" type="submit">Submit</button>
+                <p>${save_message}</p>
             </form>
         </div>
     </div>
