@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.util.*;
 
 class Interval {
@@ -27,17 +24,11 @@ class Interval {
         this.startTime=startTime;
         this.endTime=endTime;
     }
-
-
 }
 
 
 @RestController
 public class FindAvailableClassesController {
-
-//    boolean compareIntervals(Interval interval1, Interval interval2){
-//        return interval1.startTime.compareTo(interval2.endTime) < 0;
-//    }
 
     @Autowired
     private ClassroomService classroomService;
@@ -63,10 +54,12 @@ public class FindAvailableClassesController {
             @RequestParam("endTime") String endTime,
             @RequestParam("datepicker")Date date,
             @RequestParam("plugs") long plugs,
-            @RequestParam("projectorCheck") boolean projectorNeeded,
-            @RequestParam("cleanCheck") boolean cleaningNeeded,
+            @RequestParam(value = "projectorCheck", defaultValue = "false") boolean projectorNeeded,
+            @RequestParam(value = "cleanCheck", defaultValue = "false") boolean cleaningNeeded,
             HttpSession session
             ){
+        System.out.println("proj needed = "+projectorNeeded);
+        System.out.println("cleaning needed ="+cleaningNeeded);
         Time startTimeFormat = Time.valueOf(startTime +":00");
         Time endTimeFormat = Time.valueOf(endTime +":00");
         Day day = Day.SUNDAY; //initialization
@@ -80,8 +73,8 @@ public class FindAvailableClassesController {
             case 6:  day = Day.SATURDAY; break;
         }
 
+        List<Classroom> classroomList = classroomService.getClassroomByFormFilter(capacity, plugs, projectorNeeded);
 
-        List<Classroom> classroomList = classroomService.getClassroomByFormFilter(capacity,plugs, projectorNeeded);
         List<Classroom> finalClassroomList = new ArrayList<>();
 
 
@@ -113,6 +106,7 @@ public class FindAvailableClassesController {
                 finalClassroomList.add(classroom);
             }
         }
+        session.removeAttribute("availableClassrooms");
         session.setAttribute("availableClassrooms", finalClassroomList);
         //System.out.println(finalClassroomList.get(0).getClassCode());
 

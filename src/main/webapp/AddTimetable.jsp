@@ -12,7 +12,6 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/index.css">
-<%--    <script src="/js/AddTimetable.js"></script>--%>
     <script src="/js/AddTimetable.js"></script>
 
     <style>

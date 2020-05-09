@@ -106,7 +106,7 @@
                 <br>
                 <div id="projCheck" class="form-group">
                     <div class="form-check" align="left">
-                        <input class="form-check-input" type="checkbox" id="projectorCheck" name="projectorCheck" style="width: 15px; height: 15px; ">
+                        <input class="form-check-input"   type="checkbox" id="projectorCheck" name="projectorCheck" style="width: 15px; height: 15px; ">
                         <label class="form-check-label" for="projectorCheck" style="font-size: small">
                             Projector needed
                         </label>
@@ -115,7 +115,7 @@
 
                 <div id="cleaningCheck" class="form-group">
                     <div class="form-check" align="left">
-                        <input class="form-check-input" type="checkbox" id="cleanCheck" style="width: 15px; height: 15px; " name="cleanCheck" required="false">
+                        <input class="form-check-input"  type="checkbox" id="cleanCheck" style="width: 15px; height: 15px; " name="cleanCheck">
                         <label class="form-check-label" for="cleanCheck" style="font-size: small">
                             Cleaning needed
                         </label>
