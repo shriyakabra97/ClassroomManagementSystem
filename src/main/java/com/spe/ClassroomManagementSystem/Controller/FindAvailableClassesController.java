@@ -72,9 +72,13 @@ public class FindAvailableClassesController {
             case 5:  day = Day.FRIDAY; break;
             case 6:  day = Day.SATURDAY; break;
         }
+        List<Classroom> classroomList;
+        if(projectorNeeded == true) {
 
-        List<Classroom> classroomList = classroomService.getClassroomByFormFilter(capacity, plugs, projectorNeeded);
-
+             classroomList = classroomService.getClassroomByFormFilter(capacity, plugs, projectorNeeded);
+        }else {
+             classroomList = classroomService.getClassroomByFormFilterWithoutProjectorConstraint(capacity, plugs);
+        }
         List<Classroom> finalClassroomList = new ArrayList<>();
 
 

@@ -16,5 +16,5 @@ public interface ClassroomRepository extends JpaRepository<Classroom,Long> {
 
     List<Classroom> findAllByCapacityGreaterThanEqualAndPlugsGreaterThanEqualAndProjector(long capacity, long plugs, boolean projectorAvailable);
 
-
+    List<Classroom> findAllByCapacityGreaterThanEqualAndPlugsGreaterThanEqual(long capacity, long plugs);
 }

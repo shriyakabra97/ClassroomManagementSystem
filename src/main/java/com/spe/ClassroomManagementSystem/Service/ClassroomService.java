@@ -12,4 +12,6 @@ public interface ClassroomService {
     List<Classroom> findAllClassrooms();
 
     List<Classroom> getClassroomByFormFilter(long capacity, long plugs, boolean projectorAvailable);
+
+    List<Classroom> getClassroomByFormFilterWithoutProjectorConstraint(long capacity, long plugs);
 }
