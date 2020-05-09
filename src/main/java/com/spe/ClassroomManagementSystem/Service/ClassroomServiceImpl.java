@@ -38,4 +38,9 @@ public class ClassroomServiceImpl implements ClassroomService{
         return classroomRepository.findAllByCapacityGreaterThanEqualAndPlugsGreaterThanEqual(capacity, plugs);
     }
 
+    @Override
+    public  Classroom getClassroomByClassCode(String classCode){
+        return classroomRepository.findByClassCode(classCode);
+    }
+
 }
