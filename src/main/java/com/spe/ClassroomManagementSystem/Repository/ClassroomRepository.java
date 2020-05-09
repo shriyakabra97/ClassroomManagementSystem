@@ -13,4 +13,8 @@ public interface ClassroomRepository extends JpaRepository<Classroom,Long> {
 
 //    @Query("select u from Classroom")
 //    List<Classroom> findAllClassrooms();
+
+    List<Classroom> findAllByCapacityGreaterThanEqualAndPlugsGreaterThanEqualAndProjector(long capacity, long plugs, boolean projectorAvailable);
+
+
 }

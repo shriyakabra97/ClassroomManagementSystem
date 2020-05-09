@@ -57,7 +57,6 @@
                         <c:forEach var="e" items="${classroomList}">
                             <option name="${e.classCode}" value="${e.classCode}" >${e.classCode}</option>
                         </c:forEach>
-
                     </select>
                 </div>
                 <h5 id="day-label" align="left">Select Day</h5>

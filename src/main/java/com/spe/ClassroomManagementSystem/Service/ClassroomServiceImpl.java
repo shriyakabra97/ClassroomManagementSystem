@@ -27,4 +27,9 @@ public class ClassroomServiceImpl implements ClassroomService{
     public List<Classroom> findAllClassrooms(){
         return classroomRepository.findAll();
     }
+
+    @Override
+    public List<Classroom> getClassroomByFormFilter(long capacity, long plugs, boolean projectorAvailable){
+        return classroomRepository.findAllByCapacityGreaterThanEqualAndPlugsGreaterThanEqualAndProjector(capacity, plugs, projectorAvailable);
+    }
 }

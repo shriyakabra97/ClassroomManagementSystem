@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" style="margin-right: 10px"><span class="glyphicon glyphicon-log-in" ></span> Logout</a></li>
+        <li><a href="/destroy" style="margin-right: 10px"><span class="glyphicon glyphicon-log-in" ></span> Logout</a></li>
     </ul>
 </nav>
 
@@ -30,25 +31,23 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Classroom</th>
             <th scope="col">Capacity</th>
-            <th scope="col">Plugs</th>
             <th scope="col">Projectors</th>
-            <th scope="col">Ports</th>
+            <th scope="col">Plugs</th>
             <th scope="col">Request</th>
         </tr>
         </thead>
         <tbody>
+        <c:forEach var="e" items="${availableClassrooms}">
         <tr>
-            <th scope="row">1</th>
-            <td>A102</td>
-            <td>50</td>
-            <td>10</td>
-            <td>1</td>
-            <td>25</td>
+            <td>${e.classCode}</td>
+            <td>${e.capacity}</td>
+            <td>${e.projector}</td>
+            <td>${e.plugs}</td>
             <td><button class="btn btn-primary">Request this room</button></td>
         </tr>
+        </c:forEach>
 
         </tbody>
     </table>

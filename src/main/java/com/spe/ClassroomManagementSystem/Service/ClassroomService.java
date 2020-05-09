@@ -10,4 +10,6 @@ public interface ClassroomService {
     Classroom saveClassroom(Classroom cr);
 
     List<Classroom> findAllClassrooms();
+
+    List<Classroom> getClassroomByFormFilter(long capacity, long plugs, boolean projectorAvailable);
 }
