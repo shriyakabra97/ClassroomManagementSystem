@@ -38,7 +38,7 @@
         <div id="output"></div>
         <h4>Hey  ${ta.taName}!</h4><br>
         <div class="form-box">
-            <form  id="dashboard-form" action="" method="">
+            <form  id="dashboard-form" action="/getAvailableClasses" method="">
                 <div class="form-group">
                 <select id="purpose" name="purpose" required>
                     <option name="select_username" value="">Select Purpose</option>
