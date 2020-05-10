@@ -1,7 +1,9 @@
 package com.spe.ClassroomManagementSystem.Service;
 
 import com.spe.ClassroomManagementSystem.Models.Classroom;
+import com.spe.ClassroomManagementSystem.Models.Day;
 
+import java.sql.Time;
 import java.util.List;
 
 public interface ClassroomService {
@@ -16,4 +18,8 @@ public interface ClassroomService {
     List<Classroom> getClassroomByFormFilterWithoutProjectorConstraint(long capacity, long plugs);
 
     Classroom getClassroomByClassCode(String classCode);
+
+    List<Classroom> getAvailableClassrooms(long capacity, long plugs, boolean projectorNeeded, Time startTimeFormat, java.sql.Time endTimeFormat, Day day);
+
+
 }

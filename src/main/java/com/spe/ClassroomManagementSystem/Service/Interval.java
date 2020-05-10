@@ -1,4 +1,4 @@
-package com.spe.ClassroomManagementSystem.Controller;
+package com.spe.ClassroomManagementSystem.Service;
 
 import java.sql.Time;
 
