@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.Table;
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class RegistrationController {
@@ -30,7 +31,9 @@ public class RegistrationController {
                                         @RequestParam("name") String name,
                                           @RequestParam("username") String username,
                                           @RequestParam("email") String email,
-                                          @RequestParam("password") String password) {
+                                          @RequestParam("password") String password,
+                                     HttpSession session
+                                     ) {
 
         Login login = new Login();
         login.setUserType(usertype);
@@ -38,6 +41,7 @@ public class RegistrationController {
         login.setUserName(username);
         loginService.save(login);
         System.out.println("Added in login table..");
+        String msg;
         switch (usertype){
             case "professor":
                 Professor professor = new Professor();
@@ -45,7 +49,8 @@ public class RegistrationController {
                 professor.setUserName(username);
                 professor.setProfessorEmail(email);
                 professor.setForeignId(login);
-                professorService.saveProfessor(professor);
+                msg = professorService.saveProfessor(professor);
+                session.setAttribute("msg", msg);
                 System.out.println("Added in professor table");
                 break;
             case "ta":
@@ -54,7 +59,8 @@ public class RegistrationController {
                 ta.setTaEmail(email);
                 ta.setUserName(username);
                 ta.setForeignId(login);
-                taService.saveTa(ta);
+                msg = taService.saveTa(ta);
+                session.setAttribute("msg", msg);
                 System.out.println("Added in TA table..");
                 break;
             case "committee":
@@ -63,7 +69,8 @@ public class RegistrationController {
                 committee.setCommitteeName(name);
                 committee.setCommitteeEmail(email);
                 committee.setForeignId(login);
-                committeeService.saveCommittee(committee);
+                msg = committeeService.saveCommittee(committee);
+                session.setAttribute("msg", msg);
                 System.out.println("Added in Committee table..");
                 break;
             case "sac":
@@ -72,7 +79,8 @@ public class RegistrationController {
                 sac.setUserName(username);
                 sac.setSacEmail(email);
                 sac.setForeignId(login);
-                sacService.saveSac(sac);
+                msg = sacService.saveSac(sac);
+                session.setAttribute("msg", msg);
                 System.out.println("Added in SAC table");
                 break;
 

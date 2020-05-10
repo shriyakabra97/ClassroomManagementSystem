@@ -98,6 +98,7 @@
         <p id ="pass-match" style="color:crimson ; font-family: Arial" ></p>
 
         <button class="btn btn-info btn-block login" type="submit">Submit</button>
+        <p>${msg}</p>
     </form>
 </div>
 </div>
