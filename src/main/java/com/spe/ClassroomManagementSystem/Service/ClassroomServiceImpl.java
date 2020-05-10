@@ -42,8 +42,15 @@ public class ClassroomServiceImpl implements ClassroomService{
     }
 
     @Override
-    public Classroom saveClassroom(Classroom classroom) {
-        return classroomRepository.save(classroom);
+    public String saveClassroom(Classroom classroom) {
+        String class_save_msg;
+       try {
+           classroomRepository.save(classroom);
+           class_save_msg = "Saved Classroom Successfully";
+       }catch (Exception e){
+           class_save_msg = "Failed Saving, Classroom already exists";
+       }
+       return class_save_msg;
     }
 
 

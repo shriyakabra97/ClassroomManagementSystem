@@ -2,6 +2,7 @@ package com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Models.Classroom;
 import com.spe.ClassroomManagementSystem.Models.Day;
+import com.spe.ClassroomManagementSystem.Models.Professor;
 import com.spe.ClassroomManagementSystem.Service.ClassroomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,9 @@ public class ClassroomController {
                                       HttpSession session) {
         boolean projectorAvailable = (projector == null) ? false : true;
         Classroom cr = new Classroom(classCode, capacity, projectorAvailable, plugs);
-        classroomService.saveClassroom(cr);
+
+        String class_save_msg = classroomService.saveClassroom(cr);
+        session.setAttribute("class_save_msg", class_save_msg);
         RedirectView rv = new RedirectView();
         rv.setUrl("/AddClassroom.jsp");
         return rv;
@@ -70,8 +73,11 @@ public class ClassroomController {
             case 5:  day = Day.FRIDAY; break;
             case 6:  day = Day.SATURDAY; break;
         }
-
-        List<Classroom> finalClassroomList = classroomService.getAvailableClassrooms(capacity, plugs, projectorNeeded, startTimeFormat, endTimeFormat, day);
+        List<Classroom> finalClassroomList;
+        if (purpose.equals("exams")) {
+            capacity = capacity * 2;
+        }
+        finalClassroomList = classroomService.getAvailableClassrooms(capacity, plugs, projectorNeeded, startTimeFormat, endTimeFormat, day);
 
         session.removeAttribute("availableClassrooms");
         session.setAttribute("availableClassrooms", finalClassroomList);

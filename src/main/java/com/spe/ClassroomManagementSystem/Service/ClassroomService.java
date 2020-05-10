@@ -9,7 +9,7 @@ import java.util.List;
 public interface ClassroomService {
     Classroom findByClassCode(String classCode);
 
-    Classroom saveClassroom(Classroom cr);
+    String saveClassroom(Classroom cr);
 
     List<Classroom> findAllClassrooms();
 

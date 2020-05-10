@@ -12,7 +12,14 @@ public class SacServiceImpl implements SacService{
     private SacRepository sacRepository;
 
     @Override
-    public Sac saveSac(Sac sac){
-        return sacRepository.save(sac);
+    public String  saveSac(Sac sac){
+        String  msg ;
+        try {
+            sacRepository.save(sac);
+            msg ="SAC Saaved Successfully";
+        }catch (Exception e){
+            msg = "Failed Saving SAC";
+        }
+        return msg;
     }
 }
