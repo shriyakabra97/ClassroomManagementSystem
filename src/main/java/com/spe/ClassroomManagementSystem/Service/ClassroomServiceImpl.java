@@ -42,13 +42,15 @@ public class ClassroomServiceImpl implements ClassroomService{
     }
 
     @Override
-    public boolean saveClassroom(Classroom classroom) {
-        List<Classroom> classroomList = classroomService.findAllClassrooms();
-        for (Classroom c: classroomList) {
-            if(classroom.getClassCode().equals(c.getClassCode()))return false;
-        }
-        classroomRepository.save(classroom);
-       return true;
+    public String saveClassroom(Classroom classroom) {
+        String class_save_msg;
+       try {
+           classroomRepository.save(classroom);
+           class_save_msg = "Saved Classroom Successfully";
+       }catch (Exception e){
+           class_save_msg = "Failed Saving, Classroom already exists";
+       }
+       return class_save_msg;
     }
 
 
