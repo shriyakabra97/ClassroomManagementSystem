@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.Table;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -18,8 +19,20 @@ public class LoginServiceImpl implements LoginService {
     private ProfessorRepository professorRepository;
 
     @Override
-    public Login save(Login login){
-        return loginRepository.save(login);
+    public boolean save(Login login, HttpSession session){
+        List<Login> loginList = loginRepository.findAll();
+        for (Login l:loginList) {
+            if (login.getUserName().equals(l.getUserName()) && login.getUserType().equals(l.getUserType())){
+                session.setAttribute("msg", "User Already Exists");
+                return false;
+            }
+        }
+
+        loginRepository.save(login);
+
+        return true;
+
+
     }
 
     @Override
