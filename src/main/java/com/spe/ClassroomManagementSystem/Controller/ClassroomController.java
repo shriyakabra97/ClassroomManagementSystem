@@ -27,7 +27,11 @@ public class ClassroomController {
                                       HttpSession session) {
         boolean projectorAvailable = (projector == null) ? false : true;
         Classroom cr = new Classroom(classCode, capacity, projectorAvailable, plugs);
-        classroomService.saveClassroom(cr);
+        if(classroomService.saveClassroom(cr)) {
+            session.setAttribute("class_save_message", "Classroom Saved Successfully");
+        }else {
+            session.setAttribute("class_save_message", "Failed, Classroom code already exists");
+        }
         RedirectView rv = new RedirectView();
         rv.setUrl("/AddClassroom.jsp");
         return rv;

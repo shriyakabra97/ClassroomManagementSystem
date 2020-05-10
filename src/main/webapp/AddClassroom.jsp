@@ -82,6 +82,7 @@
                 </div>
 
                 <button class="btn btn-info btn-block login" type="submit">Add Classroom</button>
+                <p>${class_save_message}</p>
             </form>
         </div>
     </div>

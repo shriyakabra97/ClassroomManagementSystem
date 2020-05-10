@@ -42,8 +42,13 @@ public class ClassroomServiceImpl implements ClassroomService{
     }
 
     @Override
-    public Classroom saveClassroom(Classroom classroom) {
-        return classroomRepository.save(classroom);
+    public boolean saveClassroom(Classroom classroom) {
+        List<Classroom> classroomList = classroomService.findAllClassrooms();
+        for (Classroom c: classroomList) {
+            if(classroom.getClassCode().equals(c.getClassCode()))return false;
+        }
+        classroomRepository.save(classroom);
+       return true;
     }
 
 
