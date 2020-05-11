@@ -72,6 +72,12 @@ $(function () {
             },
             plugs:{
                 min:0
+            },
+            cleanCheck:{
+                required: false
+            },
+            projectorCheck:{
+                required: false
             }
 
         },

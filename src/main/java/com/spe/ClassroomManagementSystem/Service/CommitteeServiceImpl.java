@@ -21,8 +21,15 @@ public class CommitteeServiceImpl implements CommitteeService{
     @Autowired
     private ClassTimingRepository classTimingRepository;
     @Override
-    public Committee saveCommittee(Committee committee){
-        return committeeRepository.save(committee);
+    public String saveCommittee(Committee committee){
+        String msg;
+        try {
+            committeeRepository.save(committee);
+            msg = "Saved Committee Successfully";
+        }catch (Exception e){
+            msg = "Failed Saving Committee";
+        }
+        return msg;
     }
 
 }

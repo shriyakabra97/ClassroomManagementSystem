@@ -10,7 +10,9 @@ public interface ClassroomRepository extends JpaRepository<Classroom,Long> {
 
     Classroom findByClassCode(String classCode);
 
+    List<Classroom> findAllByCapacityGreaterThanEqualAndPlugsGreaterThanEqualAndProjector(long capacity, long plugs, boolean projectorAvailable);
 
-//    @Query("select u from Classroom")
-//    List<Classroom> findAllClassrooms();
+    List<Classroom> findAllByCapacityGreaterThanEqualAndPlugsGreaterThanEqual(long capacity, long plugs);
+
+    Classroom getClassroomByClassCode(String classCode);
 }

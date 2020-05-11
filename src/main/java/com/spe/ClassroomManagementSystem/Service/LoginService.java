@@ -5,7 +5,7 @@ import com.spe.ClassroomManagementSystem.Models.Login;
 import javax.servlet.http.HttpSession;
 
 public interface LoginService {
-    Login save(Login login);
+    boolean save(Login login, HttpSession session);
 
     Login findByUsernameAndPassword(String username, String password);
 

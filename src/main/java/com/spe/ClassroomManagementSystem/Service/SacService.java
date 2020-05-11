@@ -4,5 +4,5 @@ import com.spe.ClassroomManagementSystem.Models.Sac;
 
 public interface SacService {
 
-    Sac saveSac(Sac sac);
+    String saveSac(Sac sac);
 }

@@ -12,7 +12,14 @@ public class TaServiceImpl implements TaService{
     private TaRepository taRepository;
 
     @Override
-    public TA saveTa(TA ta){
-        return taRepository.save(ta);
+    public String  saveTa(TA ta){
+        String msg;
+        try {
+            taRepository.save(ta);
+            msg = "TA Added Successfully";
+        }catch (Exception e){
+            msg = "Failed Saving TA";
+        }
+        return msg;
     }
 }
