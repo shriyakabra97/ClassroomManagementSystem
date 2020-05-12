@@ -19,11 +19,8 @@
 </head>
 <body>
 <%
-//    String admin = (String) session.getAttribute("admin_login");
-//    String committee = (String) session.getAttribute("committee_login");
-//    String ta = (String) session.getAttribute("ta_login");
-//    String sac = (String) session.getAttribute("sac_login");
-//    if(admin.equals("admin_login") || committee.equals("committee_login")||ta.equals("ta_login")||sac.equals("sac_login")){
+
+    if(session.getAttribute("login")!=null){
 %>
 <nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
     <!-- Navbar content -->
@@ -60,9 +57,9 @@
     </table>
 </div>
 </body>
-<%--<% }--%>
-<%--else {--%>
-<%--    response.sendRedirect("LoginFirst.jsp");--%>
-<%--}--%>
-<%--%>--%>
+<% }
+else {
+    response.sendRedirect("LoginFirst.jsp");
+}
+%>
 </html>

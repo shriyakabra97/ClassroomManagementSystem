@@ -20,18 +20,25 @@ public class RequestController {
 
     @Autowired
     private RequestService requestService;
-    @Autowired
-    private ClassroomService classroomService;
+
 
     @RequestMapping("/postRequest/{classCode}")
     public RedirectView classroomRequest(HttpSession session,
                                  @PathVariable String classCode){
 
-
+//       session.setAttribute();
        boolean success_requested = requestService.saveRequest(session, classCode);
 
-       RedirectView rv = new RedirectView();
-       rv.setUrl("/AvailableClassrooms.jsp");
+       //redirect acc to user type
+        RedirectView rv = new RedirectView();
+
+        switch ((String) session.getAttribute("userType")){
+            case "professor": rv.setUrl("/ProfessorDashboard.jsp");break;
+            case "ta":rv.setUrl("/TADashboard.jsp");break;
+            case "committee":rv.setUrl("/CommitteeDashboard.jsp");break;
+            case "sac":rv.setUrl("/SACDashboard.jsp");break;
+
+        }
        return rv;
 
 

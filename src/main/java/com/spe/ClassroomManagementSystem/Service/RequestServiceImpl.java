@@ -58,6 +58,16 @@ public class RequestServiceImpl implements RequestService {
 
         try {
             requestRepository.save(request);
+            session.removeAttribute("purpose");
+            session.removeAttribute("reqStartTime");
+            session.removeAttribute("reqEndTime");
+            session.removeAttribute("cleaningNeeded");
+            session.removeAttribute("projectorNeeded");
+            session.removeAttribute("reqPlugs");
+            session.removeAttribute("reqDate");
+            session.removeAttribute("reqCapacity");
+
+
             return true;
         }catch (Exception e){
             return false;
