@@ -42,11 +42,9 @@
 </nav>
 
 <br>
-<div class="jumbotron">
-    <div class="container">
-        <p>View Requests</p>
-    </div>
-</div>
+
+
+
 
 <br>
 
