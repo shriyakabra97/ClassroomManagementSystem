@@ -27,6 +27,10 @@
 
 </head>
 <body>
+
+<%
+    if(session.getAttribute("admin_login")!=null){
+%>
 <nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
@@ -101,5 +105,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
 
+<% }
+    else {
+    response.sendRedirect("LoginFirst.jsp");
+    }
+%>
 </body>
 </html>
