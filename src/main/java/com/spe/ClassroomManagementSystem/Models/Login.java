@@ -11,7 +11,7 @@ public class Login implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long loginId;
+    private Long loginId;
 
     @Column
     @NotNull
@@ -60,11 +60,11 @@ public class Login implements Serializable{
 //                '}';
 //    }
 
-    public long getLoginId() {
+    public Long getLoginId() {
         return loginId;
     }
 
-    public void setLoginId(long loginId) {
+    public void setLoginId(Long loginId) {
         this.loginId = loginId;
     }
 

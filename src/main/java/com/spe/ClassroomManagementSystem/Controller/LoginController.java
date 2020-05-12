@@ -1,5 +1,6 @@
 package com.spe.ClassroomManagementSystem.Controller;
 
+import com.spe.ClassroomManagementSystem.Models.Login;
 import com.spe.ClassroomManagementSystem.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,9 @@ public class LoginController {
         if(loginSuccess == false) {
             rv.setUrl("InvalidLogin.jsp");
         } else {
+            Login user=loginService.findByUsernameAndPassword(username,password);
+            session.setAttribute("loginId",user.getLoginId());
+            session.setAttribute("userName",user.getUserName());
             switch (usertype) {
                 case "admin": rv.setUrl("AdminDashboard.jsp");
                     break;

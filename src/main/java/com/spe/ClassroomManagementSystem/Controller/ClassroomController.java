@@ -81,6 +81,14 @@ public class ClassroomController {
 
         session.removeAttribute("availableClassrooms");
         session.setAttribute("availableClassrooms", finalClassroomList);
+        session.setAttribute("purpose",purpose);
+        session.setAttribute("startTime",startTimeFormat);
+        session.setAttribute("endTime",endTimeFormat);
+        session.setAttribute("datepicker",date);
+        session.setAttribute("plugs",plugs);
+        session.setAttribute("projectorCheck",projectorNeeded);
+        session.setAttribute("cleanCheck",cleaningNeeded);
+
         //System.out.println(finalClassroomList.get(0).getClassCode());
 
         RedirectView rv = new RedirectView();
