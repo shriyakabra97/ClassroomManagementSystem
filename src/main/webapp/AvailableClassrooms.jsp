@@ -19,7 +19,11 @@
 </head>
 <body>
 <%
-    if(session.getAttribute("admin_login")!=null || session.getAttribute("sac_login")!=null  || session.getAttribute("ta_login")!=null || session.getAttribute("committee_login")!=null){
+//    String admin = (String) session.getAttribute("admin_login");
+//    String committee = (String) session.getAttribute("committee_login");
+//    String ta = (String) session.getAttribute("ta_login");
+//    String sac = (String) session.getAttribute("sac_login");
+//    if(admin.equals("admin_login") || committee.equals("committee_login")||ta.equals("ta_login")||sac.equals("sac_login")){
 %>
 <nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
     <!-- Navbar content -->
@@ -48,7 +52,7 @@
             <td>${e.capacity}</td>
             <td>${e.projector}</td>
             <td>${e.plugs}</td>
-            <td><button class="btn btn-primary">Request this room</button></td>
+            <td><a href="/postRequest/${e.classCode}" class="btn btn-primary">Request this room</a></td>
         </tr>
         </c:forEach>
 
@@ -56,9 +60,9 @@
     </table>
 </div>
 </body>
-<% }
-else {
-    response.sendRedirect("LoginFirst.jsp");
-}
-%>
+<%--<% }--%>
+<%--else {--%>
+<%--    response.sendRedirect("LoginFirst.jsp");--%>
+<%--}--%>
+<%--%>--%>
 </html>
