@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-public class Schedular {
+public class Scheduler {
 
     @Scheduled(cron = "0/20 * * * * ?")
     public void create() {
