@@ -33,7 +33,7 @@ $(function () {
     $.validator.addMethod("minDateToday", function (value, element) {
         var target = new Date();
         var reqDate = new Date($("#datepicker").val());
-        return reqDate>=target;
+        return reqDate >= target;
 
     }, "Please enter valid date")
 
