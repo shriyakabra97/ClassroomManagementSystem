@@ -2,6 +2,7 @@
 <%@ page import="com.spe.ClassroomManagementSystem.Models.TA" %>
 <%@ page import="org.springframework.http.ResponseEntity" %>
 <%@ page import="org.springframework.web.bind.annotation.RequestMapping" %>
+<%@ page import="org.springframework.web.servlet.view.RedirectView" %>
 <%--<%@ page import="org.springframework.web.bind.annotation.RequestBody" %>--%>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +25,9 @@
 
 </head>
 <body>
+<%
+if(session.getAttribute("admin_login")!=null){
+%>
 <nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
@@ -49,6 +53,11 @@
 </div>
 
 <br>
+<% }
+else {
+    response.sendRedirect("LoginFirst.jsp");
+}
+%>
 
 
 </body>

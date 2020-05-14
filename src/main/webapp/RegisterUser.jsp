@@ -30,6 +30,9 @@
 
 </head>
 <body>
+<%
+    if(session.getAttribute("admin_login")!=null){
+%>
 <nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
@@ -126,7 +129,11 @@
 
 
 <br>
-
+<% }
+else {
+    response.sendRedirect("LoginFirst.jsp");
+}
+%>
 
 </body>
 </html>

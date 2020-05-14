@@ -18,6 +18,10 @@
 
 </head>
 <body>
+<%
+
+    if(session.getAttribute("login")!=null){
+%>
 <nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
@@ -45,7 +49,7 @@
             <td>${e.capacity}</td>
             <td>${e.projector}</td>
             <td>${e.plugs}</td>
-            <td><button class="btn btn-primary">Request this room</button></td>
+            <td><a href="/postRequest/${e.classCode}" class="btn btn-primary">Request this room</a></td>
         </tr>
         </c:forEach>
 
@@ -53,3 +57,9 @@
     </table>
 </div>
 </body>
+<% }
+else {
+    response.sendRedirect("LoginFirst.jsp");
+}
+%>
+</html>
