@@ -25,5 +25,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     )
     void updateRequestStatus(@Param("curr_date")Date currdate, @Param("curr_time")Time currtime);
 
+    List<Request> getAllByRequestStatus(RequestStatus requestStatus);
+
     List<Request> getAllByClassroomAndClassRequestDateAndRequestStatus(Classroom classroom, Date date,RequestStatus requestStatus);
 }

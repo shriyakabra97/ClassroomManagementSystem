@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page import="com.spe.ClassroomManagementSystem.Models.TA" %>
 <%@ page import="org.springframework.http.ResponseEntity" %>
@@ -34,7 +35,7 @@
     <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
         <li><a href="RegisterUser.jsp"> Add User </a></li>
-        <li><a href="ViewRequests.jsp">View Requests</a></li>
+        <li><a href="/getAllRequests">View Requests</a></li>
         <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
         <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>
@@ -44,6 +45,41 @@
 </nav>
 
 <br>
+
+<div class="container">
+    <h4>Hey, here are the requests...</h4>
+    <h5>Request can either be Granted or Rejected.</h5>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Classroom</th>
+            <th scope="col">Projector required</th>
+            <th scope="col">Plugs</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="e" items="${currentRequests}">
+            <tr>
+                <td>${e.classRequestDate}</td>
+                <td>${e.startTime}</td>
+                <td>${e.endTime}</td>
+                <td>${e.projector}</td>
+                <td>${e.plugs}</td>
+                <td>${e.purpose}</td>
+                <td>${e.comment}</td>
+
+            </tr>
+        </c:forEach>
+
+        </tbody>
+    </table>
+</div>
+
 
 
 

@@ -32,7 +32,6 @@ public class LoginServiceImpl implements LoginService {
 
         return true;
 
-
     }
 
     @Override

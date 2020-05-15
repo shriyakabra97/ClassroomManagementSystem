@@ -22,6 +22,15 @@ public class RequestServiceImpl implements RequestService {
     public List<Request> getByClassroomAndDateAndRequestStatus(Classroom classroom, Date date,RequestStatus requestStatus){
         return requestRepository.getAllByClassroomAndClassRequestDateAndRequestStatus(classroom,date,requestStatus);
     }
+
+    @Override
+    public List<Request> getByRequestStatus(RequestStatus requestStatus)
+    {
+        System.out.println("inside request service");
+              return requestRepository.getAllByRequestStatus(requestStatus);
+    }
+
+
     @Override
     public boolean saveRequest(HttpSession session, String classCode){
         Request request = new Request();
