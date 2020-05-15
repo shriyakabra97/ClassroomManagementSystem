@@ -51,7 +51,7 @@
         <div class="form-box">
             <form  id="addclass-form" action="/classroom" method="">
                 <div class="form-group">
-                    <input id="classCode" name="classCode" type="text" placeholder="Class Name">
+                    <input id="classCode" name="classCode" type="text" placeholder="Class Name" >
                 </div>
 
 <%--                <div class="form-group">--%>
