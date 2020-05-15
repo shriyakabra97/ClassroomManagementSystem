@@ -26,12 +26,9 @@ public class CheckFulfilledRequestsImpl implements CheckFulfilledRequests {
     @Override
     @Scheduled(initialDelay = 60000, fixedRate = 60000)
     public void markFulfilled() {
-//        final LocalDateTime currTime = LocalDateTime.now();
-//        System.out.println("Current Time: "+currTime);
         long currentMillis = System.currentTimeMillis();
         Date currentDate = new Date(currentMillis);
         Time currentTime = new Time(currentMillis);
-        System.out.println("date: " + currentDate + " Time: " + currentTime);
         requestRepository.updateRequestStatus(currentDate, currentTime);
     }
 }
