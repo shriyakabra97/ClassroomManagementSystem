@@ -78,7 +78,7 @@ public class ClassroomController {
         if (purpose.equals("exams")) {
             capacity = capacity * 2;
         }
-        finalClassroomList = classroomService.getAvailableClassrooms(capacity, plugs, projectorNeeded, startTimeFormat, endTimeFormat, day);
+        finalClassroomList = classroomService.getAvailableClassrooms(capacity, plugs, projectorNeeded, startTimeFormat, endTimeFormat, day,date);
 
         session.removeAttribute("availableClassrooms");
         session.setAttribute("availableClassrooms", finalClassroomList);

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 @Service
 public class RequestServiceImpl implements RequestService {
@@ -17,6 +18,10 @@ public class RequestServiceImpl implements RequestService {
     @Autowired
     private ClassroomService classroomService;
 
+    @Override
+    public List<Request> getByClassroomAndDateAndRequestStatus(Classroom classroom, Date date,RequestStatus requestStatus){
+        return requestRepository.getAllByClassroomAndClassRequestDateAndRequestStatus(classroom,date,requestStatus);
+    }
     @Override
     public boolean saveRequest(HttpSession session, String classCode){
         Request request = new Request();
