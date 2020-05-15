@@ -20,6 +20,7 @@
         }
 
     </style>
+    <link rel="stylesheet" href="/css/All.css">
 
 
 
@@ -28,7 +29,7 @@
 <%
 if(session.getAttribute("admin_login")!=null){
 %>
-<nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
+<nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
@@ -50,6 +51,20 @@ if(session.getAttribute("admin_login")!=null){
         <p> You can Add New Professor, TA, SAC, Committee and Grant or Reject Classroom Requests.</p>
         <p>Also, you have the powers to add timetable for the semester. </p>
     </div>
+</div>
+
+<div>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">2020 Copyright:
+            <a>Students of IIIT-B</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 </div>
 
 <br>

@@ -6,6 +6,7 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/All.css">
 
 
     <link rel="stylesheet" href="/css/index.css">
@@ -28,7 +29,7 @@
 <%
     if(session.getAttribute("admin_login")!=null){
 %>
-<nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
+<nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-right">
@@ -107,11 +108,24 @@
             </div>
         </div>
 
-        <button class="btn btn-info btn-block login" type="submit">Find Classes</button>
+        <button class="btn btn-secondary btn-block login" type="submit">Find Classes</button>
         </form>
     </div>
 </div>
 
+</div>
+<div>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">2020 Copyright:
+            <a>Students of IIIT-B</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
