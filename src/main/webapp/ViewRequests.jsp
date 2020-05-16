@@ -82,8 +82,8 @@
                 <td>${e.comment}</td>
                 <td>${e.cleaningRequired}</td>
 
-                <td><a href="/acceptRequest/${e.requestor.loginId}" class="btn btn-secondary">GRANT</a></td>
-                <td><a href="/rejectRequest/${e.requestor.loginId}" class="btn btn-secondary">REJECT</a></td>
+                <td><a href="/acceptRequest/${e.requestor.loginId}/${e.classroom.classroomId}/${e.requestId}/${e.classRequestDate}/${e.startTime}/${e.endTime}" class="btn btn-secondary">GRANT</a></td>
+                <td><a href="/rejectRequest/${e.requestor.loginId}/${e.classroom.classroomId}/${e.requestId}" class="btn btn-secondary">REJECT</a></td>
 
             </tr>
         </c:forEach>

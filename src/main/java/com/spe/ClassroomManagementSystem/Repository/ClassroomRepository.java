@@ -15,4 +15,6 @@ public interface ClassroomRepository extends JpaRepository<Classroom,Long> {
     List<Classroom> findAllByCapacityGreaterThanEqualAndPlugsGreaterThanEqual(long capacity, long plugs);
 
     Classroom getClassroomByClassCode(String classCode);
+
+    Classroom findByClassroomId(Long classroomId);
 }
