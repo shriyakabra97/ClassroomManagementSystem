@@ -19,6 +19,8 @@
         body {
             background: whitesmoke;
             /*background: url("/images/school.png");*/
+            background: url("/images/blur_bg.jpeg");
+
 
         }
         #purpose, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #datepicker, h5{

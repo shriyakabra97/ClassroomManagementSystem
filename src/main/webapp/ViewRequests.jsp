@@ -17,6 +17,8 @@
     <style>
         body{
             font-family: Ubuntu;
+            background: url("/images/blur_bg.jpeg");
+
         }
         nav a{ color: white;
         }
@@ -51,7 +53,7 @@
     <h2 >Hey, here are the requests...</h2>
     <h5 style="color:darkblue">Request can either be Granted or Rejected.</h5>
     <br>
-    <table class="table table-hover table-bordered table-responsive">
+    <table class="table table-hover table-bordered table-responsive" style="background: ghostwhite">
         <thead style="background-color:rgba(85,85,85,0.42)">
         <tr>
             <th scope="col">Date</th>

@@ -18,6 +18,8 @@
     <style>
         body{
             background: whitesmoke;
+            background: url("/images/blur_bg.jpeg");
+
         }
         nav a{ color: white;
         }

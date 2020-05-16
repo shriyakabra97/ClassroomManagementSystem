@@ -15,6 +15,8 @@
     <style>
         body {
             background: whitesmoke;
+            background: url("/images/blur_bg.jpeg");
+
         }
         #purpose, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #datepicker, h5{
             margin-bottom: 10px;

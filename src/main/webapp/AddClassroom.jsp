@@ -17,7 +17,9 @@
     <style>
         body{
             font-family: Ubuntu;
-            background: whitesmoke;
+            /*background: rgba(181,123,229,0.16);*/
+            background: url("/images/blur_bg.jpeg");
+
         }
         nav a{ color: white;
         }
