@@ -34,7 +34,7 @@ if(session.getAttribute("admin_login")!=null){
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
         <li><a href="RegisterUser.jsp"> Add User </a></li>
-        <li><a href="ViewRequests.jsp">View Requests</a></li>
+        <li><a href="/getAllRequests">View Requests</a></li>
         <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
         <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>

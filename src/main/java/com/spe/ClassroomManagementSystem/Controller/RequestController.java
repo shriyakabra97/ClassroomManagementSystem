@@ -2,6 +2,7 @@ package  com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Models.*;
 import com.spe.ClassroomManagementSystem.Service.ClassroomService;
+import com.spe.ClassroomManagementSystem.Service.Interval;
 import com.spe.ClassroomManagementSystem.Service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,10 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.spe.ClassroomManagementSystem.Models.RequestStatus.REQUESTED;
 
 @RestController
 public class RequestController {
@@ -42,4 +47,19 @@ public class RequestController {
        return rv;
 
     }
+
+
+    @RequestMapping("/getAllRequests")
+    public RedirectView classroomRequest(HttpSession session)
+    {
+        List<Request> currentRequestsList = requestService.getByRequestStatus(REQUESTED);
+        RedirectView rv=new RedirectView();
+
+        session.setAttribute("currentRequests",currentRequestsList);
+        rv.setUrl("/ViewRequests.jsp");
+        return rv;
+    }
+
+
+
 }
