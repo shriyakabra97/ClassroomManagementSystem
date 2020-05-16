@@ -80,6 +80,7 @@ public class ClassroomServiceImpl implements ClassroomService{
         return classroomRepository.findByClassCode(classCode);
     }
 
+
     @Override
     public List<Classroom> getAvailableClassrooms(long capacity, long plugs, boolean projectorNeeded, Time startTimeFormat, Time endTimeFormat, Day day,Date date){
 

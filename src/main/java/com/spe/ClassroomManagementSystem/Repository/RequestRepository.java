@@ -28,4 +28,6 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     List<Request> getAllByRequestStatus(RequestStatus requestStatus);
 
     List<Request> getAllByClassroomAndClassRequestDateAndRequestStatus(Classroom classroom, Date date,RequestStatus requestStatus);
+
+    Request getAllByRequestId(Long requestId);
 }

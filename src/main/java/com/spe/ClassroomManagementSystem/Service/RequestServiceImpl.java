@@ -10,6 +10,9 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 
+import static com.spe.ClassroomManagementSystem.Models.RequestStatus.GRANTED;
+import static com.spe.ClassroomManagementSystem.Models.RequestStatus.REJECTED;
+
 @Service
 public class RequestServiceImpl implements RequestService {
 
@@ -26,10 +29,34 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<Request> getByRequestStatus(RequestStatus requestStatus)
     {
-        System.out.println("inside request service");
+              System.out.println("inside request service to get all requests having requestStatus = REQUESTED");
               return requestRepository.getAllByRequestStatus(requestStatus);
     }
 
+    @Override
+    public boolean saveRejectedRequest(Long requestId)
+    {
+        try {
+            Request r = requestRepository.getAllByRequestId(requestId);
+            r.setRequestStatus(REJECTED);
+            requestRepository.save(r);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean saveAcceptedRequest(Long requestId) {
+
+        try {
+            Request r = requestRepository.getAllByRequestId(requestId);
+            r.setRequestStatus(GRANTED);
+            requestRepository.save(r);
+            return true;
+        }catch (Exception e){
+        return false;
+        }
+    }
 
     @Override
     public boolean saveRequest(HttpSession session, String classCode){
