@@ -12,6 +12,8 @@
     <style>
         body{
             font-family: Ubuntu;
+            background: url("/images/reduced_opacity_bg.jpeg");
+
         }
         nav a{ color: white;
         }
@@ -35,8 +37,8 @@
 
 <div class="container">
     <h4>Hey, here are the available classrooms..</h4>
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-hover table-bordered table-responsive" style="background: white">
+        <thead style="background:rgba(85,85,85,0.33)">
         <tr>
             <th scope="col">Classroom</th>
             <th scope="col">Capacity</th>
@@ -52,7 +54,7 @@
             <td>${e.capacity}</td>
             <td>${e.projector}</td>
             <td>${e.plugs}</td>
-            <td><a href="/postRequest/${e.classCode}" class="btn btn-secondary">Request this room</a></td>
+            <td><a href="/postRequest/${e.classCode}" class="btn btn-success">Request this room</a></td>
         </tr>
         </c:forEach>
 

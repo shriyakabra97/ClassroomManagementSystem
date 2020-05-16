@@ -17,6 +17,9 @@
     <style>
         body{
             font-family: Ubuntu;
+            background: url("/images/reduced_opacity_bg.jpeg");
+            background-repeat:repeat-x;
+
         }
         nav a{ color: white;
         }
@@ -46,44 +49,47 @@
 
 <br>
 
-<div class="container">
+<div class="container" >
     <br><br>
+
     <h2 >Hey, here are the requests...</h2>
     <h5 style="color:darkblue">Request can either be Granted or Rejected.</h5>
+
     <br>
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-hover table-responsive table-bordered" style="background: white">
+        <thead style="background-color: #cccccc">
         <tr>
             <th scope="col">Date</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">End Time</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
             <th scope="col">Classroom</th>
             <th scope="col">Requestor</th>
-            <th scope="col">Projector required</th>
-            <th scope="col">Plugs</th>
             <th scope="col">Purpose</th>
-            <th scope="col">Comment</th>
+            <th scope="col">Projector required</th>
             <th scope="col">Cleaning required</th>
+            <th scope="col">Plugs</th>
+            <th scope="col">Comment</th>
+            <th scope="col">Grant</th>
+            <th scope="col">Reject</th>
         </tr>
         </thead>
         <tbody>
         <br>
 
-        <c:forEach var="e" items="${currentRequests}">
+        <c:forEach var="e" items="${returnableRequestList}">
             <tr>
                 <td>${e.classRequestDate}</td>
                 <td>${e.startTime}</td>
                 <td>${e.endTime}</td>
-                <td>${e.classroom.classroomId}</td>
-                <td>${e.requestor.loginId}</td>
-                <td>${e.projector}</td>
-                <td>${e.plugs}</td>
+                <td>${e.classCode}</td>
+                <td>${e.rName}</td>
                 <td>${e.purpose}</td>
-                <td>${e.comment}</td>
+                <td>${e.projector}</td>
                 <td>${e.cleaningRequired}</td>
-
-                <td><a href="/acceptRequest/${e.requestor.loginId}/${e.classroom.classroomId}/${e.requestId}/${e.classRequestDate}/${e.startTime}/${e.endTime}" class="btn btn-secondary">GRANT</a></td>
-                <td><a href="/rejectRequest/${e.requestor.loginId}/${e.classroom.classroomId}/${e.requestId}" class="btn btn-secondary">REJECT</a></td>
+                <td>${e.plugs}</td>
+                <td>${e.comment}</td>
+                <td><a href="/acceptRequest/${e.loginId}/${e.classroomId}/${e.requestId}/${e.classRequestDate}/${e.startTime}/${e.endTime}" class="btn btn-success">GRANT</a></td>
+                <td><a href="/rejectRequest/${e.loginId}/${e.classroomId}/${e.requestId}" class="btn btn-danger">REJECT</a></td>
 
             </tr>
         </c:forEach>

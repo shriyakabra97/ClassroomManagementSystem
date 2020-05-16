@@ -17,7 +17,9 @@
     <style>
         body{
             font-family: Ubuntu;
-            background: whitesmoke;
+            /*background: rgba(181,123,229,0.16);*/
+            background: url("/images/reduced_opacity_bg.jpeg");
+
         }
         nav a{ color: white;
         }
@@ -85,7 +87,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-secondary btn-block login" type="submit">Add Classroom</button>
+                <button class="btn  btn-secondary btn-block login mybutton"  type="submit">Add Classroom</button>
                 <p>${class_save_msg}</p>
             </form>
         </div>

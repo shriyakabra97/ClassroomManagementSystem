@@ -15,6 +15,8 @@
     <style>
         body {
             background: whitesmoke;
+            background: url("/images/reduced_opacity_bg.jpeg");
+
         }
         #purpose, #building, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #date, h5{
             margin-bottom: 10px;
@@ -118,7 +120,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-secondary btn-block login" type="submit">Find Classes</button>
+                <button class="btn btn-secondary btn-block login mybutton" type="submit">Find Classes</button>
             </form>
         </div>
     </div>

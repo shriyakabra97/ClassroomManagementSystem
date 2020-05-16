@@ -3,13 +3,21 @@ body{
 
 }
 
-button {
-    /*background:#806fe5;*/
-    /*color: white;*/
+
+button{
+    background-color:#A3A5A8;
+    color: white;
 }
 
-footer{
+/*button:hover{*/
+/*    background-color: #39B3D7;*/
 
+/*}*/
+.mybutton:hover{
+    background-color:#999999;
+    color: white;
+}
+footer{
     background: rgba(85, 85, 85, 0.42);
     color: black;
     position: fixed;
