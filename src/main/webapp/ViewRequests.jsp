@@ -17,6 +17,7 @@
     <style>
         body{
             font-family: Ubuntu;
+            background: url("/images/blur_bg.jpeg");
         }
         nav a{ color: white;
         }
@@ -46,13 +47,15 @@
 
 <br>
 
-<div class="container">
+<div class="container" >
     <br><br>
+
     <h2 >Hey, here are the requests...</h2>
     <h5 style="color:darkblue">Request can either be Granted or Rejected.</h5>
+
     <br>
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-hover table-responsive table-bordered" style="background: white">
+        <thead style="background-color: #cccccc">
         <tr>
             <th scope="col">Date</th>
             <th scope="col">Start Time</th>
@@ -64,6 +67,8 @@
             <th scope="col">Purpose</th>
             <th scope="col">Comment</th>
             <th scope="col">Cleaning required</th>
+            <th scope="col">Grant</th>
+            <th scope="col">Reject</th>
         </tr>
         </thead>
         <tbody>
@@ -82,8 +87,8 @@
                 <td>${e.comment}</td>
                 <td>${e.cleaningRequired}</td>
 
-                <td><a href="/acceptRequest/${e.requestor.loginId}/${e.classroom.classroomId}/${e.requestId}/${e.classRequestDate}/${e.startTime}/${e.endTime}" class="btn btn-secondary">GRANT</a></td>
-                <td><a href="/rejectRequest/${e.requestor.loginId}/${e.classroom.classroomId}/${e.requestId}" class="btn btn-secondary">REJECT</a></td>
+                <td><a href="/acceptRequest/${e.requestor.loginId}/${e.classroom.classroomId}/${e.requestId}/${e.classRequestDate}/${e.startTime}/${e.endTime}" class="btn btn-success">GRANT</a></td>
+                <td><a href="/rejectRequest/${e.requestor.loginId}/${e.classroom.classroomId}/${e.requestId}" class="btn btn-danger">REJECT</a></td>
 
             </tr>
         </c:forEach>

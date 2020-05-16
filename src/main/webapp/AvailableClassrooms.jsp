@@ -54,7 +54,7 @@
             <td>${e.capacity}</td>
             <td>${e.projector}</td>
             <td>${e.plugs}</td>
-            <td><a href="/postRequest/${e.classCode}" class="btn btn-primary">Request this room</a></td>
+            <td><a href="/postRequest/${e.classCode}" class="btn btn-success">Request this room</a></td>
         </tr>
         </c:forEach>
 
