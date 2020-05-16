@@ -3,6 +3,7 @@
 <%@ page import="com.spe.ClassroomManagementSystem.Models.TA" %>
 <%@ page import="org.springframework.http.ResponseEntity" %>
 <%@ page import="org.springframework.web.bind.annotation.RequestMapping" %>
+<%@ page import="org.springframework.boot.web.servlet.server.Session" %>
 <%--<%@ page import="org.springframework.web.bind.annotation.RequestBody" %>--%>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,15 @@
 <%
     if(session.getAttribute("admin_login")!=null){
 %>
+<script type="text/javascript">
+    <%
+     if (session.getAttribute("view_req_msg")!=null){
+     %>
+    alert('<%= session.getAttribute("view_req_msg")%>');
+    <%
+    }else {}
+    %>
+</script>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
@@ -88,8 +98,8 @@
                 <td>${e.cleaningRequired}</td>
                 <td>${e.plugs}</td>
                 <td>${e.comment}</td>
-                <td><a href="/acceptRequest/${e.loginId}/${e.classroomId}/${e.requestId}/${e.classRequestDate}/${e.startTime}/${e.endTime}" class="btn btn-success">GRANT</a></td>
-                <td><a href="/rejectRequest/${e.loginId}/${e.classroomId}/${e.requestId}" class="btn btn-danger">REJECT</a></td>
+                <td><a href="/acceptRequest/${e.index}/${e.loginId}/${e.classroomId}/${e.requestId}/${e.classRequestDate}/${e.startTime}/${e.endTime}" class="btn btn-success">GRANT</a></td>
+                <td><a href="/rejectRequest/${e.index}/${e.loginId}/${e.classroomId}/${e.requestId}" class="btn btn-danger">REJECT</a></td>
 
             </tr>
         </c:forEach>

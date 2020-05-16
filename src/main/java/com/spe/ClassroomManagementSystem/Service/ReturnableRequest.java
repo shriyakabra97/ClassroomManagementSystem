@@ -21,13 +21,16 @@ public class ReturnableRequest implements Serializable {
     long loginId;
     long classroomId;
     long requestId;
+    int index;
 
 
     public ReturnableRequest(
             Time startTime, Time endTime, Date classRequestDate,
             String comment, long plugs, String  projector, String  cleaningRequired,
             String classCode, String rName, String purpose,
-            long loginId, long classroomId, long requestId)
+            long loginId, long classroomId, long requestId,
+            int index
+            )
     {
         this.startTime = startTime;
         this.endTime = endTime;
@@ -42,6 +45,7 @@ public class ReturnableRequest implements Serializable {
         this.loginId = loginId;
         this.classroomId = classroomId;
         this.requestId = requestId;
+        this.index = index;
     }
 
     public Time getStartTime() {
@@ -145,5 +149,13 @@ public class ReturnableRequest implements Serializable {
 
     public void setRequestId(long requestId) {
         this.requestId = requestId;
+    }
+
+    public long getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

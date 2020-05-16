@@ -56,29 +56,34 @@ public class RequestController {
 
 
     //rejecting the request
-    @RequestMapping("/rejectRequest/{loginId}/{classroomId}/{requestId}")
+    @RequestMapping("/rejectRequest/{index}/{loginId}/{classroomId}/{requestId}")
     public RedirectView rejectRequest(HttpSession session,
-                                         @PathVariable Long loginId,
-                                         @PathVariable Long classroomId,
-                                         @PathVariable Long requestId)
+                                     @PathVariable int index,
+                                     @PathVariable Long loginId,
+                                     @PathVariable Long classroomId,
+                                     @PathVariable Long requestId
+
+                                      )
     {
         session.setAttribute("rejectMsg",null);
         boolean success=requestService.saveRejectedRequest(requestId);
-
-        //request successfully rejected
         RedirectView rv = new RedirectView();
-        if(success==true)
-        { session.setAttribute("rejectMsg", "Request successfully rejected");}
-        else
-        { session.setAttribute("rejectMsg", "Request cann't be processed.Please try again");}
 
-        rv.setUrl("/acceptReject.jsp");
+        if (success) {
+            rv = this.classroomRequest(session);
+            session.setAttribute("view_req_msg","Request Rejected Successfully");
+        }else {
+            session.setAttribute("view_req_msg","Error Rejecting Request");
+        }
+
+        rv.setUrl("/ViewRequests.jsp");
         return rv;
     }
 
     //accepting the request
-    @RequestMapping("/acceptRequest/{loginId}/{classroomId}/{requestId}/{date}/{startTime}/{endTime}")
+    @RequestMapping("/acceptRequest/{index}/{loginId}/{classroomId}/{requestId}/{date}/{startTime}/{endTime}")
     public RedirectView acceptRequest(HttpSession session,
+                                         @PathVariable int index,
                                          @PathVariable Long loginId,
                                          @PathVariable Long classroomId,
                                          @PathVariable Long requestId,
@@ -87,21 +92,27 @@ public class RequestController {
                                         @PathVariable Time endTime)
     {
         session.setAttribute("acceptMsg",null);
-
+        System.out.println("Accept Request------------start------------");
+        System.out.println("index = "+index);
         Classroom classroom=classroomRepository.findByClassroomId(classroomId);
         boolean classAvailable=classTimingService.checkAvailableClassroom(classroom,date,startTime,endTime);
 
 
         RedirectView rv = new RedirectView();
         //class is available and request can be accepted
-        if(classAvailable==true)
+        if(classAvailable)
         {
             boolean success=requestService.saveAcceptedRequest(requestId);
-            //request successfully rejected
-            if(success==true)
-            { session.setAttribute("acceptMsg", "Classroom available.Request successfully accepted.");}
-            else
-            { session.setAttribute("acceptMsg", "Request cann't be processed.Please try again!");}
+            //request successfully accepted
+            if(success)
+            {
+            rv = this.classroomRequest(session);
+                session.setAttribute("view_req_msg","Successfully Accepted Request");
+
+            }
+            else{
+                session.setAttribute("view_req_msg","Error Accepting Request");
+            }
         }
 
 
@@ -110,12 +121,17 @@ public class RequestController {
         {
             boolean success=requestService.saveRejectedRequest(requestId);
             //request successfully rejected
-            if(success==true)
-            { session.setAttribute("acceptMsg", "Classroom not available.Request successfully rejected.");}
-            else
-            { session.setAttribute("acceptMsg", "Request can't be processed.Please try again!");}
+            if(success)
+            {
+               rv= this.classroomRequest(session);
+               session.setAttribute("view_req_msg","Classroom Not Available. Rejected Request.");
+
+            }
+            else {
+                session.setAttribute("view_req_msg","Classroom Not Available. Error Rejecting Request.");
+            }
         }
-        rv.setUrl("/acceptReject.jsp");
+        rv.setUrl("/ViewRequests.jsp");
         return rv;
     }
 
@@ -125,8 +141,8 @@ public class RequestController {
     {
         List<Request> currentRequestsList = requestService.getByRequestStatus(REQUESTED);
         List<ReturnableRequest> returnableRequestList = new ArrayList<>();
-        for (Request r: currentRequestsList
-             ) {
+        for (int i = 0 ; i < currentRequestsList.size(); i++) {
+            Request r = currentRequestsList.get(i);
             String projector;
             String cleaning;
             if (r.isProjector())
@@ -150,11 +166,13 @@ public class RequestController {
                     r.getPurpose(),
                     r.getRequestor().getLoginId(),
                     r.getClassroom().getClassroomId(),
-                    r.getRequestId()
+                    r.getRequestId(),
+                    i
             );
             returnableRequestList.add(returnableRequest);
-            System.out.println("request id = ");
+            System.out.println("request id , i = "+i);
         }
+        System.out.println("redirecting to ViewRequests.jsp");
         RedirectView rv=new RedirectView();
         session.setAttribute("returnableRequestList", returnableRequestList);
         System.out.println(returnableRequestList.size());
