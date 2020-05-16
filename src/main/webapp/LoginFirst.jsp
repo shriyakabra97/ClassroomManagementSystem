@@ -27,24 +27,25 @@
                 </select>
                 <input id="username" name="username" type="text" placeholder="username" required>
                 <input id="password" name="password" type="password" placeholder="password" required>
+                <label style="color: crimson">Login First!</label>
                 <button class="btn btn-info btn-block login" type="submit">Login</button>
             </form>
         </div>
     </div>
 
 </div>
-<!--<div>-->
-<!--    &lt;!&ndash; Footer &ndash;&gt;-->
-<!--    <footer class="page-footer font-small blue">-->
+<%--<div>--%>
+<%--    <!-- Footer -->--%>
+<%--    <footer class="page-footer font-small blue">--%>
 
-<!--        &lt;!&ndash; Copyright &ndash;&gt;-->
-<!--        <div class="footer-copyright text-center py-3">2020 Copyright:-->
-<!--            <a>Students of IIIT-B</a>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; Copyright &ndash;&gt;-->
+<%--        <!-- Copyright -->--%>
+<%--        <div class="footer-copyright text-center py-3">© 2020 Copyright:--%>
+<%--            <a>Students of IIIT-B</a>--%>
+<%--        </div>--%>
+<%--        <!-- Copyright -->--%>
 
-<!--    </footer>-->
-<!--    &lt;!&ndash; Footer &ndash;&gt;-->
-<!--</div>-->
+<%--    </footer>--%>
+<%--    <!-- Footer -->--%>
+<%--</div>--%>
 </body>
 </html>

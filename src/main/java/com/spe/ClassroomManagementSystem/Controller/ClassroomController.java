@@ -59,6 +59,7 @@ public class ClassroomController {
             @RequestParam(value = "cleanCheck", defaultValue = "false") boolean cleaningNeeded,
             HttpSession session
     ){
+
         System.out.println("proj needed = "+projectorNeeded);
         System.out.println("cleaning needed ="+cleaningNeeded);
         Time startTimeFormat = Time.valueOf(startTime +":00");
@@ -77,7 +78,7 @@ public class ClassroomController {
         if (purpose.equals("exams")) {
             capacity = capacity * 2;
         }
-        finalClassroomList = classroomService.getAvailableClassrooms(capacity, plugs, projectorNeeded, startTimeFormat, endTimeFormat, day);
+        finalClassroomList = classroomService.getAvailableClassrooms(capacity, plugs, projectorNeeded, startTimeFormat, endTimeFormat, day,date);
 
         session.removeAttribute("availableClassrooms");
         session.setAttribute("availableClassrooms", finalClassroomList);
@@ -90,6 +91,15 @@ public class ClassroomController {
         session.setAttribute("cleanCheck",cleaningNeeded);
 
         //System.out.println(finalClassroomList.get(0).getClassCode());
+
+        session.setAttribute("purpose", purpose);
+        session.setAttribute("reqStartTime", startTimeFormat);
+        session.setAttribute("reqEndTime", endTimeFormat);
+        session.setAttribute("cleaningNeeded", cleaningNeeded);
+        session.setAttribute("projectorNeeded", projectorNeeded);
+        session.setAttribute("reqPlugs", plugs);
+        session.setAttribute("reqDate", date);
+        session.setAttribute("reqCapacity", capacity);
 
         RedirectView rv = new RedirectView();
         rv.setUrl("/AvailableClassrooms.jsp");

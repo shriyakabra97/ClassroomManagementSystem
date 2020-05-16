@@ -32,7 +32,6 @@ public class LoginServiceImpl implements LoginService {
 
         return true;
 
-
     }
 
     @Override
@@ -42,6 +41,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean checkCredentials(String username, String password, String userType, HttpSession session) {
+        session.setAttribute("userType", userType);
         if (userType.equals("admin")){
             if (username.equals("admin") && password.equals("admin")){
                 return true;
@@ -56,18 +56,22 @@ public class LoginServiceImpl implements LoginService {
             if (user.getPassword().equals(password)) {
                 switch (userType) {
                     case "professor":
+                        session.setAttribute("login", true);
                         Professor professor = user.getProfessor();
                         session.setAttribute("professor", professor);
                         break;
                     case "ta":
+                        session.setAttribute("login", true);
                         TA ta = user.getTa();
                         session.setAttribute("ta", ta);
                         break;
                     case "committee":
+                        session.setAttribute("login", true);
                         Committee committee = user.getCommittee();
                         session.setAttribute("committee", committee);
                         break;
                     case "sac":
+                        session.setAttribute("login", true);
                         Sac sac = user.getSac();
                         session.setAttribute("sac", sac);
                         break;

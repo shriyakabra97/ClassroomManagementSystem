@@ -28,15 +28,25 @@ public class LoginController {
             session.setAttribute("loginId",user.getLoginId());
             session.setAttribute("userName",user.getUserName());
             switch (usertype) {
-                case "admin": rv.setUrl("AdminDashboard.jsp");
+                case "admin":
+                    session.setAttribute("admin_login", "admin_login");
+                    rv.setUrl("AdminDashboard.jsp");
                     break;
-                case "professor": rv.setUrl("ProfessorDashboard.jsp");
+                case "professor":
+                    session.setAttribute("professor_login", "professor_login");
+                    rv.setUrl("ProfessorDashboard.jsp");
                     break;
-                case "ta": rv.setUrl("TADashboard.jsp");
+                case "ta":
+                    session.setAttribute("ta_login", "ta_login");
+                    rv.setUrl("TADashboard.jsp");
                     break;
-                case "committee": rv.setUrl("CommitteeDashboard.jsp");
+                case "committee":
+                    session.setAttribute("committee_login", "committee_login");
+                    rv.setUrl("CommitteeDashboard.jsp");
                     break;
-                case "sac": rv.setUrl("SACDashboard.jsp");
+                case "sac":
+                    session.setAttribute("sac_login", "sac_login");
+                    rv.setUrl("SACDashboard.jsp");
                     break;
             }
         }

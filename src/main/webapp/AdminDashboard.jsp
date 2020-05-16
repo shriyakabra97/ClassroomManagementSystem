@@ -2,6 +2,7 @@
 <%@ page import="com.spe.ClassroomManagementSystem.Models.TA" %>
 <%@ page import="org.springframework.http.ResponseEntity" %>
 <%@ page import="org.springframework.web.bind.annotation.RequestMapping" %>
+<%@ page import="org.springframework.web.servlet.view.RedirectView" %>
 <%--<%@ page import="org.springframework.web.bind.annotation.RequestBody" %>--%>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,17 +20,21 @@
         }
 
     </style>
+    <link rel="stylesheet" href="/css/All.css">
 
 
 
 </head>
 <body>
-<nav class="navbar fixed-top navbar-light" style="background-color: #50c7e5; ">
+<%
+if(session.getAttribute("admin_login")!=null){
+%>
+<nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
         <li><a href="RegisterUser.jsp"> Add User </a></li>
-        <li><a href="ViewRequests.jsp">View Requests</a></li>
+        <li><a href="/getAllRequests">View Requests</a></li>
         <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
         <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>
@@ -48,7 +53,26 @@
     </div>
 </div>
 
+<div>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">2020 Copyright:
+            <a>Students of IIIT-B</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+</div>
+
 <br>
+<% }
+else {
+    response.sendRedirect("LoginFirst.jsp");
+}
+%>
 
 
 </body>

@@ -21,7 +21,7 @@ $(function () {
 
     $.validator.addMethod( "timeGreaterThan", function( value, element , param) {
         var target = $(param);
-        console.log("hereee in time greater than")
+        console.log("hereee in time greater than");
         if ( this.settings.onfocusout && target.not( ".validate-greaterThan-blur" ).length ) {
             target.addClass( "validate-greaterThan-blur" ).on( "blur.validate-greaterThan", function() {
                 $( element ).valid();
@@ -33,9 +33,9 @@ $(function () {
     $.validator.addMethod("minDateToday", function (value, element) {
         var target = new Date();
         var reqDate = new Date($("#datepicker").val());
-        return reqDate>=target;
+        return reqDate >= target;
 
-    }, "Please enter valid date")
+    }, "Please enter valid date");
 
     $.validator.setDefaults({
         errorClass: 'help-block',
@@ -91,4 +91,4 @@ $(function () {
 
 
 
-})
+});

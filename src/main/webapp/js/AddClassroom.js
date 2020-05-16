@@ -36,18 +36,22 @@ $(function () {
 
     $("#addclass-form").validate({
         rules: {
-            crName:{
+            classCode:{
                 nowhitespace: true,
                 alphanumeric : true,
-                mypattern : true
+                mypattern : true,
+                required: true
 
             },
             capacity:{
                 min: 50,
-                max : 250
+                max : 250,
+                required:true
             },
             plugs:{
-                min: 0
+                min: 0,
+                required: true
+
             }
 
         },
@@ -55,4 +59,4 @@ $(function () {
 
         }
     })
-})
+});

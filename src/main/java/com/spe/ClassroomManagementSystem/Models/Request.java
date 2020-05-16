@@ -26,7 +26,7 @@ public class Request implements Serializable {
     @NotNull
     private RequestStatus requestStatus;
 
-    @Column
+    @Column(name = "class_request_date")
     @NotNull
     private Date classRequestDate;
 

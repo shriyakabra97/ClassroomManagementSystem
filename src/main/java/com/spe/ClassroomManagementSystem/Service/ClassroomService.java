@@ -5,7 +5,7 @@ import com.spe.ClassroomManagementSystem.Models.Day;
 
 import java.sql.Time;
 import java.util.List;
-
+import java.sql.Date;
 public interface ClassroomService {
     Classroom findByClassCode(String classCode);
 
@@ -19,7 +19,7 @@ public interface ClassroomService {
 
     Classroom getClassroomByClassCode(String classCode);
 
-    List<Classroom> getAvailableClassrooms(long capacity, long plugs, boolean projectorNeeded, Time startTimeFormat, java.sql.Time endTimeFormat, Day day);
+    List<Classroom> getAvailableClassrooms(long capacity, long plugs, boolean projectorNeeded, Time startTimeFormat, java.sql.Time endTimeFormat, Day day,Date date);
 
 
 }
