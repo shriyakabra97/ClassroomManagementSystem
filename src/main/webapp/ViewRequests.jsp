@@ -51,19 +51,21 @@
     <h2 >Hey, here are the requests...</h2>
     <h5 style="color:darkblue">Request can either be Granted or Rejected.</h5>
     <br>
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-hover table-bordered table-responsive">
+        <thead style="background-color:rgba(85,85,85,0.42)">
         <tr>
             <th scope="col">Date</th>
             <th scope="col">Start Time</th>
             <th scope="col">End Time</th>
             <th scope="col">Classroom</th>
             <th scope="col">Requestor</th>
-            <th scope="col">Projector required</th>
+            <th scope="col">Projector Required</th>
             <th scope="col">Plugs</th>
             <th scope="col">Purpose</th>
             <th scope="col">Comment</th>
-            <th scope="col">Cleaning required</th>
+            <th scope="col">Cleaning Required</th>
+            <th scope="col">Grant</th>
+            <th scope="col">Reject</th>
         </tr>
         </thead>
         <tbody>
@@ -71,6 +73,7 @@
 
         <c:forEach var="e" items="${currentRequests}">
             <tr>
+
                 <td>${e.classRequestDate}</td>
                 <td>${e.startTime}</td>
                 <td>${e.endTime}</td>

@@ -122,7 +122,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-secondary btn-block login" type="submit">Find Classes</button>
+                <button class="btn btn-secondary btn-block login mybutton" type="submit">Find Classes</button>
             </form>
         </div>
     </div>
