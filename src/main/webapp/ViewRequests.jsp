@@ -82,8 +82,8 @@
                 <td>${e.comment}</td>
                 <td>${e.cleaningRequired}</td>
 
-                <td><a href="/acceptRequest/${e.requestor.loginId}" class="btn btn-secondary">GRANT</a></td>
-                <td><a href="/rejectRequest/${e.requestor.loginId}" class="btn btn-secondary">REJECT</a></td>
+                <td><a href="/acceptRequest/${e.requestor.loginId}" class="btn btn-success">GRANT</a></td>
+                <td><a href="/rejectRequest/${e.requestor.loginId}" class="btn btn-danger">REJECT</a></td>
 
             </tr>
         </c:forEach>
