@@ -38,10 +38,10 @@ public class RequestController {
         RedirectView rv = new RedirectView();
 
         switch ((String) session.getAttribute("userType")){
-            case "professor": rv.setUrl("/ProfessorDashboard.jsp");break;
-            case "ta":rv.setUrl("/TADashboard.jsp");break;
-            case "committee":rv.setUrl("/CommitteeDashboard.jsp");break;
-            case "sac":rv.setUrl("/SACDashboard.jsp");break;
+            case "professor": rv.setUrl("/ProfessorDashboard");break;
+            case "ta":rv.setUrl("/TADashboard");break;
+            case "committee":rv.setUrl("/CommitteeDashboard");break;
+            case "sac":rv.setUrl("/SACDashboard");break;
 
         }
        return rv;
@@ -56,7 +56,7 @@ public class RequestController {
         RedirectView rv=new RedirectView();
 
         session.setAttribute("currentRequests",currentRequestsList);
-        rv.setUrl("/ViewRequests.jsp");
+        rv.setUrl("/ViewRequests");
         return rv;
     }
 

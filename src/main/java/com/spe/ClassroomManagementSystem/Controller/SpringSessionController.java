@@ -15,7 +15,7 @@ public class SpringSessionController {
         System.out.println("inside session controller...");
         session.invalidate();
 
-        return new RedirectView("/");
+        return new RedirectView("/index.html");
     }
 }
 

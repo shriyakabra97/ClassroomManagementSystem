@@ -20,7 +20,7 @@
         }
 
     </style>
-    <link rel="stylesheet" href="/css/All.css">
+    <link rel="stylesheet" href="css/All.css">
 
 
 
@@ -33,9 +33,9 @@ if(session.getAttribute("admin_login")!=null){
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
-        <li><a href="RegisterUser.jsp"> Add User </a></li>
+        <li><a href="RegisterUser"> Add User </a></li>
         <li><a href="/getAllRequests">View Requests</a></li>
-        <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
+        <li><a href="AddClassroom">Add Classroom</a> </li>
         <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -70,7 +70,7 @@ if(session.getAttribute("admin_login")!=null){
 <br>
 <% }
 else {
-    response.sendRedirect("LoginFirst.jsp");
+    response.sendRedirect("LoginFirst");
 }
 %>
 

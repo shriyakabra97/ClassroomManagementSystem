@@ -1,18 +1,20 @@
 <%@ page import="com.spe.ClassroomManagementSystem.Models.TA" %>
 <%@ page import="org.springframework.http.ResponseEntity" %>
 <%@ page import="org.springframework.web.bind.annotation.RequestMapping" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--<%@ page import="org.springframework.web.bind.annotation.RequestBody" %>--%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Add Classroom</title>
+    <title> Add Timetable</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/All.css">
-    <script src="/js/AddClassroom.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/All.css">
+
+    <script src="js/AddTimetable.js"></script>
 
     <style>
         body{
@@ -27,16 +29,17 @@
 
 </head>
 <body>
+
 <%
     if(session.getAttribute("admin_login")!=null){
 %>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
-    <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
+    <a class="navbar-brand" href="AdminDashboard">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
-        <li><a href="RegisterUser.jsp"> Add User </a></li>
+        <li><a href="RegisterUser"> Add User </a></li>
         <li><a href="/getAllRequests">View Requests</a></li>
-        <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
+        <li><a href="AddClassroom">Add Classroom</a> </li>
         <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -46,47 +49,52 @@
 
 <div class="container">
     <div class="login-container" style="width: 500px; margin: 30px auto">
+        <h5>Add Timetable</h5>
         <div id="output"></div>
-        <h5>Add Classroom</h5>
+
         <div class="form-box">
-            <form  id="addclass-form" action="/classroom" method="">
-                <div class="form-group">
-                    <input id="classCode" name="classCode" type="text" placeholder="Class Name" >
-                </div>
+            <form  id="addtimetable-form" action="/saveInClassTimings" method="">
+                <h5 id="class-label" align="left">Select Classroom</h5>
 
-<%--                <div class="form-group">--%>
-<%--                    <select id="building" name="building" required>--%>
-<%--                        <option name="select_building" value="">Select Building</option>--%>
-<%--                        <option name="aryabhatta" value="aryabhatta">Aryabhatta</option>--%>
-<%--                        <option name="ramanujan" value="ramanujan">Ramanujan</option>--%>
-<%--                    </select>--%>
-<%--                </div>--%>
-                <h5 id="capacity-label" align="left" style="margin-top: 5px">Capacity</h5>
                 <div class="form-group">
-                    <input id="capacity" name="capacity" type="number" placeholder="Capacity" value="50"  >
+                    <select id="classCode" name="classCode" >
+                        <option name="select_classname" value="">Select Class</option>
+                        <c:forEach var="e" items="${classroomList}">
+                            <option name="${e.classCode}" value="${e.classCode}" >${e.classCode}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <h5 id="day-label" align="left">Select Day</h5>
+                <div class="form-group">
+                    <select id="day" name="day" required>
+                        <option name="select_day" value="">Select Day</option>
+                        <option name="monday" value="MONDAY">Monday</option>
+                        <option name="tuesday" value="TUESDAY">Tuesday</option>
+                        <option name="wednesday" value="WEDNESDAY">Wednesday</option>
+                        <option name="thursday" value="THURSDAY">Thursday</option>
+                        <option name="friday" value="FRIDAY">Friday</option>
+                        <option name="saturday" value="SATURDAY">Saturday</option>
+                        <option name="sunday" value="SUNDAY">Sunday</option>
+                    </select>
                 </div>
                 <br>
-                <h5 id="plugsAndPorts-label" align="left" style="margin-top: 5px">Enter plugs and Projector details</h5>
-                <div class="form-group">
-                    <div class="row" id="plugsAndPorts">
-                        <div class="col-sm-12">
-                            <input id="plugs" name="plugs" type="number" placeholder="Plugs" >
+                <h5 id="times-label" align="left">Select Start and End Time ( 24 hour format )</h5>
+                <div class="row" id="times">
+                    <div class="form-group">
+
+                        <div class="col-sm-6">
+                            <input id="startTime" name="startTime" type="time" placeholder="Start Time" required >
                         </div>
-
+                        <div class="col-sm-6">
+                            <input id="endTime" name="endTime" type="time" required placeholder="End Time">
+                        </div>
                     </div>
                 </div>
+
+
                 <br>
-                <div id="projCheck" class="form-group">
-                    <div class="form-check" align="left">
-                        <input class="form-check-input" type="checkbox" id="projector" name="projector" style="width: 15px; height: 15px; ">
-                        <label class="form-check-label" for="projector" style="font-size: small">
-                            Projector available
-                        </label>
-                    </div>
-                </div>
-
-                <button class="btn btn-secondary btn-block login" type="submit">Add Classroom</button>
-                <p>${class_save_msg}</p>
+                <button class="btn btn-secondary btn-block login" type="submit">Submit</button>
+                <p>${save_message}</p>
             </form>
         </div>
     </div>
@@ -113,10 +121,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
 
 <% }
-else {
-    response.sendRedirect("LoginFirst.jsp");
-}
+    else {
+    response.sendRedirect("LoginFirst");
+    }
 %>
-
 </body>
 </html>

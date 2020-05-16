@@ -1,38 +1,34 @@
-<%@ page import="com.spe.ClassroomManagementSystem.Models.Professor" %>
-<%@ page import="org.springframework.web.servlet.view.RedirectView" %>
-<%--<jsp:forward page="/checkProf"></jsp:forward>--%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Professor - Request Class</title>
+    <title>Committee - Request Class</title>
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<%--    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">--%>
-    <link rel="stylesheet" href="/css/All.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <script src="/js/Dashboard.js"></script>
+    <link rel="stylesheet" href="css/All.css">
+
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/Dashboard.js"></script>
 
     <style>
         body {
             background: whitesmoke;
-            /*background: url("/images/school.png");*/
-
         }
-        #purpose, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #datepicker, h5{
+        #purpose, #building, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #date, h5{
             margin-bottom: 10px;
         }
         nav a{
             color: white;
         }
+        button
 
     </style>
 </head>
 <body>
 <%
-    if(session.getAttribute("professor_login")!=null){
+    if(session.getAttribute("committee_login")!=null){
 %>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
@@ -45,27 +41,27 @@
 <div class="container">
     <div class="login-container" style="width: 500px; margin: 30px auto">
         <div id="output"></div>
-        <h4>Hey Prof ${professor.professorName}!</h4><br>
+        <h4>Hey ${committee.committeeName}!</h4><br>
+
         <div class="form-box">
             <form  id="dashboard-form" action="/getAvailableClasses" method="">
                 <div class="form-group">
                 <select id="purpose" name="purpose" required>
                     <option name="select_username" value="">Select Purpose</option>
-                    <option name="extraClass" value="extraClass">Extra Class </option>
-                    <option name="exams" value="exams">Exams </option>
-                    <option name="event" value="event">Event </option>
-                    <option name="interactionWithSac" value="interactionWithSac">Interaction with SAC</option>
-                    <option name="interactionWithCommittee" value="interactionWithCommittee">Interaction with committee </option>
+                    <option name="meetingWithinCommittee" value="meetingWithinCommittee">Meeting Within Committee </option>
+                    <option value="meetingWithOtherCommittee" name="meetingWithOtherCommittee"> Meeting With Other Committee</option>
+
                 </select>
-                </div>
-<%--                <div class="form-group">--%>
-<%--                <select id="building" name="building" required>--%>
-<%--                    <option name="select_building" value="">Select Building</option>--%>
-<%--                    <option name="aryabhatta" value="aryabhatta">Aryabhatta</option>--%>
-<%--                    <option name="ramanujan" value="ramanujan">Ramanujan</option>--%>
-<%--                </select>--%>
+
 <%--                </div>--%>
-                <h5 id="capacity-label" align="left">Capacity</h5>
+<%--                <div class="form-group">--%>
+<%--                    <select id="building" name="building" required>--%>
+<%--                        <option name="select_building" value="">Select Building</option>--%>
+<%--                        <option name="aryabhatta" value="aryabhatta">Aryabhatta</option>--%>
+<%--                        <option name="ramanujan" value="ramanujan">Ramanujan</option>--%>
+<%--                    </select>--%>
+<%--                </div>--%>
+                    <h5 id="capacity-label" align="left">Capacity</h5>
 
                 <div class="form-group">
                     <input id="capacity" name="capacity" type="number" placeholder="Capacity" value="50"  >
@@ -86,27 +82,27 @@
 
 
                 <div class="form-group">
-                        <input id="datepicker" name="datepicker" type="date" class="DateFrom" required placeholder="Date">
+                    <input id="datepicker" name="datepicker" type="date" class="DateFrom" required placeholder="Date">
                 </div>
 
-                <h5 id="plugsAndPorts-label" align="left" style="margin-top: 5px">Concerned about plugs and projectors?</h5>
-                            <div class="form-group">
-                                <div class="row" id="plugsAndPorts" >
-                    <div class="col-sm-12">
-                        <input name="plugs" type="number" placeholder="Plugs" >
+                <h5 id="plugsAndPorts-label" align="left" style="margin-top: 5px">Concerned about plugs and  projectors?</h5>
+                <div class="form-group">
+                    <div class="row" id="plugsAndPorts">
+                        <div class="col-sm-12">
+                            <input name="plugs" type="number" placeholder="Plugs" >
+                        </div>
+<%--                        <div class="col-sm-6">--%>
+<%--                            <input name="ports" type="number" placeholder="Ports" >--%>
+<%--                        </div>--%>
+                        <%--                    <div class="col-sm-4">--%>
+                        <%--                        <input name="projectors" type="number" placeholder="Projectors" >--%>
+                        <%--                    </div>--%>
                     </div>
-<%--                    <div class="col-sm-6">--%>
-<%--                        <input name="ports" type="number" placeholder="Ports" >--%>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-4">--%>
-<%--                        <input name="projectors" type="number" placeholder="Projectors" >--%>
-<%--                    </div>--%>
-                            </div>
                 </div>
                 <br>
                 <div id="projCheck" class="form-group">
                     <div class="form-check" align="left">
-                        <input class="form-check-input"   type="checkbox" id="projectorCheck" name="projectorCheck" style="width: 15px; height: 15px; ">
+                        <input class="form-check-input" type="checkbox" id="projectorCheck" style="width: 15px; height: 15px; ">
                         <label class="form-check-label" for="projectorCheck" style="font-size: small">
                             Projector needed
                         </label>
@@ -115,7 +111,7 @@
 
                 <div id="cleaningCheck" class="form-group">
                     <div class="form-check" align="left">
-                        <input class="form-check-input"  type="checkbox" id="cleanCheck" style="width: 15px; height: 15px; " name="cleanCheck">
+                        <input class="form-check-input" type="checkbox" id="cleanCheck" style="width: 15px; height: 15px; ">
                         <label class="form-check-label" for="cleanCheck" style="font-size: small">
                             Cleaning needed
                         </label>
@@ -128,8 +124,6 @@
     </div>
 
 </div>
-
-
 <div>
     <!-- Footer -->
     <footer class="page-footer font-small blue">
@@ -150,11 +144,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
 
-<%--<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>--%>
 <% }
-    else {
-    response.sendRedirect("LoginFirst.jsp");
-    }
+else {
+    response.sendRedirect("LoginFirst");
+}
 %>
 </body>
 </html>

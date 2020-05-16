@@ -7,6 +7,6 @@ VOLUME /tmp
 # Make port 8082 available to the world outside this container
 EXPOSE 8082
 # Add the application's jar to the container
-ADD /target/cms-springboot.jar cms-springboot.jar
+ADD /target/cms.jar cms.jar
 # Run the jar file
-ENTRYPOINT ["java","-jar","cms-springboot.jar"]
+ENTRYPOINT ["java","-jar","cms.jar"]

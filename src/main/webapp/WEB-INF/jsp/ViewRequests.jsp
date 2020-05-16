@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/css/All.css">
+    <link rel="stylesheet" href="css/All.css">
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -32,11 +32,11 @@
 %>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
-    <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
+    <a class="navbar-brand" href="AdminDashboard">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
-        <li><a href="RegisterUser.jsp"> Add User </a></li>
+        <li><a href="RegisterUser"> Add User </a></li>
         <li><a href="/getAllRequests">View Requests</a></li>
-        <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
+        <li><a href="AddClassroom">Add Classroom</a> </li>
         <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -112,7 +112,7 @@
 </div>
 <% }
     else {
-    response.sendRedirect("LoginFirst.jsp");
+    response.sendRedirect("LoginFirst");
     }
 %>
 </body>

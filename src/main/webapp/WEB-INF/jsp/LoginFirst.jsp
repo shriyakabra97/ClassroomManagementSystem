@@ -6,7 +6,7 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" href="/css/index.css">
+    <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
                 </select>
                 <input id="username" name="username" type="text" placeholder="username" required>
                 <input id="password" name="password" type="password" placeholder="password" required>
-                <label style="color: crimson">Invalid Username/Password!</label>
+                <label style="color: crimson">Login First!</label>
                 <button class="btn btn-info btn-block login" type="submit">Login</button>
             </form>
         </div>

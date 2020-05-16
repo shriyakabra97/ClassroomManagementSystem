@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Committee - Request Class</title>
-
+    <title>SAC - Request Class</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/All.css">
+    <link rel="stylesheet" href="css/All.css">
 
-    <link rel="stylesheet" href="/css/index.css">
-    <script src="/js/Dashboard.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/Dashboard.js"></script>
 
     <style>
         body {
@@ -22,13 +21,12 @@
         nav a{
             color: white;
         }
-        button
 
     </style>
 </head>
 <body>
 <%
-    if(session.getAttribute("committee_login")!=null){
+    if(session.getAttribute("sac_login")!=null){
 %>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
@@ -41,27 +39,19 @@
 <div class="container">
     <div class="login-container" style="width: 500px; margin: 30px auto">
         <div id="output"></div>
-        <h4>Hey ${committee.committeeName}!</h4><br>
-
+        <h4>Hey ${sac.sacName}!</h4><br>
         <div class="form-box">
             <form  id="dashboard-form" action="/getAvailableClasses" method="">
                 <div class="form-group">
                 <select id="purpose" name="purpose" required>
                     <option name="select_username" value="">Select Purpose</option>
-                    <option name="meetingWithinCommittee" value="meetingWithinCommittee">Meeting Within Committee </option>
-                    <option value="meetingWithOtherCommittee" name="meetingWithOtherCommittee"> Meeting With Other Committee</option>
-
+                    <option value="meetingWithinSac" name="meetingWithinSac">Meeting within SAC</option>
+                    <option value="meetingWithOtherCommittee" name="meetingwithOtherCommittee">Meeting with Other Committee</option>
+                    <option value="interactionWithStudents" name="interactionWithStudents">Interaction With Students</option>
                 </select>
 
-<%--                </div>--%>
-<%--                <div class="form-group">--%>
-<%--                    <select id="building" name="building" required>--%>
-<%--                        <option name="select_building" value="">Select Building</option>--%>
-<%--                        <option name="aryabhatta" value="aryabhatta">Aryabhatta</option>--%>
-<%--                        <option name="ramanujan" value="ramanujan">Ramanujan</option>--%>
-<%--                    </select>--%>
-<%--                </div>--%>
-                    <h5 id="capacity-label" align="left">Capacity</h5>
+                </div>
+                <h5 id="capacity-label" align="left">Capacity</h5>
 
                 <div class="form-group">
                     <input id="capacity" name="capacity" type="number" placeholder="Capacity" value="50"  >
@@ -85,7 +75,7 @@
                     <input id="datepicker" name="datepicker" type="date" class="DateFrom" required placeholder="Date">
                 </div>
 
-                <h5 id="plugsAndPorts-label" align="left" style="margin-top: 5px">Concerned about plugs and  projectors?</h5>
+                <h5 id="plugsAndPorts-label" align="left" style="margin-top: 5px">Concerned about plugs and projectors?</h5>
                 <div class="form-group">
                     <div class="row" id="plugsAndPorts">
                         <div class="col-sm-12">
@@ -124,6 +114,8 @@
     </div>
 
 </div>
+
+</div>
 <div>
     <!-- Footer -->
     <footer class="page-footer font-small blue">
@@ -143,10 +135,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
-
 <% }
 else {
-    response.sendRedirect("LoginFirst.jsp");
+    response.sendRedirect("LoginFirst");
 }
 %>
 </body>

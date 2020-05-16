@@ -89,7 +89,7 @@ public class RegistrationController {
 
         }
         RedirectView rv = new RedirectView();
-        String rurl = "/RegisterUser.jsp";
+        String rurl = "/RegisterUser";
         rv.setUrl(rurl);
         return rv;
     }

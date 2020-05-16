@@ -35,7 +35,7 @@ public class TimeTableController {
 //        classTiming.setDayOfTheWeek(Day.valueOf(day));
 //        classTimingService.saveTimetable(classTiming);
 //        RedirectView rv = new RedirectView();
-//        rv.setUrl("/AddTimetable.jsp");
+//        rv.setUrl("/AddTimetable");
 //        return rv;
 //    }
 
@@ -63,7 +63,7 @@ public class TimeTableController {
         System.out.println("retVal = " + retVal);
         System.out.println(session.getAttribute("save_messsage"));
         RedirectView rv = new RedirectView();
-        rv.setUrl("AddTimetable.jsp");
+        rv.setUrl("AddTimetable");
         return rv;
 
     }

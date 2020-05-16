@@ -32,7 +32,7 @@ public class ClassroomController {
         String class_save_msg = classroomService.saveClassroom(cr);
         session.setAttribute("class_save_msg", class_save_msg);
         RedirectView rv = new RedirectView();
-        rv.setUrl("/AddClassroom.jsp");
+        rv.setUrl("/AddClassroom");
         return rv;
     }
 
@@ -42,7 +42,7 @@ public class ClassroomController {
         session.setAttribute("classroomList", classroomList);
         System.out.println(classroomList);
         RedirectView rv = new RedirectView();
-        rv.setUrl("/AddTimetable.jsp");
+        rv.setUrl("/AddTimetable");
         return rv;
     }
 
@@ -102,7 +102,7 @@ public class ClassroomController {
         session.setAttribute("reqCapacity", capacity);
 
         RedirectView rv = new RedirectView();
-        rv.setUrl("/AvailableClassrooms.jsp");
+        rv.setUrl("/AvailableClassrooms");
         return rv;
     }
 }

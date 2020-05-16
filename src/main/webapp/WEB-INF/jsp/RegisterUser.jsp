@@ -10,11 +10,11 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css-1">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/All.css">
+    <link rel="stylesheet" href="css/All.css">
 
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="css/index.css">
 
-    <script src="/js/RegisterUser.js"></script>
+    <script src="js/RegisterUser.js"></script>
     <style>
         body{
             background: whitesmoke;
@@ -36,12 +36,12 @@
 %>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
-    <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
+    <a class="navbar-brand" href="AdminDashboard">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
-        <li><a href="RegisterUser.jsp"> Add User </a></li>
+        <li><a href="RegisterUser"> Add User </a></li>
         <li><a href="/getAllRequests">View Requests</a></li>
-        <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
-        <li><a href="AddTimetable.jsp">Add Timetable</a> </li>
+        <li><a href="AddClassroom">Add Classroom</a> </li>
+        <li><a href="AddTimetable">Add Timetable</a> </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="/destroy" style="margin-right: 10px"><span class="glyphicon glyphicon-log-in" ></span> Logout</a></li>
@@ -145,7 +145,7 @@
 <br>
 <% }
 else {
-    response.sendRedirect("LoginFirst.jsp");
+    response.sendRedirect("LoginFirst");
 }
 %>
 
