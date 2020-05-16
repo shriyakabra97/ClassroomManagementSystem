@@ -15,7 +15,7 @@
     <style>
         body {
             background: whitesmoke;
-            background: url("/images/blur_bg.jpeg");
+            background: url("/images/reduced_opacity_bg.jpeg");
 
         }
         #purpose, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #datepicker, h5{

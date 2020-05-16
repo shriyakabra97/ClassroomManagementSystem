@@ -19,7 +19,7 @@
         body {
             background: whitesmoke;
             /*background: url("/images/school.png");*/
-            background: url("/images/blur_bg.jpeg");
+            background: url("/images/reduced_opacity_bg.jpeg");
 
 
         }

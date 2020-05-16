@@ -2,10 +2,7 @@ package  com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Models.*;
 import com.spe.ClassroomManagementSystem.Repository.ClassroomRepository;
-import com.spe.ClassroomManagementSystem.Service.ClassTimingService;
-import com.spe.ClassroomManagementSystem.Service.ClassroomService;
-import com.spe.ClassroomManagementSystem.Service.Interval;
-import com.spe.ClassroomManagementSystem.Service.RequestService;
+import com.spe.ClassroomManagementSystem.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +16,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.spe.ClassroomManagementSystem.Models.RequestStatus.REQUESTED;
 
@@ -115,7 +113,7 @@ public class RequestController {
             if(success==true)
             { session.setAttribute("acceptMsg", "Classroom not available.Request successfully rejected.");}
             else
-            { session.setAttribute("acceptMsg", "Request cann't be processed.Please try again!");}
+            { session.setAttribute("acceptMsg", "Request can't be processed.Please try again!");}
         }
         rv.setUrl("/acceptReject.jsp");
         return rv;
@@ -126,8 +124,40 @@ public class RequestController {
     public RedirectView classroomRequest(HttpSession session)
     {
         List<Request> currentRequestsList = requestService.getByRequestStatus(REQUESTED);
+        List<ReturnableRequest> returnableRequestList = new ArrayList<>();
+        for (Request r: currentRequestsList
+             ) {
+            String projector;
+            String cleaning;
+            if (r.isProjector())
+                projector = "Yes";
+            else projector = "No";
 
+            if (r.isCleaningRequired())
+                cleaning = "Yes";
+            else cleaning = "No";
+
+            ReturnableRequest returnableRequest = new ReturnableRequest(
+                    r.getStartTime(),
+                    r.getEndTime(),
+                    r.getClassRequestDate(),
+                    r.getComment(),
+                    r.getPlugs(),
+                    projector,
+                    cleaning,
+                    r.getClassroom().getClassCode(),
+                    r.getRequestor().getUserName(),
+                    r.getPurpose(),
+                    r.getRequestor().getLoginId(),
+                    r.getClassroom().getClassroomId(),
+                    r.getRequestId()
+            );
+            returnableRequestList.add(returnableRequest);
+            System.out.println("request id = ");
+        }
         RedirectView rv=new RedirectView();
+        session.setAttribute("returnableRequestList", returnableRequestList);
+        System.out.println(returnableRequestList.size());
         session.setAttribute("currentRequests",currentRequestsList);
         rv.setUrl("/ViewRequests.jsp");
         return rv;
