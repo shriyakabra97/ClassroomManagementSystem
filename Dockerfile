@@ -7,6 +7,6 @@ VOLUME /tmp
 # Make port 8082 available to the world outside this container
 EXPOSE 8082
 # Add the application's jar to the container
-ADD /target/cms.jar cms.jar
-# Run the jar file
-ENTRYPOINT ["java","-jar","cms.jar"]
+ADD /target/cms.war cms.war
+# Run the war file
+ENTRYPOINT ["java","-jar","cms.war"]
