@@ -29,7 +29,7 @@
 </head>
 <body>
 <%
-    if(session.getAttribute("admin_login")!=null){
+    if(session.getAttribute("ta_login")!=null){
 %>
 <script type="text/javascript">
     <%
