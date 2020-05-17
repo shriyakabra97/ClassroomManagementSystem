@@ -40,9 +40,10 @@ public class RegistrationController {
         login.setPassword(password);
         login.setUserName(username);
         boolean saved = loginService.save(login, session);
+        boolean reg;
         if (saved) {
             System.out.println("Added in login table..");
-            String msg;
+            String msg ="";
             switch (usertype) {
                 case "professor":
                     Professor professor = new Professor();
@@ -88,6 +89,7 @@ public class RegistrationController {
             }
 
         }
+
         RedirectView rv = new RedirectView();
         String rurl = "/RegisterUser.jsp";
         rv.setUrl(rurl);
