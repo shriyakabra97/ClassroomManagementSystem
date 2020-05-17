@@ -32,6 +32,15 @@
 <%
     if(session.getAttribute("admin_login")!=null){
 %>
+<script type="text/javascript">
+    <%
+     if (session.getAttribute("class_save_msg")!=null){
+     %>
+    alert('<%= session.getAttribute("class_save_msg")%>');
+    <%
+    }else {}
+    %>
+</script>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
@@ -88,7 +97,7 @@
                 </div>
 
                 <button class="btn  btn-secondary btn-block login mybutton"  type="submit">Add Classroom</button>
-                <p>${class_save_msg}</p>
+<%--                <p>${class_save_msg}</p>--%>
             </form>
         </div>
     </div>

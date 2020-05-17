@@ -18,7 +18,7 @@ public class SacServiceImpl implements SacService{
         String  msg ;
         try {
             sacRepository.save(sac);
-            msg ="SAC Saaved Successfully";
+            msg ="SAC Saved Successfully";
         }catch (Exception e){
             msg = "Failed Saving SAC";
         }

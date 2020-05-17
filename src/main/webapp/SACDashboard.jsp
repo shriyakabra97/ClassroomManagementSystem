@@ -30,6 +30,15 @@
 <%
     if(session.getAttribute("sac_login")!=null){
 %>
+<script type="text/javascript">
+    <%
+     if (session.getAttribute("req_save_msg")!=null){
+     %>
+    alert('<%= session.getAttribute("req_save_msg")%>');
+    <%
+    }else {}
+    %>
+</script>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
