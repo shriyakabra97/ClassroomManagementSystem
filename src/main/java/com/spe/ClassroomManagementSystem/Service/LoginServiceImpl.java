@@ -83,4 +83,10 @@ public class LoginServiceImpl implements LoginService {
             }
         }
     }
+
+    @Override
+    public Login findByLoginId(Long loginId)
+    {
+        return loginRepository.findByLoginId(loginId);
+    }
 }

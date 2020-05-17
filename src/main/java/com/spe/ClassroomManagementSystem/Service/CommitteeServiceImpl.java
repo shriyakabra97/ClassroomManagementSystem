@@ -1,6 +1,8 @@
 package com.spe.ClassroomManagementSystem.Service;
 
 import com.spe.ClassroomManagementSystem.Models.Committee;
+import com.spe.ClassroomManagementSystem.Models.Login;
+import com.spe.ClassroomManagementSystem.Models.TA;
 import com.spe.ClassroomManagementSystem.Repository.CommitteeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +23,11 @@ public class CommitteeServiceImpl implements CommitteeService{
             msg = "Failed Saving Committee";
         }
         return msg;
+    }
+
+    @Override
+    public Committee findByForeignId(Login login)
+    {
+        return  committeeRepository.findByForeignId(login);
     }
 }

@@ -8,4 +8,6 @@ public interface LoginRepository extends JpaRepository<Login,Long> {
     Login findByUserNameAndPassword(String username,String password);
 
     Login findByUserNameAndUserType(String username, String userType);
+
+    Login findByLoginId(Long loginId);
 }

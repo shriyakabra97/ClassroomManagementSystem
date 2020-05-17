@@ -1,6 +1,8 @@
 package com.spe.ClassroomManagementSystem.Service;
 
+import com.spe.ClassroomManagementSystem.Models.Login;
 import com.spe.ClassroomManagementSystem.Models.Professor;
+import com.spe.ClassroomManagementSystem.Models.TA;
 import com.spe.ClassroomManagementSystem.Repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +25,11 @@ public class ProfessorServiceImpl implements ProfessorService {
             msg = "Error saving Professor..";
         }
         return msg;
+    }
+
+    @Override
+    public Professor findByForeignId(Login login)
+    {
+        return  professorRepository.findByForeignId(login);
     }
 }
