@@ -37,6 +37,15 @@
 <%
     if(session.getAttribute("admin_login")!=null){
 %>
+<script type="text/javascript">
+    <%
+     if (session.getAttribute("msg")!=null){
+     %>
+    alert('<%= session.getAttribute("msg")%>');
+    <%
+    }else {}
+    %>
+</script>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
@@ -105,7 +114,7 @@
         <p id ="pass-match" style="color:crimson ; font-family: Arial" ></p>
 
         <button class="btn btn-secondary btn-block login mybutton" type="submit">Submit</button>
-        <p>${msg}</p>
+<%--        <p>${msg}</p>--%>
     </form>
 </div>
 </div>

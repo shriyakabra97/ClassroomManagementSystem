@@ -39,9 +39,17 @@ public class RequestController {
     {
 
        boolean success_requested = requestService.saveRequest(session, classCode);
+       if (success_requested) {
+           session.setAttribute("req_save_msg", "Request Sent successfully.");
+       }else {
+           session.setAttribute("req_save_msg", "Failed to Send Request. Please Try Again.");
+       }
 
        //redirect acc to user type
         RedirectView rv = new RedirectView();
+
+
+
         switch ((String) session.getAttribute("userType"))
         {
             case "professor": rv.setUrl("/ProfessorDashboard.jsp");break;

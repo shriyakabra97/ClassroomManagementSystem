@@ -4,6 +4,8 @@
 <%@ page import="org.springframework.http.ResponseEntity" %>
 <%@ page import="org.springframework.web.bind.annotation.RequestMapping" %>
 <%@ page import="org.springframework.boot.web.servlet.server.Session" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.spe.ClassroomManagementSystem.Service.ReturnableRequest" %>
 <%--<%@ page import="org.springframework.web.bind.annotation.RequestBody" %>--%>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +60,10 @@
 </nav>
 
 <br>
+<%
+    List<ReturnableRequest> returnableRequestList = (List<ReturnableRequest>) session.getAttribute("returnableRequestList");
+    if (returnableRequestList.size() >0){
+%>
 
 <div class="container" >
     <br><br>
@@ -108,8 +114,15 @@
     </table>
 </div>
 
+<% }else{        %>
+<br><br><br>
+<div class="container">
+    <h3 align="center"> No pending Requests..</h3>
+
+</div>
 
 
+<% } %>
 
 
 <br>
