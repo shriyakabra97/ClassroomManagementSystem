@@ -42,6 +42,9 @@
      %>
     alert('<%= session.getAttribute("view_req_msg")%>');
     <%
+    session.setAttribute("view_req_msg",null);
+    %>
+    <%
     }else {}
     %>
 </script>
