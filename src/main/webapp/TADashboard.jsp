@@ -37,6 +37,9 @@
      %>
     alert('<%= session.getAttribute("req_save_msg")%>');
     <%
+    session.removeAttribute("req_save_msg");
+    %>
+    <%
     }else {}
     %>
 </script>
