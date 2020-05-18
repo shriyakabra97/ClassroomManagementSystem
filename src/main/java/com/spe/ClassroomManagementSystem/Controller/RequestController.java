@@ -96,6 +96,11 @@ public class RequestController {
         RedirectView rv = new RedirectView();
 
         String email="";
+        String name ="";
+        String classCode ="";
+        Date date;
+        Time startTime;
+        Time endTime;
         if (success) {
 
             //get login object from loginId
@@ -107,21 +112,39 @@ public class RequestController {
             {
                 case "sac"         :Sac sac=sacService.findByForeignId(login);
                                     email=sac.getSacEmail();
+                                    name = sac.getSacName();
+
                                     break;
                 case "ta"          :TA ta=taService.findByForeignId(login);
                                     email=ta.getTaEmail();
+                                    name = ta.getTaName();
+
                                     break;
                 case "committee"   :Committee committee=committeeService.findByForeignId(login);
                                      email=committee.getCommitteeEmail();
+                                    name = committee.getCommitteeName();
+
                                      break;
                 case "professor"   :Professor professor=professorService.findByForeignId(login);
                                      email=professor.getProfessorEmail();
+                                    name = professor.getProfessorName();
+
                                      break;
             }
 
+            classCode = classroomRepository.findByClassroomId(classroomId).getClassCode();
+            date = requestService.getByRequestId(requestId).getClassRequestDate();
+            startTime = requestService.getByRequestId(requestId).getStartTime();
+            endTime =requestService.getByRequestId(requestId).getEndTime();
+
             rv = this.classroomRequest(session);
             session.setAttribute("view_req_msg","Request Successfully REJECTED!");
-            mailService.sendNotification(email,(String)session.getAttribute("view_req_msg"));
+            mailService.sendNotification(email,
+                    "Hello "+ name + ",\n" + "Your request for Classroom " + classCode + " for Date " + date + " from " + startTime + " to " + endTime
++ " has been REJECTED." + "\n" + " Sorry for the inconvenience" + "\n" + "Classroom Management Team",
+                    "Classroom request REJECTED"
+
+                    );
             System.out.println("Mail of rejection sent");
         }else {
             session.setAttribute("view_req_msg","Error Rejecting Request");
@@ -160,6 +183,9 @@ public class RequestController {
             if(success)
             {
                 String email="";
+                String name ="";
+                String classCode ="";
+
                 //get login object from loginId
                 Login login=loginService.findByLoginId(loginId);
                 String usertype=login.getUserType();
@@ -169,21 +195,67 @@ public class RequestController {
                 {
                     case "sac"         :Sac sac=sacService.findByForeignId(login);
                                          email=sac.getSacEmail();
+                                         name = sac.getSacName();
                                          break;
                     case "ta"          :TA ta=taService.findByForeignId(login);
                                         email=ta.getTaEmail();
+                                        name = ta.getTaName();
                                         break;
                     case "committee"   :Committee committee=committeeService.findByForeignId(login);
                                         email=committee.getCommitteeEmail();
+                                        name = committee.getCommitteeName();
                                         break;
                     case "professor"   :Professor professor=professorService.findByForeignId(login);
                                         email=professor.getProfessorEmail();
+                                        name=professor.getProfessorName();
                                         break;
                 }
+
                 rv = this.classroomRequest(session);
                 session.setAttribute("view_req_msg","Request Successfully ACCEPTED");
-                mailService.sendNotification(email,(String)session.getAttribute("view_req_msg"));
+                classCode = classroomRepository.findByClassroomId(classroomId).getClassCode();
+
+                mailService.sendNotification(email,
+                        "Hello "+ name + ",\n" +
+                                "Your request for Classroom" + classCode + " for Date " + date + " from " + startTime + " to " + endTime
+                                + " has been ACCEPTED." + "\n" + "Thank You for using our Application." + "\n" + "Classroom Management Team"
+                                , "Classroom request ACCEPTED"
+                );
+                if (requestService.getByRequestId(requestId).isCleaningRequired()){
+                    mailService.sendNotification("cleaningstaffiiitb@gmail.com",
+                            //don't change this email id
+                            //cleaning staff email id: cleaningstaffiiitb@gmail.com
+                            //password for this email id: cleaningstaff123#
+                            //you can login to see the cleaning requests
+                            "Dear Cleaning Staff, \n" +
+                                    "Please have a look at the details of room to be cleaned \n" +
+                                    "Classroom : " + classCode + "\n" +
+                                    "Date : " + date + "\n" +
+                                    "Before Time : " + startTime + "\n" +
+                                    "Thank you for the support. \n" +
+                                    "Classroom Management Team",
+                            "Cleaning Request for Classroom"
+
+                            );
+                }
                 System.out.println("Mail of acceptance sent");
+                //send mail to security
+                mailService.sendNotification("gatestaffiiitb@gmail.com",
+                        //don't change this email id
+                        //cleaning staff email id: gatestaffiiitb@gmail.com
+                        //password for this email id: securitystaff123#
+                        //you can login to see the gate requests
+                        "Dear Security Staff, \n" +
+                                "Please have a look at the details of room to be opened \n" +
+                                "Classroom : " + classCode + "\n" +
+                                "Date : " + date + "\n" +
+                                "Time : " + startTime + " to "+ endTime+"\n" +
+                                "Thank you for the support. \n" +
+                                "Classroom Management Team",
+                        "Request to Open Classroom"
+
+                );
+
 
             }
             else{
@@ -199,6 +271,8 @@ public class RequestController {
             if(success)
             {
                 String email="";
+                String name ="";
+                String classCode ="";
                 //get login object from loginId
                 Login login=loginService.findByLoginId(loginId);
                 String usertype=login.getUserType();
@@ -208,20 +282,32 @@ public class RequestController {
                 {
                     case "sac"         :Sac sac=sacService.findByForeignId(login);
                                         email=sac.getSacEmail();
+                                        name = sac.getSacName();
                                         break;
                     case "ta"          :TA ta=taService.findByForeignId(login);
                                         email=ta.getTaEmail();
+                                        name = ta.getTaName();
                                         break;
                     case "committee"   :Committee committee=committeeService.findByForeignId(login);
                                         email=committee.getCommitteeEmail();
+                                        name = committee.getCommitteeName();
                                         break;
                     case "professor"   :Professor professor=professorService.findByForeignId(login);
                                         email=professor.getProfessorEmail();
+                                        name=professor.getProfessorName();
                                         break;
                 }
-               rv= this.classroomRequest(session);
+                classCode = classroomRepository.findByClassroomId(classroomId).getClassCode();
+
+                rv= this.classroomRequest(session);
                session.setAttribute("view_req_msg","Classroom Not Available.Request successfully REJECTED.");
-               mailService.sendNotification(email,(String)session.getAttribute("view_req_msg"));
+               mailService.sendNotification(email,
+                       "Hello "+ name + ",\n" +
+                               "Your request for Classroom" + classCode + " for Date " + date + " from " + startTime + " to " + endTime
+                               + " has been REJECTED because the classroom was not available at that moment." + "\n" +
+                               "Sorry for the inconvenience" + "\n" +
+                               "Classroom Management Team",
+                       "Classroom Request REJECTED");
                System.out.println("Mail of rejection(when admin tried to accept) sent");
 
             }
