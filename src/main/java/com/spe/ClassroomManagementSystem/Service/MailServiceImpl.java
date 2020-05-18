@@ -17,12 +17,13 @@ public class MailServiceImpl implements MailService{
         this.javaMailSender=javaMailSender;
     }
 
-    public void sendNotification(String email,String text)
+    public void sendNotification(String email,String text , String subject)
     {
         SimpleMailMessage mail=new SimpleMailMessage();
         mail.setTo(email);
         mail.setFrom("connecttopragati@gmail.com");
         mail.setText(text);
+        mail.setSubject(subject);
         javaMailSender.send(mail);
 
     }

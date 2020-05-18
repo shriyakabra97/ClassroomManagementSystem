@@ -18,4 +18,5 @@ public interface RequestService {
     public boolean saveRejectedRequest(Long requestId);
     public boolean saveAcceptedRequest(Long requestId);
     public List<Request> getByClassroomAndDateAndRequestStatus(Classroom classroom, Date date , RequestStatus requestStatus);
+    public Request getByRequestId(long requestId);
 }
