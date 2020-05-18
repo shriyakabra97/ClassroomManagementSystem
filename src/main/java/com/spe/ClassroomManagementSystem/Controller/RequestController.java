@@ -6,17 +6,14 @@ import com.spe.ClassroomManagementSystem.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.server.PathParam;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static com.spe.ClassroomManagementSystem.Models.RequestStatus.REQUESTED;
 
@@ -55,6 +52,7 @@ public class RequestController {
     public RedirectView classroomRequest(HttpSession session,
                                  @PathVariable String classCode)
     {
+        System.out.println("/postRequest called");
        boolean success_requested = requestService.saveRequest(session, classCode);
        if (success_requested) {
            session.setAttribute("req_save_msg", "Request Sent successfully.");
@@ -64,21 +62,15 @@ public class RequestController {
 
        //redirect acc to user type
         RedirectView rv = new RedirectView();
-
-
-
         switch ((String) session.getAttribute("userType"))
         {
             case "professor": rv.setUrl("/ProfessorDashboard.jsp");break;
             case "ta":rv.setUrl("/TADashboard.jsp");break;
             case "committee":rv.setUrl("/CommitteeDashboard.jsp");break;
             case "sac":rv.setUrl("/SACDashboard.jsp");break;
-
         }
        return rv;
-
     }
-
 
     //rejecting the request
     @RequestMapping("/rejectRequest/{index}/{loginId}/{classroomId}/{requestId}")
@@ -87,9 +79,9 @@ public class RequestController {
                                      @PathVariable Long loginId,
                                      @PathVariable Long classroomId,
                                      @PathVariable Long requestId
-
                                       )
     {
+        System.out.println("/rejectRequest called");
         session.setAttribute("view_req_msg",null);
         boolean success=requestService.saveRejectedRequest(requestId);
 
@@ -145,7 +137,7 @@ public class RequestController {
                     "Classroom request REJECTED"
 
                     );
-            System.out.println("Mail of rejection sent");
+            //System.out.println("Mail of rejection sent");
         }else {
             session.setAttribute("view_req_msg","Error Rejecting Request");
         }
@@ -165,17 +157,14 @@ public class RequestController {
                                         @PathVariable Time startTime,
                                         @PathVariable Time endTime)
     {
+        System.out.println("/acceptRequest called");
         session.setAttribute("view_req_msg",null);
-        System.out.println("Accept Request------------start------------");
-        System.out.println("index = "+index);
+        //System.out.println("Accept Request------------start------------");
+        //System.out.println("index = "+index);
         Classroom classroom=classroomRepository.findByClassroomId(classroomId);
         boolean classAvailable=classTimingService.checkAvailableClassroom(classroom,date,startTime,endTime);
-
-
         RedirectView rv = new RedirectView();
         //class is available and request can be accepted
-
-
         if(classAvailable)
         {
             boolean success=requestService.saveAcceptedRequest(requestId);
@@ -327,6 +316,7 @@ public class RequestController {
     @RequestMapping("/getAllRequests")
     public RedirectView classroomRequest(HttpSession session)
     {
+        System.out.println("/getAllRequests called");
         List<Request> currentRequestsList = requestService.getByRequestStatus(REQUESTED);
         List<ReturnableRequest> returnableRequestList = new ArrayList<>();
         for (int i = 0 ; i < currentRequestsList.size(); i++) {
@@ -360,10 +350,10 @@ public class RequestController {
             returnableRequestList.add(returnableRequest);
             System.out.println("request id , i = "+i);
         }
-        System.out.println("redirecting to ViewRequests.jsp");
+        //System.out.println("redirecting to ViewRequests.jsp");
         RedirectView rv=new RedirectView();
         session.setAttribute("returnableRequestList", returnableRequestList);
-        System.out.println(returnableRequestList.size());
+        //System.out.println(returnableRequestList.size());
         session.setAttribute("currentRequests",currentRequestsList);
         rv.setUrl("/ViewRequests.jsp");
         return rv;

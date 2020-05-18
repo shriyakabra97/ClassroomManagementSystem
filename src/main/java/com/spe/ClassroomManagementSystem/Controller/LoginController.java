@@ -18,6 +18,7 @@ public class LoginController {
                                       @RequestParam("usertype") String usertype,
                                       HttpSession session
                                       ) {
+        System.out.println("/login called");
         boolean loginSuccess = loginService.checkCredentials(username, password, usertype, session);
         RedirectView rv = new RedirectView();
         if(loginSuccess == false) {
@@ -49,17 +50,4 @@ public class LoginController {
         return rv;
     }
 
-
-
-//    @RequestMapping("/checkLogin/professor")
-//    public RedirectView checkLogin(HttpSession session){
-//        RedirectView rv = new RedirectView();
-//        if (session != null){
-//           rv.setUrl("ProfessorDashboard.jsp");
-//        }
-//        else {
-//            rv.setUrl("index.html");
-//        }
-//        return rv;
-//    }
 }
