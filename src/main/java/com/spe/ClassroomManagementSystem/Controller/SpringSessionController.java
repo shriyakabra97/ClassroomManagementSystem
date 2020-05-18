@@ -12,7 +12,8 @@ public class SpringSessionController {
     @RequestMapping(value="/destroy" )
     public RedirectView destroyingSession(HttpSession session)
     {
-        System.out.println("inside session controller...");
+        System.out.println("/destroy called");
+        //System.out.println("inside session controller...");
         session.invalidate();
 
         return new RedirectView("/");

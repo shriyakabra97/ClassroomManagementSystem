@@ -27,9 +27,9 @@ public class ClassroomController {
                                       @RequestParam("plugs") int plugs,
                                       @RequestParam(value = "projector", required = false) String projector,
                                       HttpSession session) {
+        System.out.println("/classroom called");
         boolean projectorAvailable = (projector == null) ? false : true;
         Classroom cr = new Classroom(classCode, capacity, projectorAvailable, plugs);
-
         String class_save_msg = classroomService.saveClassroom(cr);
         session.setAttribute("class_save_msg", class_save_msg);
         RedirectView rv = new RedirectView();
@@ -39,9 +39,10 @@ public class ClassroomController {
 
     @RequestMapping("/getAllClassrooms")
     public RedirectView getAllClassrooms(HttpSession session){
+        System.out.println("/getAllClassrooms called");
         List<Classroom> classroomList= classroomService.findAllClassrooms();
         session.setAttribute("classroomList", classroomList);
-        System.out.println(classroomList);
+        //System.out.println(classroomList);
         RedirectView rv = new RedirectView();
         rv.setUrl("/AddTimetable.jsp");
         return rv;
@@ -60,7 +61,7 @@ public class ClassroomController {
             @RequestParam(value = "cleanCheck", defaultValue = "false") boolean cleaningNeeded,
             HttpSession session
     ){
-
+        System.out.println("/getAvailableClasses called");
         System.out.println("proj needed = "+projectorNeeded);
         System.out.println("cleaning needed ="+cleaningNeeded);
         Time startTimeFormat = Time.valueOf(startTime +":00");
