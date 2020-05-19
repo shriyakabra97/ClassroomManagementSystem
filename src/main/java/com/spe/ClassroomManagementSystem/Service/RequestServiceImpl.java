@@ -115,4 +115,8 @@ public class RequestServiceImpl implements RequestService {
         }
 
     }
+    @Override
+    public Request getByRequestId(long requestId){
+        return  requestRepository.getAllByRequestId(requestId);
+    }
 }
