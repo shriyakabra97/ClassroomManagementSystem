@@ -2,8 +2,8 @@ package com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Models.Classroom;
 import com.spe.ClassroomManagementSystem.Models.Day;
-import com.spe.ClassroomManagementSystem.Models.Professor;
 import com.spe.ClassroomManagementSystem.Service.ClassroomService;
+import com.spe.ClassroomManagementSystem.Utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,14 +67,14 @@ public class ClassroomController {
         Time startTimeFormat = Time.valueOf(startTime +":00");
         Time endTimeFormat = Time.valueOf(endTime +":00");
         Day day = Day.SUNDAY; //random initialization
-        switch (date.getDay()){
-            case 0:  day = Day.SUNDAY; break;
-            case 1:  day = Day.MONDAY; break;
-            case 2:  day = Day.TUESDAY; break;
-            case 3:  day = Day.WEDNESDAY; break;
-            case 4:  day = Day.THURSDAY; break;
-            case 5:  day = Day.FRIDAY; break;
-            case 6:  day = Day.SATURDAY; break;
+        switch (DateUtils.getDayOfTheWeekFromDate(date)) {
+            case 1:  day = Day.SUNDAY; break;
+            case 2:  day = Day.MONDAY; break;
+            case 3:  day = Day.TUESDAY; break;
+            case 4:  day = Day.WEDNESDAY; break;
+            case 5:  day = Day.THURSDAY; break;
+            case 6:  day = Day.FRIDAY; break;
+            case 7:  day = Day.SATURDAY; break;
         }
         List<Classroom> finalClassroomList;
         if (purpose.equals("exams")) {
