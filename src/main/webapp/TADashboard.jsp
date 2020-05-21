@@ -15,6 +15,8 @@
     <style>
         body {
             background: whitesmoke;
+            background: url("/images/reduced_opacity_bg.jpeg");
+
         }
         #purpose, #times , #times-label, #cleaningCheck , #plugsAndPorts, #capacity, #datepicker, h5{
             margin-bottom: 10px;
@@ -27,8 +29,20 @@
 </head>
 <body>
 <%
-    if(session.getAttribute("admin_login")!=null){
+    if(session.getAttribute("ta_login")!=null){
 %>
+<script type="text/javascript">
+    <%
+     if (session.getAttribute("req_save_msg")!=null){
+     %>
+    alert('<%= session.getAttribute("req_save_msg")%>');
+    <%
+    session.removeAttribute("req_save_msg");
+    %>
+    <%
+    }else {}
+    %>
+</script>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">IIIT-B Clasroom Manager</a>
@@ -108,7 +122,7 @@
             </div>
         </div>
 
-        <button class="btn btn-secondary btn-block login" type="submit">Find Classes</button>
+        <button class="btn btn-secondary btn-block login mybutton" type="submit">Find Classes</button>
         </form>
     </div>
 </div>

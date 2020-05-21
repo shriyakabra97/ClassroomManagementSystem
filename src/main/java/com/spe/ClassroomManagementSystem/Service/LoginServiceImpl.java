@@ -32,7 +32,6 @@ public class LoginServiceImpl implements LoginService {
 
         return true;
 
-
     }
 
     @Override
@@ -83,5 +82,11 @@ public class LoginServiceImpl implements LoginService {
                 return false;
             }
         }
+    }
+
+    @Override
+    public Login findByLoginId(Long loginId)
+    {
+        return loginRepository.findByLoginId(loginId);
     }
 }

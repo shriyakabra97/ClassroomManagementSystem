@@ -15,11 +15,10 @@ html,body{
     position: relative;
     width: 300px;
     margin: 60px 80px auto;
-
     padding: 20px 40px 40px;
     text-align: center;
-    background: #fff;
-    border: 1px solid #ccc;
+    background: #ffffff;
+    border: 1px solid #563D7C;
 
 
 }
@@ -51,7 +50,7 @@ html,body{
     -webkit-transform: rotateZ(4deg);
     -moz-transform: rotateZ(4deg);
     -ms-transform: rotateZ(4deg);
-    border: 1px solid #ccc;
+    border: 1px solid #563D7C;
 
 }
 

@@ -1,6 +1,8 @@
 package com.spe.ClassroomManagementSystem.Service;
 
+import com.spe.ClassroomManagementSystem.Models.Login;
 import com.spe.ClassroomManagementSystem.Models.Sac;
+import com.spe.ClassroomManagementSystem.Models.TA;
 import com.spe.ClassroomManagementSystem.Repository.SacRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,16 @@ public class SacServiceImpl implements SacService{
         String  msg ;
         try {
             sacRepository.save(sac);
-            msg ="SAC Saaved Successfully";
+            msg ="SAC Saved Successfully";
         }catch (Exception e){
             msg = "Failed Saving SAC";
         }
         return msg;
+    }
+
+    @Override
+    public Sac findByForeignId(Login login)
+    {
+        return  sacRepository.findByForeignId(login);
     }
 }

@@ -10,4 +10,6 @@ public interface LoginService {
     Login findByUsernameAndPassword(String username, String password);
 
     boolean checkCredentials(String username, String password, String userType , HttpSession session);
+
+    Login findByLoginId(Long loginId);
 }

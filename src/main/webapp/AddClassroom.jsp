@@ -17,7 +17,9 @@
     <style>
         body{
             font-family: Ubuntu;
-            background: whitesmoke;
+            /*background: rgba(181,123,229,0.16);*/
+            background: url("/images/reduced_opacity_bg.jpeg");
+
         }
         nav a{ color: white;
         }
@@ -30,12 +32,24 @@
 <%
     if(session.getAttribute("admin_login")!=null){
 %>
+<script type="text/javascript">
+    <%
+     if (session.getAttribute("class_save_msg")!=null){
+     %>
+    alert('<%= session.getAttribute("class_save_msg")%>');
+    <%
+    session.removeAttribute("class_save_message");
+    %>
+    <%
+    }else {}
+    %>
+</script>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
         <li><a href="RegisterUser.jsp"> Add User </a></li>
-        <li><a href="ViewRequests.jsp">View Requests</a></li>
+        <li><a href="/getAllRequests">View Requests</a></li>
         <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
         <li><a href="/getAllClassrooms">Add Timetable</a> </li>
     </ul>
@@ -85,8 +99,8 @@
                     </div>
                 </div>
 
-                <button class="btn btn-secondary btn-block login" type="submit">Add Classroom</button>
-                <p>${class_save_msg}</p>
+                <button class="btn  btn-secondary btn-block login mybutton"  type="submit">Add Classroom</button>
+<%--                <p>${class_save_msg}</p>--%>
             </form>
         </div>
     </div>

@@ -25,3 +25,17 @@ Only Admin, Prof, SAC,TAs, Committees can login
 
 ## Database Schema
 ![Database_Schema](src/main/webapp/images/cmsdb.png)
+
+## Mysql ContainerSetup
+### pull the mysql docker image from docker hub
+docker pull mysql:5.7.29
+
+### create cms-mysql container
+docker run --name cms-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=cms_db -e MYSQL_USER=cms_user -e MYSQL_PASSWORD=cms_password -d mysql:5.7.29
+
+## Springboot ContainerSetup
+### build cms-springboot docker image
+docker build -t cms-springboot .
+
+### create cms-springboot container from docker image
+docker run -t -p 8082:8082 --name cms-springboot --link cms-mysql:mysql -d cms-springboot

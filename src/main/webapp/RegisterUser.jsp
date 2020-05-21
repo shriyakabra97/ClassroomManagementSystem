@@ -18,6 +18,9 @@
     <style>
         body{
             background: whitesmoke;
+            background: url("/images/reduced_opacity_bg.jpeg");
+            background-repeat:repeat-x;
+
         }
         nav a{ color: white;
         }
@@ -34,12 +37,24 @@
 <%
     if(session.getAttribute("admin_login")!=null){
 %>
+<script type="text/javascript">
+    <%
+     if (session.getAttribute("msg")!=null){
+     %>
+    alert('<%= session.getAttribute("msg")%>');
+    <%
+    session.removeAttribute("msg");
+    %>
+    <%
+    }else {}
+    %>
+</script>
 <nav class="navbar navbar-fixed-top navbar-light" style="background-color: #563D7C; ">
     <!-- Navbar content -->
     <a class="navbar-brand" href="AdminDashboard.jsp">IIIT-B Clasroom Manager</a>
     <ul class="nav navbar-nav navbar-left">
         <li><a href="RegisterUser.jsp"> Add User </a></li>
-        <li><a href="ViewRequests.jsp">View Requests</a></li>
+        <li><a href="/getAllRequests">View Requests</a></li>
         <li><a href="AddClassroom.jsp">Add Classroom</a> </li>
         <li><a href="AddTimetable.jsp">Add Timetable</a> </li>
     </ul>
@@ -101,8 +116,8 @@
 
         <p id ="pass-match" style="color:crimson ; font-family: Arial" ></p>
 
-        <button class="btn btn-secondary btn-block login" type="submit">Submit</button>
-        <p>${msg}</p>
+        <button class="btn btn-secondary btn-block login mybutton" type="submit">Submit</button>
+<%--        <p>${msg}</p>--%>
     </form>
 </div>
 </div>

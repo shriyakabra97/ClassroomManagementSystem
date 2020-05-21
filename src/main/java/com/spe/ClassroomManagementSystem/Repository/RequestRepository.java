@@ -1,7 +1,6 @@
 package com.spe.ClassroomManagementSystem.Repository;
 
-import com.spe.ClassroomManagementSystem.Models.Request;
-import com.spe.ClassroomManagementSystem.Models.RequestStatus;
+import com.spe.ClassroomManagementSystem.Models.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -19,10 +18,14 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     @Transactional
     @Query("UPDATE Request req " +
             "SET req.requestStatus = 'FULFILLED' " +
-            "WHERE (((req.requestStatus = 'GRANTED') " +
-            "OR (req.requestStatus = 'REJECTED')) " +
-            "AND ((req.classRequestDate < :curr_date) " +
-            "OR ((req.classRequestDate = :curr_date) AND (req.endTime < :curr_time))))"
+            "WHERE ((req.classRequestDate < :curr_date) " +
+            "OR ((req.classRequestDate = :curr_date) AND (req.endTime < :curr_time)))"
     )
     void updateRequestStatus(@Param("curr_date")Date currdate, @Param("curr_time")Time currtime);
+
+    List<Request> getAllByRequestStatus(RequestStatus requestStatus);
+
+    List<Request> getAllByClassroomAndClassRequestDateAndRequestStatus(Classroom classroom, Date date,RequestStatus requestStatus);
+
+    Request getAllByRequestId(Long requestId);
 }

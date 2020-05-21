@@ -34,15 +34,16 @@ public class RegistrationController {
                                           @RequestParam("password") String password,
                                      HttpSession session
                                      ) {
-
+        System.out.println("/register called");
         Login login = new Login();
         login.setUserType(usertype);
         login.setPassword(password);
         login.setUserName(username);
         boolean saved = loginService.save(login, session);
+        boolean reg;
         if (saved) {
             System.out.println("Added in login table..");
-            String msg;
+            String msg ="";
             switch (usertype) {
                 case "professor":
                     Professor professor = new Professor();
@@ -52,7 +53,7 @@ public class RegistrationController {
                     professor.setForeignId(login);
                     msg = professorService.saveProfessor(professor);
                     session.setAttribute("msg", msg);
-                    System.out.println("Added in professor table");
+                    //System.out.println("Added in professor table");
                     break;
                 case "ta":
                     TA ta = new TA();
@@ -62,7 +63,7 @@ public class RegistrationController {
                     ta.setForeignId(login);
                     msg = taService.saveTa(ta);
                     session.setAttribute("msg", msg);
-                    System.out.println("Added in TA table..");
+                    //System.out.println("Added in TA table..");
                     break;
                 case "committee":
                     Committee committee = new Committee();
@@ -72,7 +73,7 @@ public class RegistrationController {
                     committee.setForeignId(login);
                     msg = committeeService.saveCommittee(committee);
                     session.setAttribute("msg", msg);
-                    System.out.println("Added in Committee table..");
+                    //System.out.println("Added in Committee table..");
                     break;
                 case "sac":
                     Sac sac = new Sac();
@@ -82,12 +83,13 @@ public class RegistrationController {
                     sac.setForeignId(login);
                     msg = sacService.saveSac(sac);
                     session.setAttribute("msg", msg);
-                    System.out.println("Added in SAC table");
+                    //System.out.println("Added in SAC table");
                     break;
 
             }
 
         }
+
         RedirectView rv = new RedirectView();
         String rurl = "/RegisterUser.jsp";
         rv.setUrl(rurl);
