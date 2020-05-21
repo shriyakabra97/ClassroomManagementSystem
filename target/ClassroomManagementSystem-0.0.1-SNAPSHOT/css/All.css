@@ -1,0 +1,32 @@
+body{
+    margin-top: 75px;
+
+}
+
+
+button{
+    background-color:#A3A5A8;
+    color: white;
+}
+
+/*button:hover{*/
+/*    background-color: #39B3D7;*/
+
+/*}*/
+.mybutton:hover{
+    background-color:#999999;
+    color: white;
+}
+footer{
+    background: rgba(85, 85, 85, 0.42);
+    color: black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+footer a{
+    color: black;
+}
