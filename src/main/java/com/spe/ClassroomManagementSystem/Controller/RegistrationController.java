@@ -3,6 +3,8 @@ package com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Models.*;
 import com.spe.ClassroomManagementSystem.Service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 public class RegistrationController {
+    private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
     @Autowired
     private CommitteeService committeeService;
@@ -34,7 +37,7 @@ public class RegistrationController {
                                           @RequestParam("password") String password,
                                      HttpSession session
                                      ) {
-        System.out.println("/register called");
+        logger.trace("registerUser called");
         Login login = new Login();
         login.setUserType(usertype);
         login.setPassword(password);
@@ -42,7 +45,7 @@ public class RegistrationController {
         boolean saved = loginService.save(login, session);
         boolean reg;
         if (saved) {
-            System.out.println("Added in login table..");
+            logger.info("user added");
             String msg ="";
             switch (usertype) {
                 case "professor":
@@ -53,7 +56,6 @@ public class RegistrationController {
                     professor.setForeignId(login);
                     msg = professorService.saveProfessor(professor);
                     session.setAttribute("msg", msg);
-                    //System.out.println("Added in professor table");
                     break;
                 case "ta":
                     TA ta = new TA();
@@ -63,7 +65,6 @@ public class RegistrationController {
                     ta.setForeignId(login);
                     msg = taService.saveTa(ta);
                     session.setAttribute("msg", msg);
-                    //System.out.println("Added in TA table..");
                     break;
                 case "committee":
                     Committee committee = new Committee();
@@ -73,7 +74,6 @@ public class RegistrationController {
                     committee.setForeignId(login);
                     msg = committeeService.saveCommittee(committee);
                     session.setAttribute("msg", msg);
-                    //System.out.println("Added in Committee table..");
                     break;
                 case "sac":
                     Sac sac = new Sac();
@@ -83,7 +83,6 @@ public class RegistrationController {
                     sac.setForeignId(login);
                     msg = sacService.saveSac(sac);
                     session.setAttribute("msg", msg);
-                    //System.out.println("Added in SAC table");
                     break;
 
             }
