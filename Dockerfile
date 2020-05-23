@@ -8,5 +8,9 @@ VOLUME /tmp
 EXPOSE 8082
 # Add the application's jar to the container
 ADD /target/cms.war cms.war
+# Create directory for tomcat access logs
+RUN mkdir -p -m 777 /var/log/tomcat
+# Create directory for application logs
+RUN mkdir -p -m 777 /var/log/cms
 # Run the war file
 ENTRYPOINT ["java","-jar","cms.war"]
