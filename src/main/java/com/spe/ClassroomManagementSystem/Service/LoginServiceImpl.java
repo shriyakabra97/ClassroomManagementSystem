@@ -3,6 +3,8 @@ package com.spe.ClassroomManagementSystem.Service;
 import com.spe.ClassroomManagementSystem.Models.*;
 import com.spe.ClassroomManagementSystem.Repository.LoginRepository;
 import com.spe.ClassroomManagementSystem.Repository.ProfessorRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Service
 public class LoginServiceImpl implements LoginService {
+    private static final Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
+
     @Autowired
     private LoginRepository loginRepository;
 
@@ -23,13 +27,14 @@ public class LoginServiceImpl implements LoginService {
         List<Login> loginList = loginRepository.findAll();
         for (Login l:loginList) {
             if (login.getUserName().equals(l.getUserName()) && login.getUserType().equals(l.getUserType())){
+                logger.error("User Already Exists");
                 session.setAttribute("msg", "User Already Exists");
                 return false;
             }
         }
 
         loginRepository.save(login);
-
+        logger.info("User saved successfully");
         return true;
 
     }

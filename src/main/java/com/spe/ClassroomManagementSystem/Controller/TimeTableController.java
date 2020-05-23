@@ -2,6 +2,8 @@ package com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Models.Day;
 import com.spe.ClassroomManagementSystem.Service.ClassTimingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +15,7 @@ import java.sql.Time;
 
 @RestController
 public class TimeTableController {
+    private static final Logger logger = LoggerFactory.getLogger(TimeTableController.class);
 
     @Autowired
     private ClassTimingService classTimingService;
@@ -25,7 +28,7 @@ public class TimeTableController {
             @RequestParam("startTime") String startTime,
             @RequestParam("endTime") String endTime,
             HttpSession session){
-        System.out.println("/saveInClassTimings called");
+        logger.trace("saveInClassTimings called");
         Day day1 = Day.SUNDAY;//initialization
         switch (day){
             case "SUNDAY": day1=Day.SUNDAY;break;
