@@ -2,6 +2,8 @@ package com.spe.ClassroomManagementSystem.Service;
 
 import com.spe.ClassroomManagementSystem.Models.*;
 import com.spe.ClassroomManagementSystem.Repository.RequestRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import static com.spe.ClassroomManagementSystem.Models.RequestStatus.REJECTED;
 
 @Service
 public class RequestServiceImpl implements RequestService {
+    private static final Logger logger = LoggerFactory.getLogger(RequestServiceImpl.class);
 
     @Autowired
     private RequestRepository requestRepository;
@@ -29,7 +32,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<Request> getByRequestStatus(RequestStatus requestStatus)
     {
-              System.out.println("inside request service to get all requests having requestStatus = REQUESTED");
+              logger.trace("getByRequestStatus called");
               return requestRepository.getAllByRequestStatus(requestStatus);
     }
 
