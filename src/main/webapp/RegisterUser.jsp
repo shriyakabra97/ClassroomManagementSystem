@@ -43,6 +43,9 @@
      %>
     alert('<%= session.getAttribute("msg")%>');
     <%
+    session.removeAttribute("msg");
+    %>
+    <%
     }else {}
     %>
 </script>

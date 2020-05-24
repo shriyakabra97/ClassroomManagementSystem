@@ -2,8 +2,10 @@ package com.spe.ClassroomManagementSystem.Controller;
 
 import com.spe.ClassroomManagementSystem.Models.Classroom;
 import com.spe.ClassroomManagementSystem.Models.Day;
-import com.spe.ClassroomManagementSystem.Models.Professor;
 import com.spe.ClassroomManagementSystem.Service.ClassroomService;
+import com.spe.ClassroomManagementSystem.Utils.DateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +19,7 @@ import java.util.List;
 
 @RestController
 public class ClassroomController {
+    private static final Logger logger = LoggerFactory.getLogger(ClassroomController.class);
 
     @Autowired
     private ClassroomService classroomService;
@@ -27,9 +30,9 @@ public class ClassroomController {
                                       @RequestParam("plugs") int plugs,
                                       @RequestParam(value = "projector", required = false) String projector,
                                       HttpSession session) {
+        logger.trace("addClassroom called");
         boolean projectorAvailable = (projector == null) ? false : true;
         Classroom cr = new Classroom(classCode, capacity, projectorAvailable, plugs);
-
         String class_save_msg = classroomService.saveClassroom(cr);
         session.setAttribute("class_save_msg", class_save_msg);
         RedirectView rv = new RedirectView();
@@ -39,9 +42,9 @@ public class ClassroomController {
 
     @RequestMapping("/getAllClassrooms")
     public RedirectView getAllClassrooms(HttpSession session){
+        logger.trace("getAllClassroom called");
         List<Classroom> classroomList= classroomService.findAllClassrooms();
         session.setAttribute("classroomList", classroomList);
-        System.out.println(classroomList);
         RedirectView rv = new RedirectView();
         rv.setUrl("/AddTimetable.jsp");
         return rv;
@@ -60,20 +63,18 @@ public class ClassroomController {
             @RequestParam(value = "cleanCheck", defaultValue = "false") boolean cleaningNeeded,
             HttpSession session
     ){
-
-        System.out.println("proj needed = "+projectorNeeded);
-        System.out.println("cleaning needed ="+cleaningNeeded);
+        logger.trace("getAvailableClasses called");
         Time startTimeFormat = Time.valueOf(startTime +":00");
         Time endTimeFormat = Time.valueOf(endTime +":00");
         Day day = Day.SUNDAY; //random initialization
-        switch (date.getDay()){
-            case 0:  day = Day.SUNDAY; break;
-            case 1:  day = Day.MONDAY; break;
-            case 2:  day = Day.TUESDAY; break;
-            case 3:  day = Day.WEDNESDAY; break;
-            case 4:  day = Day.THURSDAY; break;
-            case 5:  day = Day.FRIDAY; break;
-            case 6:  day = Day.SATURDAY; break;
+        switch (DateUtils.getDayOfTheWeekFromDate(date)) {
+            case 1:  day = Day.SUNDAY; break;
+            case 2:  day = Day.MONDAY; break;
+            case 3:  day = Day.TUESDAY; break;
+            case 4:  day = Day.WEDNESDAY; break;
+            case 5:  day = Day.THURSDAY; break;
+            case 6:  day = Day.FRIDAY; break;
+            case 7:  day = Day.SATURDAY; break;
         }
         List<Classroom> finalClassroomList;
         if (purpose.equals("exams")) {
@@ -83,7 +84,6 @@ public class ClassroomController {
 
         session.removeAttribute("availableClassrooms");
         session.setAttribute("availableClassrooms", finalClassroomList);
-        //System.out.println(finalClassroomList.get(0).getClassCode());
 
         session.setAttribute("purpose", purpose);
         session.setAttribute("reqStartTime", startTimeFormat);

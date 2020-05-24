@@ -5,6 +5,9 @@ import com.spe.ClassroomManagementSystem.Models.Classroom;
 import com.spe.ClassroomManagementSystem.Models.Day;
 import com.spe.ClassroomManagementSystem.Models.Request;
 import com.spe.ClassroomManagementSystem.Repository.ClassTimingRepository;
+import com.spe.ClassroomManagementSystem.Utils.DateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,8 @@ import static com.spe.ClassroomManagementSystem.Models.RequestStatus.GRANTED;
 
 @Service
 public class ClassTimingServiceImpl implements ClassTimingService {
+    private static final Logger logger = LoggerFactory.getLogger(ClassTimingServiceImpl.class);
+
     @Autowired
     private ClassTimingRepository classTimingRepository;
 
@@ -55,14 +60,14 @@ public class ClassTimingServiceImpl implements ClassTimingService {
     public boolean checkAvailableClassroom(Classroom classroom,Date date,Time startTime, Time endTime)
     {
         Day day = Day.SUNDAY; //random initialization
-        switch (date.getDay()){
-            case 0:  day = Day.SUNDAY; break;
-            case 1:  day = Day.MONDAY; break;
-            case 2:  day = Day.TUESDAY; break;
-            case 3:  day = Day.WEDNESDAY; break;
-            case 4:  day = Day.THURSDAY; break;
-            case 5:  day = Day.FRIDAY; break;
-            case 6:  day = Day.SATURDAY; break;
+        switch (DateUtils.getDayOfTheWeekFromDate(date)){
+            case 1:  day = Day.SUNDAY; break;
+            case 2:  day = Day.MONDAY; break;
+            case 3:  day = Day.TUESDAY; break;
+            case 4:  day = Day.WEDNESDAY; break;
+            case 5:  day = Day.THURSDAY; break;
+            case 6:  day = Day.FRIDAY; break;
+            case 7:  day = Day.SATURDAY; break;
         }
         boolean isOverlapping = true ;
         boolean isOverlapping1=true;
@@ -151,9 +156,11 @@ public class ClassTimingServiceImpl implements ClassTimingService {
             ClassTiming classTiming = new ClassTiming(day1, startTimeFormat, endTimeFormat, classroom);
             //save in db
             classTimingService.saveTimetable(classTiming);
+            logger.info("Timetable saved successfully");
             session.setAttribute("save_message", "Saved successfully..");
             returnVal = true;
         }else {
+            logger.error("Error entering in DB..overlapping time");
             session.setAttribute("save_message", "Error entering in DB..overlapping time");
             returnVal= false;
         }
