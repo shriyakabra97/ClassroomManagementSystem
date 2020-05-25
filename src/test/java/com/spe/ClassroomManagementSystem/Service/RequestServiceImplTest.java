@@ -55,23 +55,83 @@ class RequestServiceImplTest {
 
     }
 
-    @Test
-    void getByRequestStatus() {
-    }
+//    @Test
+//    void getByRequestStatus() {
+//
+//        Date classRequestDate = Date.valueOf("2020-05-25");
+//        Time startTime = Time.valueOf("23:45:00");
+//        Time endTime = Time.valueOf("23:55:00");
+//        Time startTime1 = Time.valueOf("02:30:00");
+//        Time endTime1 = Time.valueOf("03:00:00");
+//        Classroom classroom = new Classroom("A102", 50, true, 0);
+//
+//        Login requestor = new Login("professor", "shriyakabra97", "password");
+//        when(requestRepository.findAllByRequestStatus(RequestStatus.REQUESTED)).thenReturn(Stream.of(
+//                new Request(requestor, "exams", RequestStatus.REQUESTED, classRequestDate, startTime, endTime, "", classroom, true, 0, false ),
+//                new Request(requestor, "exams", RequestStatus.REQUESTED, classRequestDate, startTime1, endTime1, "", classroom, true, 0, false )
+//                ).collect(Collectors.toList())
+//        );
+//        assertEquals(2,requestService.getByRequestStatus(RequestStatus.REQUESTED).size());
+//    }
 
     @Test
     void saveRejectedRequest() {
+        long rId =12;
+        Classroom classroom = new Classroom("A102", 50, true, 0);
+        Login requestor = new Login("professor", "shriyakabra97", "password");
+        Date classRequestDate = Date.valueOf("2020-05-25");
+        Time startTime = Time.valueOf("23:45:00");
+        Time endTime = Time.valueOf("23:55:00");
+        when(requestRepository.getAllByRequestId(rId)).thenReturn(
+                new Request(requestor, "exams", RequestStatus.REQUESTED, classRequestDate, startTime, endTime, "", classroom, true, 0, false )
+        );
+        Request request = new Request(requestor, "exams", RequestStatus.REJECTED, classRequestDate, startTime, endTime, "", classroom, true, 0, false );
+
+        when(requestRepository.save(request)).thenReturn(
+                new Request(requestor, "exams", RequestStatus.REJECTED, classRequestDate, startTime, endTime, "", classroom, true, 0, false )
+        );
+        assertTrue(requestService.saveAcceptedRequest((long) 12));
     }
 
     @Test
     void saveAcceptedRequest() {
+        long rId =12;
+        Classroom classroom = new Classroom("A102", 50, true, 0);
+        Login requestor = new Login("professor", "shriyakabra97", "password");
+        Date classRequestDate = Date.valueOf("2020-05-25");
+        Time startTime = Time.valueOf("23:45:00");
+        Time endTime = Time.valueOf("23:55:00");
+        when(requestRepository.getAllByRequestId(rId)).thenReturn(
+                new Request(requestor, "exams", RequestStatus.REQUESTED, classRequestDate, startTime, endTime, "", classroom, true, 0, false )
+        );
+        Request request = new Request(requestor, "exams", RequestStatus.GRANTED, classRequestDate, startTime, endTime, "", classroom, true, 0, false );
+
+        when(requestRepository.save(request)).thenReturn(
+                new Request(requestor, "exams", RequestStatus.GRANTED, classRequestDate, startTime, endTime, "", classroom, true, 0, false )
+        );
+        assertTrue(requestService.saveAcceptedRequest((long) 12));
     }
 
-    @Test
-    void saveRequest() {
-    }
+//    @Test
+//    void saveRequest() {
+//
+//    }
 
     @Test
     void getByRequestId() {
+        long rId = 12;
+        Classroom classroom = new Classroom("A102", 50, true, 0);
+        Login requestor = new Login("professor", "shriyakabra97", "password");
+        Date classRequestDate = Date.valueOf("2020-05-25");
+        Time startTime = Time.valueOf("23:45:00");
+        Time endTime = Time.valueOf("23:55:00");
+
+        when(requestRepository.getAllByRequestId(rId)).thenReturn(
+                new Request(requestor, "exams", RequestStatus.GRANTED, classRequestDate, startTime, endTime, "", classroom, true, 0, false )
+        );
+
+        assertEquals(RequestStatus.GRANTED, requestService.getByRequestId(rId).getRequestStatus());
+
+
     }
 }

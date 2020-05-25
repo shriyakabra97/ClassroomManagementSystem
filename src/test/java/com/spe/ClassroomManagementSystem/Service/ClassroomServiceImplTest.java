@@ -51,10 +51,6 @@ public class ClassroomServiceImplTest {
     public void findByClassCode(){
         String classCode= "A102";
         when(classroomRepository.findByClassCode(classCode)).thenReturn(new Classroom("A102", 50, true, 0));
-
-//        when(classroomRepository.findByClassCode(classCode)).thenReturn(Stream.of(
-//                new Classroom("A102", 50, true, 0)
-//        ).collect((Collectors.toList())));
         assertEquals(classCode, classroomService.findByClassCode(classCode).getClassCode());
 
     }

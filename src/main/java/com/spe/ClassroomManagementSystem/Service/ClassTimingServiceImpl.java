@@ -54,7 +54,8 @@ public class ClassTimingServiceImpl implements ClassTimingService {
 
     @Override
     public List<ClassTiming> getByClassroomAndDay(Classroom classroom, Day day){
-        System.out.println("Hi"+classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day));
+        System.out.println("Hi from get by classroom and day.........classroom = " + classroom.getClassCode() + " day = " + day );
+        System.out.println("List size = " + classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day).size());
         return classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day);
     }
     @Override

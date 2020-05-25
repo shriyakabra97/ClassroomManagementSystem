@@ -7,27 +7,22 @@ import com.spe.ClassroomManagementSystem.Repository.RequestRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.sql.Date;
 import java.sql.Time;
-
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-
 import static com.spe.ClassroomManagementSystem.Models.RequestStatus.GRANTED;
 import static org.mockito.Mockito.when;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+
 @SpringBootTest
 public class ClassTimingServiceImplTest {
 
     @Autowired
     private ClassTimingService classTimingService;
-    @Autowired
-    private RequestService requestService;
     @Autowired
     private ClassroomService classroomService;
 
@@ -62,7 +57,7 @@ public class ClassTimingServiceImplTest {
                 new ClassTiming(Day.MONDAY, Time.valueOf("22:30:00"), Time.valueOf("23:30:00"), classroom)
         ).collect(Collectors.toList()));
         assertEquals(Day.MONDAY, classTimingService.getByClassroomAndDay(classroom, day).get(0).getDayOfTheWeek());
-
+        System.out.println("Hello from test ---- get By classroom and day..======");
     }
 
     @Test
@@ -112,12 +107,10 @@ public class ClassTimingServiceImplTest {
                 new Classroom("A102", 50, true, 0)
         );
 
-
-
         assertEquals(3, classTimingService.getByClassroomAndDay(classroom, Day.MONDAY).size());
         assertEquals("A102", classroomService.findByClassCode(classroom.getClassCode()).getClassCode());
-        assertEquals(classTiming, classTimingService.saveTimetable(classTiming));
-//        assertEquals(false, classTimingService.saveInClassTiming(classroom.getClassCode(), startTimeFormat, endTimeFormat ,day1, null));
+        assertEquals(classTiming.getClassroom().getClassCode(), classTimingService.saveTimetable(classTiming).getClassroom().getClassCode());
+        //assertEquals(false, classTimingService.saveInClassTiming(classroom.getClassCode(), startTimeFormat, endTimeFormat ,day1, null));
         System.out.println("from test-- save in class timings----end-----");
 
     }
