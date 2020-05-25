@@ -2,11 +2,11 @@ package com.spe.ClassroomManagementSystem.Service;
 
 import com.spe.ClassroomManagementSystem.Models.Classroom;
 import com.spe.ClassroomManagementSystem.Repository.ClassroomRepository;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,7 +31,7 @@ public class ClassroomServiceImplTest {
                 new Classroom("A105", 200, false, 20)
         ).collect(Collectors.toList()));
 
-        Assert.assertEquals(4, classroomService.findAllClassrooms().size());
+        assertEquals(4, classroomService.findAllClassrooms().size());
     }
 
     @Test
@@ -43,7 +43,8 @@ public class ClassroomServiceImplTest {
                 new Classroom("A103", 50, true, 0),
                 new Classroom("A104", 100, true, 100)
         ).collect((Collectors.toList())));
-        Assert.assertEquals(2, classroomService.getClassroomByFormFilter(capacity, plugs, projectorAvailable).size());
+
+        assertEquals(2, classroomService.getClassroomByFormFilter(capacity, plugs, projectorAvailable).size());
     }
 
     @Test
@@ -54,7 +55,7 @@ public class ClassroomServiceImplTest {
 //        when(classroomRepository.findByClassCode(classCode)).thenReturn(Stream.of(
 //                new Classroom("A102", 50, true, 0)
 //        ).collect((Collectors.toList())));
-        Assert.assertEquals(classCode, classroomService.findByClassCode(classCode).getClassCode());
+        assertEquals(classCode, classroomService.findByClassCode(classCode).getClassCode());
 
     }
     @Test
@@ -63,7 +64,7 @@ public class ClassroomServiceImplTest {
         when(classroomRepository.save(classroom)).thenReturn(
                 new Classroom("A102", 50, true, 0)
         );
-        Assert.assertEquals("Saved Classroom Successfully", classroomService.saveClassroom(classroom));
+        assertEquals("Saved Classroom Successfully", classroomService.saveClassroom(classroom));
     }
 
     @Test
@@ -76,6 +77,6 @@ public class ClassroomServiceImplTest {
                 new Classroom("A104", 100, true, 100),
                 new Classroom("A105", 200, false, 20)
         ).collect((Collectors.toList())));
-        Assert.assertEquals(4, classroomService.getClassroomByFormFilterWithoutProjectorConstraint(capacity, plugs).size());
+        assertEquals(4, classroomService.getClassroomByFormFilterWithoutProjectorConstraint(capacity, plugs).size());
     }
 }

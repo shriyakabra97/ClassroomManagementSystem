@@ -54,11 +54,13 @@ public class ClassTimingServiceImpl implements ClassTimingService {
 
     @Override
     public List<ClassTiming> getByClassroomAndDay(Classroom classroom, Day day){
+        System.out.println("Hi"+classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day));
         return classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day);
     }
     @Override
     public boolean checkAvailableClassroom(Classroom classroom,Date date,Time startTime, Time endTime)
     {
+        System.out.println(date);
         Day day = Day.SUNDAY; //random initialization
         switch (DateUtils.getDayOfTheWeekFromDate(date)){
             case 1:  day = Day.SUNDAY; break;
@@ -125,8 +127,11 @@ public class ClassTimingServiceImpl implements ClassTimingService {
     @Override
     public boolean saveInClassTiming(String classCode, Time startTimeFormat, Time endTimeFormat, Day day1, HttpSession session){
         Classroom classroom = classroomService.getClassroomByClassCode(classCode);
+        System.out.println(classroom);
         List<ClassTiming> classTimingList = classTimingService.getByClassroomAndDay(classroom, day1);
-        boolean returnVal = true;
+//        List<ClassTiming> classTimingList = classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day1);
+        System.out.println("class timing list = "+classTimingList);
+        boolean returnVal;
         boolean isOverlapping;
         //create an interval list
         List<Interval> intervalList = new ArrayList<>();
@@ -147,9 +152,11 @@ public class ClassTimingServiceImpl implements ClassTimingService {
                 return interval.startTime.compareTo(t1.startTime);
             }
         });
+        System.out.println("interval List = " +intervalList);
         //sorting has happened on basis of start time.
         //check if they overlap
         isOverlapping = checkOverlapping(intervalList);
+        System.out.println("isOverlapping = " + isOverlapping);
         if (!isOverlapping){
             //save in db if no overlapping
             //create classTimingObject
@@ -157,11 +164,17 @@ public class ClassTimingServiceImpl implements ClassTimingService {
             //save in db
             classTimingService.saveTimetable(classTiming);
             logger.info("Timetable saved successfully");
-            session.setAttribute("save_message", "Saved successfully..");
+            System.out.println("TEST IN !ISOVERLAPPING");
+            if (session!=null) {
+                session.setAttribute("save_message", "Saved successfully..");
+            }
             returnVal = true;
         }else {
+            System.out.println("TEST IN ISOVERLAPPING");
             logger.error("Error entering in DB..overlapping time");
-            session.setAttribute("save_message", "Error entering in DB..overlapping time");
+            if (session!=null) {
+                session.setAttribute("save_message", "Error entering in DB..overlapping time");
+            }
             returnVal= false;
         }
 
