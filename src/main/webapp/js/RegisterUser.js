@@ -10,9 +10,9 @@ $(function () {
     //     return this.optional( element ) || /^\w+$/i.test( value );
     // }, "Letters, numbers, and underscores only please" );
 
-    // $.validator.addMethod( "lettersonly", function( value, element ) {
-    //     return this.optional( element ) || /^[a-z]+$/i.test( value );
-    // }, "Letters only please" );
+    $.validator.addMethod( "lettersonlys", function( value, element ) {
+        return this.optional( element ) || value == value.match(/^[a-zA-Z\s]+$/);
+    }, "Letters and Spaces only please" );
 
     $.validator.setDefaults({
         errorClass: 'help-block',
@@ -37,7 +37,7 @@ $(function () {
                   alphanumeric : true
               },
               name:{
-                  lettersonly:true
+                  lettersonlys:true
               }
 
          },

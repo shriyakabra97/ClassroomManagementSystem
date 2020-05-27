@@ -1,6 +1,7 @@
 body {
     /*background: #eee url(http://subtlepatterns.com/patterns/sativa.png);}*/
-    background: white url("/images/bg_class.jpg");
+    background: white url("/images/bg_class.jpeg") repeat-x;
+    background-color: #AEAE64;
 
 
 }
