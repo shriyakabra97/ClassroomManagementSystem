@@ -15,11 +15,6 @@ class LoginServiceImplTest {
     @MockBean
     private LoginRepository loginRepository;
 
-//    @Test
-//    void save() {
-//        //got session
-//    }
-
     @Test
     void findByUsernameAndPassword() {
         String username = "shriyakabra97";
@@ -30,10 +25,6 @@ class LoginServiceImplTest {
        assertEquals("professor", loginService.findByUsernameAndPassword(username, password).getUserType());
     }
 
-//    @Test
-//    void checkCredentials() {
-//        //got session
-//    }
 
     @Test
     void findByLoginId() {
