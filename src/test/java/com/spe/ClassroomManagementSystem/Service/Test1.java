@@ -50,7 +50,7 @@ import java.sql.Time;
 	    		}
 	    	}
 	    
-	    
+	    }
 	    
 	    @Test
 	    public void loginServiceCheckCredentialsTest()
