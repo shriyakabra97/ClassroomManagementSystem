@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+/home/pragati/Desktop/SEM2/SPE/ClassroomManagementSystem/.metadata/.plugins/org.eclipse.jdt.core

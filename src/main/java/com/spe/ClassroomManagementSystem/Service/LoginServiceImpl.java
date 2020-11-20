@@ -27,8 +27,8 @@ public class LoginServiceImpl implements LoginService {
         List<Login> loginList = loginRepository.findAll();
         for (Login l:loginList) {
             if (login.getUserName().equals(l.getUserName()) && login.getUserType().equals(l.getUserType())){
-                logger.error("User Already Exists");
-                session.setAttribute("msg", "User Already Exists");
+                 logger.error("User Already Exists");
+                //session.setAttribute("msg", "User Already Exists");
                 return false;
             }
         }
@@ -46,7 +46,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean checkCredentials(String username, String password, String userType, HttpSession session) {
-        session.setAttribute("userType", userType);
+        //session.setAttribute("userType", userType);
         if (userType.equals("admin")){
             if (username.equals("admin") && password.equals("admin")){
                 return true;
