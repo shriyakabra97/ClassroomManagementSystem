@@ -54,6 +54,8 @@ public class ClassTimingServiceImpl implements ClassTimingService {
 
     @Override
     public List<ClassTiming> getByClassroomAndDay(Classroom classroom, Day day){
+        System.out.println("Hi from get by classroom and day.........classroom = " + classroom.getClassCode() + " day = " + day );
+        System.out.println("List size = " + classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day).size());
         return classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day);
     }
     @Override
@@ -126,7 +128,9 @@ public class ClassTimingServiceImpl implements ClassTimingService {
     public boolean saveInClassTiming(String classCode, Time startTimeFormat, Time endTimeFormat, Day day1, HttpSession session){
         Classroom classroom = classroomService.getClassroomByClassCode(classCode);
         List<ClassTiming> classTimingList = classTimingService.getByClassroomAndDay(classroom, day1);
-        boolean returnVal = true;
+//        List<ClassTiming> classTimingList = classTimingRepository.getAllByClassroomAndDayOfTheWeek(classroom, day1);
+        System.out.println("class timing list = "+classTimingList);
+        boolean returnVal;
         boolean isOverlapping;
         //create an interval list
         List<Interval> intervalList = new ArrayList<>();
