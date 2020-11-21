@@ -157,11 +157,11 @@ public class ClassTimingServiceImpl implements ClassTimingService {
             //save in db
             classTimingService.saveTimetable(classTiming);
             logger.info("Timetable saved successfully");
-            session.setAttribute("save_message", "Saved successfully..");
+            //session.setAttribute("save_message", "Saved successfully..");
             returnVal = true;
         }else {
             logger.error("Error entering in DB..overlapping time");
-            session.setAttribute("save_message", "Error entering in DB..overlapping time");
+            //session.setAttribute("save_message", "Error entering in DB..overlapping time");
             returnVal= false;
         }
 

@@ -28,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
         for (Login l:loginList) {
             if (login.getUserName().equals(l.getUserName()) && login.getUserType().equals(l.getUserType())){
                 logger.error("User Already Exists");
-                session.setAttribute("msg", "User Already Exists");
+             // session.setAttribute("msg", "User Already Exists");
                 return false;
             }
         }
@@ -61,24 +61,24 @@ public class LoginServiceImpl implements LoginService {
             if (user.getPassword().equals(password)) {
                 switch (userType) {
                     case "professor":
-                        session.setAttribute("login", true);
+                      //  session.setAttribute("login", true);
                         Professor professor = user.getProfessor();
-                        session.setAttribute("professor", professor);
+                      //  session.setAttribute("professor", professor);
                         break;
                     case "ta":
-                        session.setAttribute("login", true);
+                      //  session.setAttribute("login", true);
                         TA ta = user.getTa();
-                        session.setAttribute("ta", ta);
+                       // session.setAttribute("ta", ta);
                         break;
                     case "committee":
-                        session.setAttribute("login", true);
+                      //  session.setAttribute("login", true);
                         Committee committee = user.getCommittee();
-                        session.setAttribute("committee", committee);
+                       // session.setAttribute("committee", committee);
                         break;
                     case "sac":
-                        session.setAttribute("login", true);
+                      //  session.setAttribute("login", true);
                         Sac sac = user.getSac();
-                        session.setAttribute("sac", sac);
+                      //  session.setAttribute("sac", sac);
                         break;
 
                 }
