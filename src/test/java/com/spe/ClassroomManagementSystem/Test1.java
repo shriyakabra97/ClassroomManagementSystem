@@ -1,10 +1,12 @@
 
-package com.spe.ClassroomManagementSystem.Service;
+package com.spe.ClassroomManagementSystem;
 
 import com.spe.ClassroomManagementSystem.Models.Day;
 import com.spe.ClassroomManagementSystem.Models.Login;
 import com.spe.ClassroomManagementSystem.Models.Professor;
 import com.spe.ClassroomManagementSystem.Service.LoginService;
+import com.spe.ClassroomManagementSystem.Service.ProfessorService;
+import com.spe.ClassroomManagementSystem.Service.ClassTimingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.Test;
