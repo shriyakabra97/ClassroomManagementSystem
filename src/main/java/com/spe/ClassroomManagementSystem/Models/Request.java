@@ -53,6 +53,28 @@ public class Request implements Serializable {
 
     @Column
     private boolean cleaningRequired = false;
+    public  Request(){
+
+    }
+
+    public Request(Login requestor, @NotNull String purpose,
+                   @NotNull RequestStatus requestStatus, @NotNull Date classRequestDate,
+                   @NotNull Time startTime, @NotNull Time endTime,
+                   String comment, Classroom classroom,
+                   boolean projector, long plugs,
+                   boolean cleaningRequired) {
+        this.requestor = requestor;
+        this.purpose = purpose;
+        this.requestStatus = requestStatus;
+        this.classRequestDate = classRequestDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.comment = comment;
+        this.classroom = classroom;
+        this.projector = projector;
+        this.plugs = plugs;
+        this.cleaningRequired = cleaningRequired;
+    }
 
     public long getRequestId() {
         return requestId;
