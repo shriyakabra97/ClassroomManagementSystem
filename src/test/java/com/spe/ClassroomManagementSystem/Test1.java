@@ -10,6 +10,8 @@ import com.spe.ClassroomManagementSystem.Service.ClassTimingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.Assert;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
@@ -33,87 +35,69 @@ import java.sql.Time;
         private ClassTimingService classTimingService;
     	
 
-	    @Test
-	    public void loginServiceSaveTest() throws FileNotFoundException,IOException
-	    {
-	    	try(BufferedReader bf=new BufferedReader(new FileReader("/home/pragati/Desktop/SEM3/Testing/login.txt")))
-	    	{
-	    		
-	    		while(bf.ready())
-	    		{
-	    			HttpSession session=null;
-	    			String[] current=bf.readLine().trim().split(",");
-	    			Login login = new Login();
-	    			login.setUserType(current[0]);   //username
-	    			login.setPassword(current[1]);   //password
-	    			login.setUserName(current[2]);   //usertype
-	    			Assert.assertEquals(false, loginService.save(login,session));
-	        		
-	    		}
-	    	}
-	    
-	    }
-	    
-	    @Test
-	    public void loginServiceCheckCredentialsTest()
+    	@ParameterizedTest
+ 	    @CsvSource({})
+	    public void loginServiceSaveTest(String userType,String password,String username,boolean result) 
 	    		throws FileNotFoundException,IOException
 	    {
-	    	try(BufferedReader bf=new BufferedReader(new FileReader("/home/pragati/Desktop/SEM3/Testing/login.txt")))
-	    	{
-	    		
-	    		while(bf.ready())
-	    		{
-	    			HttpSession session=null;
-	    			String[] current=bf.readLine().trim().split(",");
-	    			Assert.assertEquals(false, loginService.checkCredentials(current[0],current[1],current[2],session));	
-	    		}
-	    	}
 	    	
+	    			HttpSession session=null;
+	    			
+	    			Login login = new Login();
+	    			login.setUserType(userType);   //username
+	    			login.setPassword(password);   //password
+	    			login.setUserName(username);   //usertype
+	    			Assert.assertEquals(result, loginService.save(login,session));
+	        		
+	    }
+	    	
+	    
+	    
+	    @ParameterizedTest
+	    @CsvSource({})
+	    public void loginServiceCheckCredentialsTest(String username, String password, String userType, boolean result)
+	    		throws FileNotFoundException,IOException
+	    {
+	    	
+	    			HttpSession session=null;
+	 	    		Assert.assertEquals(result, loginService.checkCredentials(username ,password,userType,session));	
+	  	
 	    }
 	   
 	    
-	    @Test
-	    public void professorServiceSaveProfessorTest()
+	    @ParameterizedTest
+	    @CsvSource({})
+	    public void professorServiceSaveProfessorTest(String name,String username,String email,String userType,String password,boolean result)
 	    		throws FileNotFoundException,IOException
 	    {
-	    	try(BufferedReader bf=new BufferedReader(new FileReader("/home/pragati/Desktop/SEM3/Testing/login.txt")))
-	    	{
-	    		
-	    		while(bf.ready())
-	    		{
+	    	
 	    			HttpSession session=null;
-	    			String[] current=bf.readLine().trim().split(",");   //5 values
+
 	    			
 	    			 Professor professor = new Professor();
-	    		     professor.setProfessorName(current[0]);            //name
-	    		     professor.setUserName(current[1]);                 //username
-	    		     professor.setProfessorEmail(current[2]);           //email
+	    		     professor.setProfessorName(name);            		//name
+	    		     professor.setUserName(username);                  //username
+	    		     professor.setProfessorEmail(email);           		//email
 	    		     Login login = new Login();
-		    		 login.setUserType(current[3]);                     //usertype
-		    		 login.setPassword(current[4]);                     //password
-		    		 login.setUserName(current[1]);						//username
+		    		 login.setUserType(userType);                       //usertype
+		    		 login.setPassword(password);                       //password
+		    		 login.setUserName(username);					 	//username
 	    		     professor.setForeignId(login);  
-	    			Assert.assertEquals(false, professorService.saveProfessor(professor));	
-	    		}
-	    	}
-	    	
+	    			 Assert.assertEquals(result, professorService.saveProfessor(professor));	
+	  	
 	    }
 	    
 	    
-	    @Test
-	    public void classTimingServiceSaveInClassTiminTgest()
+	    
+	    @ParameterizedTest
+	    @CsvSource({})
+	    public void classTimingServiceSaveInClassTiminTgest(String classCode, String startTime,String endTime,String day,boolean result)
 	    		throws FileNotFoundException,IOException
 	    {
-	    	try(BufferedReader bf=new BufferedReader(new FileReader("/home/pragati/Desktop/SEM3/Testing/login.txt")))
-	    	{
-	    		
-	    		while(bf.ready())
-	    		{
+	    	
 	    			HttpSession session=null;
-	    			String[] current=bf.readLine().trim().split(",");   //4 values
-	    			
-	    			 Day day1 = Day.SUNDAY;//initialization
-	    		     switch (current[1])
+	    		    Day day1 = Day.SUNDAY;//initialization
+	    		     switch (day)
 	    		     {
 	    		            case "SUNDAY": day1=Day.SUNDAY;break;
 	    		            case "MONDAY": day1=Day.MONDAY;break;
@@ -123,14 +107,12 @@ import java.sql.Time;
 	    		            case "FRIDAY": day1=Day.FRIDAY;break;
 	    		            case "SATURDAY": day1=Day.SATURDAY;break;
 	    		     }
-	    		        Time startTimeFormat = Time.valueOf(current[1] +":00");
-	    		        Time endTimeFormat = Time.valueOf(current[2] +":00");
+	    		        Time startTimeFormat = Time.valueOf(startTime +":00");
+	    		        Time endTimeFormat = Time.valueOf(endTime +":00");
 	    			
 	     
-	    			Assert.assertEquals(false,classTimingService.saveInClassTiming(current[0], startTimeFormat, endTimeFormat, day1, session));	
-	    		}
-	    	}
-	    	
+	    			Assert.assertEquals(result,classTimingService.saveInClassTiming(classCode, startTimeFormat, endTimeFormat, day1, session));	
+	    		
 	    }
 	    
 	}
