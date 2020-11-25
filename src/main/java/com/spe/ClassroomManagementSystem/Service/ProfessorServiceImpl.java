@@ -28,7 +28,7 @@ public class ProfessorServiceImpl implements ProfessorService {
         }
         catch (Exception e){
             logger.error("could not save professor");
-            msg = "Error saving Professor..";
+            msg = "Error Saving Professor..";
         }
         return msg;
     }

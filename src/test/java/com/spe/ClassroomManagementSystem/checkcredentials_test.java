@@ -1,4 +1,3 @@
-
 package com.spe.ClassroomManagementSystem;
 
 import com.spe.ClassroomManagementSystem.Models.Day;
@@ -22,39 +21,33 @@ import java.sql.Time;
 
 
 	@SpringBootTest
-	public class Test1
+	public class checkcredentials_test
 	{
 
     	@Autowired
         private LoginService loginService;
+    	
   
-    
-    	@ParameterizedTest
- 	    @CsvSource({"professor,,,false",
- 	    		"ta,abcd,,false",
- 	    		"committee,abcd,user,true",
- 	    		"sac,,user,false",
- 	    		"admin,,user,false",
- 	    		"invaliduser,,user,false",
- 	    		"invaliduser,abcd,,false", 
- 	    		"admin,abcd,,false",
- 	    		"sac,abcd,,false", 
- 	    		"committee,,,false",
- 	    		"ta,,user,false",
- 	    		"professor,abcd,user1,true"})
-	    public void loginServiceSaveTest(String userType,String password,String username,boolean result) 
+	    @ParameterizedTest
+	    @CsvSource({",,professor,false",
+	    	"asthauser,pragatipassword,professor,true",
+	    	"asthauser,,ta,false",
+	    	",pragatipassword,ta,false",
+	    	",pragatipassword,committee,false",
+	    	"asthauser,,committee,false",
+	    	"asthauser,,sac,false",
+	    	",pragatipassword,sac,false",
+	    	",pragatipassword,admin,false",
+	    	",asthauser,admin,false",
+	    	"asthauser,,invaliduser,false",
+	    	",pragatipassword,invaliduser,false"})
+	    public void loginServiceCheckCredentialsTest(String username, String password, String userType, boolean result)
 	    		throws FileNotFoundException,IOException
 	    {
 	    	
 	    			HttpSession session=null;
-	    			
-	    			Login login = new Login();
-	    			login.setUserType(userType);   //username
-	    			login.setPassword(password);   //password
-	    			login.setUserName(username);   //usertype
-	    			Assert.assertEquals(result, loginService.save(login,session));
-	        		
+	 	    		Assert.assertEquals(result, loginService.checkCredentials(username ,password,userType,session));	
+	  	
 	    }
-	    	
-	  
-	}
+}
+	    
