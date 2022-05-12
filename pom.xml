@@ -62,7 +62,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>5.3.14</version>
+			<version>5.3.20</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
